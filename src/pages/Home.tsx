@@ -1,0 +1,1302 @@
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { 
+  ArrowRight, 
+  Play, 
+  ChevronUp, 
+  ChevronDown, 
+  Menu, 
+  X, 
+  ChevronRight,
+  Facebook, 
+  Twitter, 
+  Linkedin,
+  Video,
+  CheckCircle
+} from 'lucide-react';
+
+
+const Home = () => {
+  // Header state
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { name: 'ABOUT US', href: '/about' },
+    { 
+      name: 'CATEGORIES', 
+      href: '#',
+      dropdown: [
+        { name: 'Stone Care', href: '/categories/stone-care' },
+        { name: 'Stone Adhesive', href: '/categories/stone-adhesive' },
+        { name: 'Construction Chemical', href: '/categories/construction-chemical' }
+      ]
+    },
+    { 
+      name: 'MAGIK STORIES', 
+      href: '#',
+      dropdown: [
+        { name: 'Projects', href: '/magik-stories/projects' },
+        { name: 'Events', href: '/magik-stories/events' },
+        { name: 'Brand Awareness', href: '/magik-stories/brand-awareness' }
+      ]
+    },
+    { 
+      name: 'TOOLS', 
+      href: '#',
+      dropdown: [
+        { name: 'Coverage Calculator', href: '/tools/coverage-calculator' },
+        { name: 'Download TDS', href: '/tools/download-tds' },
+        { name: 'Download MSDS', href: '/tools/download-msds' },
+        { name: 'Download Catalogue', href: '/tools/download-catalogue' },
+        { name: 'Download Shade Kit', href: '/tools/download-shade-kit' }
+      ]
+    },
+    { name: 'CONTACT US', href: '/contact' },
+    { name: 'BLOGS', href: '/blog' }
+  ];
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const toggleDropdown = (itemName: string) => {
+    setActiveDropdown(activeDropdown === itemName ? null : itemName);
+  };
+
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header/Navbar */}
+      <nav className={`modern-navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+        <div className="navbar-container">
+          {/* Logo and Brand */}
+          <div className="navbar-brand">
+            <Link to="/" onClick={closeMenu}>
+              <img src="/mmc%20logo.png" alt="MMC Logo" className="navbar-logo-img" />
+            </Link>
+          </div>
+
+          {/* Navigation Links Container */}
+          <div className="navbar-links-container">
+            <ul className={`navbar-links ${isMenuOpen ? 'navbar-links-open' : ''}`}>
+              {navItems.map((item) => (
+                <li key={item.name} className="nav-item">
+                  {item.dropdown ? (
+                    <div className="dropdown-container">
+                      <button
+                        onClick={() => toggleDropdown(item.name)}
+                        className={`dropdown-trigger ${location.pathname.startsWith(item.href) ? 'active' : ''}`}
+                      >
+                        {item.name}
+                        <ChevronDown className={`dropdown-icon ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                      </button>
+                      {activeDropdown === item.name && (
+                        <ul className="dropdown-menu">
+                          {item.dropdown.map((dropdownItem) => (
+                            <li key={dropdownItem.name}>
+                              <Link
+                                to={dropdownItem.href}
+                                onClick={closeMenu}
+                                className={location.pathname === dropdownItem.href ? 'active' : ''}
+                              >
+                                {dropdownItem.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      onClick={closeMenu}
+                      className={location.pathname === item.href ? 'active' : ''}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Download Button */}
+          <div className="navbar-auth">
+            <Link to="/download-brochure" className="signup-button" onClick={closeMenu}>
+              <ChevronRight className="auth-icon" />
+              Download Brochure
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="navbar-mobile-toggle">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="mobile-menu-btn"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="hero-section relative min-h-screen flex items-center">
+        <div className="warm-bg absolute inset-0"></div>
+        
+        <div className="section-padding relative z-10">
+          <div className="container-max">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left Content - Text */}
+              <div>
+                <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-8 text-gray-900">
+                  Come Help Us
+                  <span className="block text-primary"> Improve</span>
+                  <span className="block">Your House</span>
+                </h1>
+                
+                <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+                  Transform your living space with our expert tiling and flooring services. 
+                  We combine precision craftsmanship with premium materials to create 
+                  stunning, durable surfaces that elevate your home.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <Link
+                    to="/about"
+                    className="btn-primary inline-flex items-center space-x-3"
+                  >
+                    <span>DISCOVER MORE</span>
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                  
+                  <Link
+                    to="/contact"
+                    className="btn-outline inline-flex items-center space-x-3"
+                  >
+                    <span>GET A QUOTE</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Content - Image/Video */}
+              <div>
+                <div className="relative">
+                  <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                    <img
+                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      alt="Modern elegant living room with premium flooring"
+                      className="w-full h-full object-cover"
+                    />
+                    
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="group cursor-pointer">
+                        <div className="w-24 h-24 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl hover:bg-white transition-all duration-300 group-hover:scale-110">
+                          <Play className="h-10 w-10 text-primary ml-1" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Floating Elements */}
+                  <div className="absolute -top-6 -right-6 w-20 h-20 bg-primary/10 rounded-full animate-float"></div>
+                  <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-secondary/10 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+                  
+                  {/* Decorative Corner Element */}
+                  <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-primary/30 rounded-tl-2xl"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="section-padding bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-secondary/5 to-transparent rounded-full blur-3xl animate-float-delayed"></div>
+          
+          {/* Floating Icons */}
+          <div className="absolute top-40 left-10 w-8 h-8 bg-primary/10 rounded-full animate-float"></div>
+          <div className="absolute top-60 right-32 w-6 h-6 bg-secondary/10 rounded-full animate-float-delayed"></div>
+          <div className="absolute bottom-40 right-10 w-10 h-10 bg-primary/10 rounded-full animate-float"></div>
+          <div className="absolute bottom-60 left-32 w-4 h-4 bg-secondary/10 rounded-full animate-float-delayed"></div>
+        </div>
+
+        <div className="container-max relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-8 py-3 mb-8 shadow-lg border border-gray-100">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-sm font-semibold text-gray-700 tracking-wide">PREMIUM SOLUTIONS</span>
+            </div>
+            
+            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+              Transform Your Space with
+              <span className="block text-primary">Expert Solutions</span>
+            </h2>
+            
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Discover our comprehensive range of premium products designed to enhance, protect, and beautify your surfaces with professional-grade quality.
+            </p>
+          </div>
+
+          {/* Categories Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {/* Stone Care */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in-left border border-gray-100 category-card">
+              {/* Image Layer */}
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Stone Care"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg category-badge">
+                    PREMIUM
+                  </span>
+                </div>
+                
+                {/* Icon Overlay */}
+                <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+                  <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
+                
+                {/* Title */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-2xl font-bold text-white mb-2">STONE CARE</h3>
+                  <p className="text-white/90 text-sm">Premium Protection Solutions</p>
+                </div>
+              </div>
+              
+              {/* Details Layer - Hidden by default, shown on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-center">STONE CARE</h3>
+                <p className="text-white/90 text-base mb-6 leading-relaxed text-center">
+                  Premium stone care solutions for maintaining the beauty and longevity of your stone surfaces. From cleaning to sealing.
+                </p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-white" />
+                    <span className="text-white font-medium">Premium Quality</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-white" />
+                    <span className="text-white font-medium">Long Lasting</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-white" />
+                    <span className="text-white font-medium">Professional Grade</span>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-3 flex items-center space-x-2 hover:bg-white/30 transition-all duration-300">
+                    <span className="font-semibold">Learn More</span>
+                    <ArrowRight className="h-5 w-5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Stone Adhesive */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in border border-gray-100 category-card" style={{ animationDelay: '0.1s' }}>
+              {/* Image Layer */}
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Stone Adhesive"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-gray-800 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg category-badge">
+                    PROFESSIONAL
+                  </span>
+                </div>
+                
+                {/* Icon Overlay */}
+                <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+                  <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                  </svg>
+                </div>
+                
+                {/* Title */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-2xl font-bold text-white mb-2">STONE ADHESIVE</h3>
+                  <p className="text-white/90 text-sm">High-Performance Bonding</p>
+                </div>
+              </div>
+              
+              {/* Details Layer - Hidden by default, shown on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm">
+                <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-center">STONE ADHESIVE</h3>
+                <p className="text-white/90 text-base mb-6 leading-relaxed text-center">
+                  High-performance adhesives and mortars designed specifically for stone and tile installations. Ensure secure bonds.
+                </p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <span className="text-white font-medium">Strong Bond</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <span className="text-white font-medium">Durable</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <span className="text-white font-medium">Fast Setting</span>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <div className="bg-primary/20 backdrop-blur-sm rounded-xl px-6 py-3 flex items-center space-x-2 hover:bg-primary/30 transition-all duration-300">
+                    <span className="font-semibold">Learn More</span>
+                    <ArrowRight className="h-5 w-5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Construction Chemicals */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in border border-gray-100 category-card" style={{ animationDelay: '0.2s' }}>
+              {/* Image Layer */}
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Construction Chemicals"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg category-badge">
+                    ADVANCED
+                  </span>
+                </div>
+                
+                {/* Icon Overlay */}
+                <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
+                  <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </div>
+                
+                {/* Title */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-2xl font-bold text-white mb-2">CONSTRUCTION CHEMICALS</h3>
+                  <p className="text-white/90 text-sm">Advanced Protection Solutions</p>
+                </div>
+              </div>
+              
+              {/* Details Layer - Hidden by default, shown on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm">
+                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-center">CONSTRUCTION CHEMICALS</h3>
+                <p className="text-white/90 text-base mb-6 leading-relaxed text-center">
+                  Advanced construction chemicals including waterproofing, sealants, and protective coatings for enhanced durability.
+                </p>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-white" />
+                    <span className="text-white font-medium">Waterproof</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-white" />
+                    <span className="text-white font-medium">Protective</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-white" />
+                    <span className="text-white font-medium">Long-lasting</span>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-3 flex items-center space-x-2 hover:bg-white/30 transition-all duration-300">
+                    <span className="font-semibold">Learn More</span>
+                    <ArrowRight className="h-5 w-5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </section>
+
+      {/* Company Statistics Section */}
+      <section className="section-padding bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-10 left-10 w-96 h-96 bg-gradient-to-tr from-primary/5 to-transparent rounded-full blur-3xl animate-float-delayed"></div>
+        </div>
+
+        <div className="container-max relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Side - Visual Examples */}
+            <div className="relative">
+              <div className="relative z-10">
+                {/* Kitchen Image - Top Left */}
+                <div className="relative mb-6">
+                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform rotate-2 image-rotate-left">
+                    <img
+                      src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      alt="Modern Kitchen with Marble Countertops"
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="p-6">
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">Modern Kitchen Design</h3>
+                      <p className="text-gray-600 text-sm">Premium marble countertops with advanced stone care solutions</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Outdoor Patio Image - Bottom Right (Overlapping) */}
+                <div className="relative -mt-8 ml-8">
+                  <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform -rotate-2 image-rotate-right">
+                    <img
+                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      alt="Outdoor Patio with Pergola"
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-4">
+                      <h3 className="text-base font-bold text-gray-900 mb-1">Outdoor Living Space</h3>
+                      <p className="text-gray-600 text-xs">Durable construction with weather-resistant materials</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating Elements */}
+              <div className="absolute top-4 left-4 w-16 h-16 bg-primary/10 rounded-full animate-pulse"></div>
+              <div className="absolute bottom-4 right-4 w-12 h-12 bg-primary/20 rounded-full animate-pulse delay-1000"></div>
+            </div>
+
+            {/* Right Side - Company Statistics */}
+            <div className="space-y-8">
+              {/* Section Header */}
+              <div className="mb-8">
+                <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg border border-gray-100">
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-gray-700 tracking-wide">COMPANY ACHIEVEMENTS</span>
+                </div>
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                  Building Excellence
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  With decades of experience and thousands of successful projects, we've established ourselves as the leading provider of construction and stone care solutions.
+                </p>
+              </div>
+
+              {/* Statistics Grid */}
+              <div className="grid grid-cols-2 gap-6">
+                {/* Stat 1: Years of Experience */}
+                <div className="group bg-white rounded-2xl p-6 shadow-xl border border-gray-100 stat-card">
+                  <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl mb-4 stat-icon">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold mb-2 stat-number">20+</div>
+                    <div className="text-sm font-semibold text-gray-600">Years Industry Experience</div>
+                  </div>
+                </div>
+
+                {/* Stat 2: Products */}
+                <div className="group bg-white rounded-2xl p-6 shadow-xl border border-gray-100 stat-card">
+                  <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl mb-4 stat-icon">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold mb-2 stat-number">100+</div>
+                    <div className="text-sm font-semibold text-gray-600">Products</div>
+                  </div>
+                </div>
+
+                {/* Stat 3: Counters */}
+                <div className="group bg-white rounded-2xl p-6 shadow-xl border border-gray-100 stat-card">
+                  <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl mb-4 stat-icon">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold mb-2 stat-number">850+</div>
+                    <div className="text-sm font-semibold text-gray-600">Counters</div>
+                  </div>
+                </div>
+
+                {/* Stat 4: Countries */}
+                <div className="group bg-white rounded-2xl p-6 shadow-xl border border-gray-100 stat-card">
+                  <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl mb-4 stat-icon">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold mb-2 stat-number">13</div>
+                    <div className="text-sm font-semibold text-gray-600">Countries Spread Across</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="mt-8 p-6 bg-gradient-to-r from-primary to-primary/90 rounded-2xl text-white">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Ready to Transform Your Space?</h3>
+                    <p className="text-white/90">Join thousands of satisfied customers worldwide</p>
+                  </div>
+                  <button className="bg-white text-primary px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2">
+                    <span>Get Started</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Magik Stories Section */}
+      <section className="section-padding bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-tr from-secondary/5 to-transparent rounded-full blur-3xl animate-float-delayed"></div>
+        </div>
+
+        <div className="container-max relative z-10">
+          {/* Section Header */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 mb-16">
+            <div className="lg:w-1/3">
+              <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg border border-gray-100">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                <span className="text-sm font-semibold text-gray-700 tracking-wide">OUR STORIES</span>
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Magik Stories
+              </h2>
+            </div>
+            <div className="lg:w-2/3 lg:pl-8 lg:border-l-2 lg:border-primary/20">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                There is a lot happening around with us all round the clock. Hence, we thought of keeping you updated of everything latest. Magik Stories is that and beyond. Get to know more about our work, our events, our partner activities and more.
+              </p>
+            </div>
+          </div>
+
+          {/* Stories Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 auto-rows-[200px]">
+            {/* Story 1: Ram Mandir, Ayodhya - Large Card */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-4 md:row-span-2">
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Ram Mandir, Ayodhya"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                
+                {/* Story Badge */}
+                <div className="absolute top-6 left-6">
+                  <span className="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                    PROJECT
+                  </span>
+                </div>
+                
+                {/* Content */}
+                <div className="absolute bottom-6 left-6 right-6 bento-content">
+                  <h3 className="text-2xl font-bold text-white mb-3">Ram Mandir, Ayodhya</h3>
+                  <p className="text-white/90 text-sm mb-4 line-clamp-2">
+                    A monumental project showcasing our expertise in stone care and construction solutions.
+                  </p>
+                  <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-white hover:text-primary group-hover:shadow-lg bento-button">
+                    Know More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Story 2: Prodapt IT Park, Chennai - Medium Card */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-2 md:row-span-1">
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Prodapt IT Park, Chennai"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                
+                {/* Story Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-gray-800 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                    CORPORATE
+                  </span>
+                </div>
+                
+                {/* Content */}
+                <div className="absolute bottom-4 left-4 right-4 bento-content">
+                  <h3 className="text-lg font-bold text-white mb-2">Prodapt IT Park, Chennai</h3>
+                  <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-primary bento-button">
+                    Know More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Story 3: Annual Meet 2022 - Medium Card */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-2 md:row-span-1">
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Annual Meet 2022"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                
+                {/* Story Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                    EVENT
+                  </span>
+                </div>
+                
+                {/* Content */}
+                <div className="absolute bottom-4 left-4 right-4 bento-content">
+                  <h3 className="text-lg font-bold text-white mb-2">Annual Meet 2022</h3>
+                  <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-primary bento-button">
+                    Know More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Story 4: Spreading the Magik Across the Nation - Large Card */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-4 md:row-span-2">
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Spreading the Magik Across the Nation"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                
+                {/* Story Badge */}
+                <div className="absolute top-6 left-6">
+                  <span className="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                    BRAND
+                  </span>
+                </div>
+                
+                {/* Content */}
+                <div className="absolute bottom-6 left-6 right-6 bento-content">
+                  <h3 className="text-2xl font-bold text-white mb-3">Spreading the Magik Across the Nation</h3>
+                  <p className="text-white/90 text-sm mb-4 line-clamp-2">
+                    Our journey of expanding our brand presence and delivering quality solutions nationwide.
+                  </p>
+                  <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-white hover:text-primary group-hover:shadow-lg bento-button">
+                    Know More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Story 5: New Project - Small Card */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-2 md:row-span-1">
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="New Project"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                
+                {/* Story Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                    LATEST
+                  </span>
+                </div>
+                
+                {/* Content */}
+                <div className="absolute bottom-4 left-4 right-4 bento-content">
+                  <h3 className="text-lg font-bold text-white mb-2">New Project</h3>
+                  <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-primary bento-button">
+                    Know More
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Story 6: Innovation Hub - Small Card */}
+            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-2 md:row-span-1">
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="Innovation Hub"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                
+                {/* Story Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="bg-gray-800 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                    INNOVATION
+                  </span>
+                </div>
+                
+                {/* Content */}
+                <div className="absolute bottom-4 left-4 right-4 bento-content">
+                  <h3 className="text-lg font-bold text-white mb-2">Innovation Hub</h3>
+                  <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-primary bento-button">
+                    Know More
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonials Section */}
+      <section className="section-padding testimonials-bg bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-secondary/5 to-transparent rounded-full blur-3xl animate-float-delayed"></div>
+        </div>
+
+        <div className="container-max relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full mb-8 shadow-xl">
+              <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd"/>
+              </svg>
+            </div>
+            <div className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-8 py-4 mb-8 shadow-xl border border-gray-100">
+              <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-sm font-bold text-gray-700 tracking-wider">CLIENT SUCCESS STORIES</span>
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-gray-900 via-primary to-gray-900 bg-clip-text text-transparent">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+              Join thousands of satisfied customers who have transformed their projects with our innovative solutions
+            </p>
+            <div className="flex items-center justify-center space-x-8">
+              <div className="flex items-center space-x-3">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-lg font-bold text-gray-700">4.9/5 Rating</span>
+              </div>
+              <div className="w-px h-8 bg-gray-300"></div>
+              <div className="text-lg text-gray-600">
+                <span className="font-bold text-primary">500+</span> Happy Clients
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonials Carousel */}
+          <div className="relative overflow-hidden">
+            <div className="testimonials-track">
+              {/* Original 5 cards */}
+              {/* Testimonial Card 1 */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    R
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">Rajesh Kumar</h4>
+                    <p className="text-sm text-gray-600 font-medium">Project Manager, ABC Construction</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "MMC's stone care solutions have transformed our projects. The quality and durability are exceptional. Highly recommended for any construction project."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Testimonial Card 2 */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    S
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">Sarah Johnson</h4>
+                    <p className="text-sm text-gray-600 font-medium">Architect, Design Studio</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "The adhesive products from MMC are game-changers. They provide the perfect bond for our stone installations. Professional quality every time."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Testimonial Card 3 */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    M
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">Michael Chen</h4>
+                    <p className="text-sm text-gray-600 font-medium">Contractor, Elite Builders</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "Outstanding customer service and technical support. MMC's construction chemicals have exceeded our expectations in every project."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Testimonial Card 4 */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    P
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">Priya Sharma</h4>
+                    <p className="text-sm text-gray-600 font-medium">Interior Designer</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "The quality and finish achieved with MMC products are unmatched. My clients are always impressed with the results. Truly professional grade."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Testimonial Card 5 */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    D
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">David Wilson</h4>
+                    <p className="text-sm text-gray-600 font-medium">Property Developer</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "MMC has been our trusted partner for years. Their products deliver consistent quality and their team provides excellent support."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Duplicate cards for seamless loop */}
+              {/* Testimonial Card 1 (Duplicate) */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    R
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">Rajesh Kumar</h4>
+                    <p className="text-sm text-gray-600 font-medium">Project Manager, ABC Construction</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "MMC's stone care solutions have transformed our projects. The quality and durability are exceptional. Highly recommended for any construction project."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Testimonial Card 2 (Duplicate) */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    S
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">Sarah Johnson</h4>
+                    <p className="text-sm text-gray-600 font-medium">Architect, Design Studio</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "The adhesive products from MMC are game-changers. They provide the perfect bond for our stone installations. Professional quality every time."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Testimonial Card 3 (Duplicate) */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    M
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">Michael Chen</h4>
+                    <p className="text-sm text-gray-600 font-medium">Contractor, Elite Builders</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "Outstanding customer service and technical support. MMC's construction chemicals have exceeded our expectations in every project."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Testimonial Card 4 (Duplicate) */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    P
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">Priya Sharma</h4>
+                    <p className="text-sm text-gray-600 font-medium">Interior Designer</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "The quality and finish achieved with MMC products are unmatched. My clients are always impressed with the results. Truly professional grade."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+              {/* Testimonial Card 5 (Duplicate) */}
+              <div className="testimonial-card rounded-3xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-bold text-xl mr-6 avatar shadow-lg">
+                    D
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-lg">David Wilson</h4>
+                    <p className="text-sm text-gray-600 font-medium">Property Developer</p>
+                    <div className="flex items-center mt-1">
+                      <span className="text-xs text-primary font-semibold">★★★★★</span>
+                      <span className="text-xs text-gray-500 ml-2">Verified</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex mb-6 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6 quote-text text-lg">
+                  "MMC has been our trusted partner for years. Their products deliver consistent quality and their team provides excellent support."
+                </p>
+                <div className="flex items-center text-sm verified-badge">
+                  <svg className="w-5 h-5 mr-2 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
+                  </svg>
+                  <span className="font-semibold text-primary">Verified Customer</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* Footer */}
+      <footer className="bg-white">
+        {/* Top Banner */}
+        <div className="bg-gray-100 rounded-lg mx-4 mt-8 mb-6 p-4">
+          <div className="flex items-center justify-between">
+            <div className="text-gray-700 font-medium text-sm">
+              EXCITED? US TOO. LET'S GET MOVING.
+            </div>
+            <button className="bg-[#5BA142] hover:bg-[#4a8a35] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2">
+              <span>SCHEDULE A CALL</span>
+              <Video className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Main Footer Content */}
+        <div className="px-4 pb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Left Block - Branding/Logo */}
+            <div className="bg-[#5BA142] rounded-lg p-8 flex flex-col items-center justify-center text-white">
+              <div className="text-center">
+                <h2 className="text-4xl font-bold mb-2">MMC</h2>
+                <p className="text-lg font-medium">Marketing & Media Company</p>
+              </div>
+            </div>
+
+            {/* Right Block - Navigation/Information */}
+            <div className="bg-gray-100 rounded-lg p-8">
+              {/* Navigation Links */}
+              <div className="mb-8">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-3">
+                    <Link to="/services" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
+                      SERVICES
+                    </Link>
+                    <Link to="/projects" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
+                      PROJECTS
+                    </Link>
+                    <Link to="/blog" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
+                      BLOG
+                    </Link>
+                    <Link to="/contact" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
+                      CONTACT
+                    </Link>
+                  </div>
+                  <div className="space-y-3">
+                    <Link to="/about" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
+                      ABOUT
+                    </Link>
+                    <Link to="/testimonials" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
+                      TESTIMONIALS
+                    </Link>
+                    <Link to="/docs" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
+                      DOCS
+                    </Link>
+                    <Link to="/tutorials" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
+                      TUTORIALS
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Legal Links */}
+              <div className="flex justify-between items-center text-xs text-gray-600">
+                <div>© {currentYear} MMC Marketing & Media Company. All rights reserved.</div>
+                <div className="flex space-x-4">
+                  <a href="#" className="hover:text-[#5BA142] transition-colors">TERMS</a>
+                  <a href="#" className="hover:text-[#5BA142] transition-colors">PRIVACY</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Media Section */}
+          <div className="grid grid-cols-4 gap-4 mt-6">
+            <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center">
+              <a href="#" className="text-[#5BA142] hover:text-[#4a8a35] transition-colors">
+                <Twitter className="h-6 w-6" />
+              </a>
+            </div>
+            <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center">
+              <a href="#" className="text-[#5BA142] hover:text-[#4a8a35] transition-colors">
+                <Linkedin className="h-6 w-6" />
+              </a>
+            </div>
+            <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center">
+              <a href="#" className="text-[#5BA142] hover:text-[#4a8a35] transition-colors">
+                {/* Dribbble-like basketball icon */}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                  <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                </svg>
+              </a>
+            </div>
+            <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center">
+              <a href="#" className="text-[#5BA142] hover:text-[#4a8a35] transition-colors">
+                <Facebook className="h-6 w-6" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Home;
