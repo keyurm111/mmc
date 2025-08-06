@@ -253,7 +253,7 @@ const Header: React.FC = () => {
                       </button>
                       {activeDropdown === item.name && (
                         <div 
-                          className="dropdown-menu-container"
+                          className={`dropdown-menu-container ${hoveredCategory ? 'with-preview' : ''}`}
                           onMouseEnter={handleDropdownMouseEnter}
                           onMouseLeave={handleDropdownMouseLeave}
                         >
