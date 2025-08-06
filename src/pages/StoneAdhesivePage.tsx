@@ -1,69 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronRight, Search, Filter } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Search, Filter, ChevronDown, Check } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
 
 const StoneAdhesivePage = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { name: 'ABOUT US', href: '/about' },
-    { 
-      name: 'CATEGORIES', 
-      href: '#',
-      dropdown: [
-        { name: 'Stone Care', href: '/categories/stone-care' },
-        { name: 'Stone Adhesive', href: '/categories/stone-adhesive' },
-        { name: 'Construction Chemical', href: '/categories/construction-chemical' }
-      ]
-    },
-    { 
-      name: 'MAGIK STORIES', 
-      href: '#',
-      dropdown: [
-        { name: 'Projects', href: '/magik-stories/projects' },
-        { name: 'Events', href: '/magik-stories/events' },
-        { name: 'Brand Awareness', href: '/magik-stories/brand-awareness' }
-      ]
-    },
-    { 
-      name: 'TOOLS', 
-      href: '#',
-      dropdown: [
-        { name: 'Coverage Calculator', href: '/tools/coverage-calculator' },
-        { name: 'Download TDS', href: '/tools/download-tds' },
-        { name: 'Download MSDS', href: '/tools/download-msds' },
-        { name: 'Download Catalogue', href: '/tools/download-catalogue' },
-        { name: 'Download Shade Kit', href: '/tools/download-shade-kit' }
-      ]
-    },
-    { name: 'CONTACT US', href: '/contact' },
-    { name: 'BLOGS', href: '/blog' }
-  ];
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    setActiveDropdown(null);
-  };
-
-  const toggleDropdown = (itemName: string) => {
-    setActiveDropdown(activeDropdown === itemName ? null : itemName);
-  };
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const categories = ['All'];
 
@@ -112,90 +57,35 @@ const StoneAdhesivePage = () => {
 
   const handleViewDetails = (productId: number) => {
     // Handle view details action
-    console.log('View details for product:', productId);
+    // console.log('View details for product:', productId);
   };
 
   const handleInquiry = (productId: number) => {
     // Handle inquiry action
-    console.log('Inquiry for product:', productId);
+    // console.log('Inquiry for product:', productId);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+    setIsDropdownOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header/Navbar */}
-      <nav className={`modern-navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
-        <div className="navbar-container">
-          {/* Logo and Brand */}
-          <div className="navbar-brand">
-            <Link to="/" onClick={closeMenu}>
-              <img src="/mmc logo.png" alt="MMC Logo" className="navbar-logo-img" />
-            </Link>
-          </div>
-
-          {/* Navigation Links Container */}
-          <div className="navbar-links-container">
-            <ul className={`navbar-links ${isMenuOpen ? 'navbar-links-open' : ''}`}>
-              {navItems.map((item) => (
-                <li key={item.name} className="nav-item">
-                  {item.dropdown ? (
-                    <div className="dropdown-container">
-                      <button
-                        onClick={() => toggleDropdown(item.name)}
-                        className={`dropdown-trigger ${location.pathname.startsWith(item.href) ? 'active' : ''}`}
-                      >
-                        {item.name}
-                        <ChevronDown className={`dropdown-icon ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
-                      </button>
-                      {activeDropdown === item.name && (
-                        <ul className="dropdown-menu">
-                          {item.dropdown.map((dropdownItem) => (
-                            <li key={dropdownItem.name}>
-                              <Link
-                                to={dropdownItem.href}
-                                onClick={closeMenu}
-                                className={location.pathname === dropdownItem.href ? 'active' : ''}
-                              >
-                                {dropdownItem.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      onClick={closeMenu}
-                      className={location.pathname === item.href ? 'active' : ''}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Download Button */}
-          <div className="navbar-auth">
-            <Link to="/download-brochure" className="signup-button" onClick={closeMenu}>
-              <ChevronRight className="auth-icon" />
-              Download Brochure
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="navbar-mobile-toggle">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="mobile-menu-btn"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="pt-24 pb-12">
         <div className="container-max">
@@ -235,7 +125,7 @@ const StoneAdhesivePage = () => {
               </div>
 
               {/* Category Filter */}
-              <div className="flex items-center gap-2 bg-gray-50 rounded-xl p-1 overflow-x-auto">
+              <div className="flex items-center gap-2 bg-gray-50 rounded-xl p-1 overflow-x-auto lg:flex hidden">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -249,6 +139,36 @@ const StoneAdhesivePage = () => {
                     {category}
                   </button>
                 ))}
+              </div>
+
+              {/* Mobile Category Filter Dropdown */}
+              <div className="lg:hidden flex-1 relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white text-sm font-medium flex items-center justify-between hover:border-primary transition-colors duration-200"
+                >
+                  <span>{selectedCategory}</span>
+                  <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {isDropdownOpen && (
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-50 max-h-60 overflow-y-auto">
+                    {categories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => handleCategorySelect(category)}
+                        className={`w-full px-4 py-3 text-left text-sm font-medium flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 ${
+                          selectedCategory === category ? 'bg-primary text-white hover:bg-primary/90' : 'text-gray-700'
+                        } ${category === categories[0] ? 'rounded-t-xl' : ''} ${category === categories[categories.length - 1] ? 'rounded-b-xl' : ''}`}
+                      >
+                        <span>{category}</span>
+                        {selectedCategory === category && (
+                          <Check className="h-4 w-4" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>

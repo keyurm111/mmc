@@ -71,3 +71,17 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Troubleshooting
+
+### Message Port Error
+
+If you see the error "The message port closed before a response was received" in the browser console, this is typically caused by browser extensions or React DevTools. This error is harmless and doesn't affect your application's functionality.
+
+**Solutions:**
+1. **Disable browser extensions** temporarily to identify which one is causing the issue
+2. **Disable React DevTools** if you have it installed
+3. **Clear browser cache** and reload the page
+4. **Use incognito/private mode** to test without extensions
+
+The application includes error handling to suppress these messages automatically.

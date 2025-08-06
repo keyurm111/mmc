@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   Play, 
   ChevronUp, 
   ChevronDown, 
-  Menu, 
-  X, 
   ChevronRight,
   Facebook, 
   Twitter, 
@@ -17,143 +15,10 @@ import {
 
 
 const Home = () => {
-  // Header state
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { name: 'ABOUT US', href: '/about' },
-    { 
-      name: 'CATEGORIES', 
-      href: '#',
-      dropdown: [
-        { name: 'Stone Care', href: '/categories/stone-care' },
-        { name: 'Stone Adhesive', href: '/categories/stone-adhesive' },
-        { name: 'Construction Chemical', href: '/categories/construction-chemical' }
-      ]
-    },
-    { 
-      name: 'MAGIK STORIES', 
-      href: '#',
-      dropdown: [
-        { name: 'Projects', href: '/magik-stories/projects' },
-        { name: 'Events', href: '/magik-stories/events' },
-        { name: 'Brand Awareness', href: '/magik-stories/brand-awareness' }
-      ]
-    },
-    { 
-      name: 'TOOLS', 
-      href: '#',
-      dropdown: [
-        { name: 'Coverage Calculator', href: '/tools/coverage-calculator' },
-        { name: 'Download TDS', href: '/tools/download-tds' },
-        { name: 'Download MSDS', href: '/tools/download-msds' },
-        { name: 'Download Catalogue', href: '/tools/download-catalogue' },
-        { name: 'Download Shade Kit', href: '/tools/download-shade-kit' }
-      ]
-    },
-    { name: 'CONTACT US', href: '/contact' },
-    { name: 'BLOGS', href: '/blog' }
-  ];
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-    setActiveDropdown(null);
-  };
-
-  const toggleDropdown = (itemName: string) => {
-    setActiveDropdown(activeDropdown === itemName ? null : itemName);
-  };
-
   const currentYear = new Date().getFullYear();
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header/Navbar */}
-      <nav className={`modern-navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
-        <div className="navbar-container">
-          {/* Logo and Brand */}
-          <div className="navbar-brand">
-            <Link to="/" onClick={closeMenu}>
-              <img src="/mmc%20logo.png" alt="MMC Logo" className="navbar-logo-img" />
-            </Link>
-          </div>
-
-          {/* Navigation Links Container */}
-          <div className="navbar-links-container">
-            <ul className={`navbar-links ${isMenuOpen ? 'navbar-links-open' : ''}`}>
-              {navItems.map((item) => (
-                <li key={item.name} className="nav-item">
-                  {item.dropdown ? (
-                    <div className="dropdown-container">
-                      <button
-                        onClick={() => toggleDropdown(item.name)}
-                        className={`dropdown-trigger ${location.pathname.startsWith(item.href) ? 'active' : ''}`}
-                      >
-                        {item.name}
-                        <ChevronDown className={`dropdown-icon ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
-                      </button>
-                      {activeDropdown === item.name && (
-                        <ul className="dropdown-menu">
-                          {item.dropdown.map((dropdownItem) => (
-                            <li key={dropdownItem.name}>
-                              <Link
-                                to={dropdownItem.href}
-                                onClick={closeMenu}
-                                className={location.pathname === dropdownItem.href ? 'active' : ''}
-                              >
-                                {dropdownItem.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      onClick={closeMenu}
-                      className={location.pathname === item.href ? 'active' : ''}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Download Button */}
-          <div className="navbar-auth">
-            <Link to="/download-brochure" className="signup-button" onClick={closeMenu}>
-              <ChevronRight className="auth-icon" />
-              Download Brochure
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="navbar-mobile-toggle">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="mobile-menu-btn"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="hero-section relative min-h-screen flex items-center">
         <div className="warm-bg absolute inset-0"></div>
@@ -833,22 +698,6 @@ const Home = () => {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
               Join thousands of satisfied customers who have transformed their projects with our innovative solutions
             </p>
-            <div className="flex items-center justify-center space-x-8">
-              <div className="flex items-center space-x-3">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-lg font-bold text-gray-700">4.9/5 Rating</span>
-              </div>
-              <div className="w-px h-8 bg-gray-300"></div>
-              <div className="text-lg text-gray-600">
-                <span className="font-bold text-primary">500+</span> Happy Clients
-              </div>
-            </div>
           </div>
 
           {/* Testimonials Carousel */}

@@ -1,146 +1,174 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Calendar, ArrowRight, Filter, ChevronDown, Building2, Home, Office, Hotel, ShoppingBag } from 'lucide-react';
+import { MapPin, Calendar, ArrowRight, Filter, ChevronDown, Users, Clock, Play, Building2, Home, Hotel, ShoppingBag } from 'lucide-react';
 import Footer from '../components/Footer';
 
-interface Project {
+interface Event {
   id: number;
   name: string;
   category: string;
   location: string;
-  completionDate: string;
+  date: string;
+  time: string;
   description: string;
   image: string;
   featured: boolean;
-  area: string;
+  attendees: string;
   duration: string;
+  status: 'upcoming' | 'ongoing' | 'completed';
 }
 
-const ProjectsPage = () => {
+const EventsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Retail'];
+  const categories = ['All', 'Trade Shows', 'Workshops', 'Product Launches', 'Industry Conferences'];
 
-  const projects: Project[] = [
+  const events: Event[] = [
     {
       id: 1,
-      name: 'Luxury Villa Marble Installation',
-      category: 'Residential',
-      location: 'Beverly Hills, CA',
-      completionDate: 'March 2024',
-      description: 'Complete marble flooring and wall installation for a luxury 5-bedroom villa featuring premium Italian marble with custom patterns and finishes.',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      name: 'Stone Care Innovation Summit 2024',
+      category: 'Industry Conferences',
+      location: 'Los Angeles Convention Center, CA',
+      date: 'April 15-17, 2024',
+      time: '9:00 AM - 6:00 PM',
+      description: 'Join us for the premier stone care industry conference featuring the latest innovations, expert presentations, and networking opportunities with industry leaders.',
+      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       featured: true,
-      area: '8,500 sq ft',
-      duration: '6 weeks'
+      attendees: '500+ professionals',
+      duration: '3 days',
+      status: 'upcoming'
     },
     {
       id: 2,
-      name: 'Modern Office Complex Flooring',
-      category: 'Commercial',
-      location: 'Downtown LA, CA',
-      completionDate: 'February 2024',
-      description: 'Contemporary office space featuring sustainable flooring solutions with acoustic properties and modern design aesthetics.',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      name: 'Magik Product Launch Event',
+      category: 'Product Launches',
+      location: 'Beverly Hills Hotel, CA',
+      date: 'March 28, 2024',
+      time: '2:00 PM - 8:00 PM',
+      description: 'Exclusive launch event for our latest Magik product line. Experience live demonstrations, expert presentations, and hands-on product testing.',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       featured: false,
-      area: '25,000 sq ft',
-      duration: '8 weeks'
+      attendees: '150+ guests',
+      duration: '6 hours',
+      status: 'upcoming'
     },
     {
       id: 3,
-      name: 'Boutique Hotel Renovation',
-      category: 'Hospitality',
-      location: 'Santa Monica, CA',
-      completionDate: 'January 2024',
-      description: 'Complete renovation of a boutique hotel featuring premium tile installations, custom mosaics, and luxury bathroom finishes.',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      name: 'Professional Stone Installation Workshop',
+      category: 'Workshops',
+      location: 'Florem Training Center, Irvine, CA',
+      date: 'March 20, 2024',
+      time: '10:00 AM - 4:00 PM',
+      description: 'Hands-on workshop covering advanced stone installation techniques, best practices, and the latest tools and materials in the industry.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       featured: false,
-      area: '15,000 sq ft',
-      duration: '10 weeks'
+      attendees: '25 participants',
+      duration: '6 hours',
+      status: 'upcoming'
     },
     {
       id: 4,
-      name: 'Shopping Mall Flooring',
-      category: 'Retail',
-      location: 'Glendale, CA',
-      completionDate: 'December 2023',
-      description: 'Large-scale commercial flooring project for a premium shopping mall featuring durable and stylish flooring solutions.',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      name: 'International Stone & Tile Expo',
+      category: 'Trade Shows',
+      location: 'Las Vegas Convention Center, NV',
+      date: 'February 10-12, 2024',
+      time: '9:00 AM - 5:00 PM',
+      description: 'The largest stone and tile trade show in North America. Visit our booth to see the latest products and innovations in stone care technology.',
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       featured: false,
-      area: '45,000 sq ft',
-      duration: '12 weeks'
+      attendees: '10,000+ visitors',
+      duration: '3 days',
+      status: 'completed'
     },
     {
       id: 5,
-      name: 'Penthouse Luxury Finishes',
-      category: 'Residential',
-      location: 'Century City, CA',
-      completionDate: 'November 2023',
-      description: 'Ultra-luxury penthouse featuring custom marble installations, heated floors, and premium stone finishes throughout.',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      name: 'Sustainable Stone Care Seminar',
+      category: 'Workshops',
+      location: 'San Francisco Marriott, CA',
+      date: 'January 25, 2024',
+      time: '1:00 PM - 5:00 PM',
+      description: 'Learn about eco-friendly stone care practices, sustainable materials, and green certification processes for your projects.',
+      image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       featured: false,
-      area: '6,500 sq ft',
-      duration: '7 weeks'
+      attendees: '75 professionals',
+      duration: '4 hours',
+      status: 'completed'
     },
     {
       id: 6,
-      name: 'Corporate Headquarters',
-      category: 'Commercial',
-      location: 'Irvine, CA',
-      completionDate: 'October 2023',
-      description: 'Modern corporate headquarters featuring sustainable flooring, collaborative spaces, and premium finishes.',
-      image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      name: 'Contractor Success Summit',
+      category: 'Industry Conferences',
+      location: 'Anaheim Convention Center, CA',
+      date: 'January 15-16, 2024',
+      time: '8:00 AM - 6:00 PM',
+      description: 'Two-day conference focused on business growth, project management, and industry best practices for stone care contractors.',
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       featured: false,
-      area: '35,000 sq ft',
-      duration: '9 weeks'
+      attendees: '300+ contractors',
+      duration: '2 days',
+      status: 'completed'
     },
     {
       id: 7,
-      name: 'Resort Spa & Pool Area',
-      category: 'Hospitality',
-      location: 'Palm Springs, CA',
-      completionDate: 'September 2023',
-      description: 'Luxury resort spa featuring slip-resistant pool decking, custom mosaic installations, and premium stone finishes.',
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      name: 'Marble Restoration Masterclass',
+      category: 'Workshops',
+      location: 'Florem Showroom, Beverly Hills, CA',
+      date: 'December 15, 2023',
+      time: '9:00 AM - 3:00 PM',
+      description: 'Advanced marble restoration techniques workshop with hands-on training and expert guidance from master craftsmen.',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       featured: false,
-      area: '12,000 sq ft',
-      duration: '8 weeks'
+      attendees: '20 participants',
+      duration: '6 hours',
+      status: 'completed'
     },
     {
       id: 8,
-      name: 'High-End Retail Store',
-      category: 'Retail',
-      location: 'Beverly Hills, CA',
-      completionDate: 'August 2023',
-      description: 'Premium retail space featuring custom flooring designs, luxury materials, and sophisticated finishes.',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      name: 'Holiday Product Showcase',
+      category: 'Product Launches',
+      location: 'Florem Headquarters, Irvine, CA',
+      date: 'December 8, 2023',
+      time: '11:00 AM - 7:00 PM',
+      description: 'Special holiday showcase featuring our newest products, exclusive discounts, and festive networking opportunities.',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       featured: false,
-      area: '8,000 sq ft',
-      duration: '5 weeks'
+      attendees: '200+ guests',
+      duration: '8 hours',
+      status: 'completed'
     }
   ];
 
-  const filteredProjects = projects.filter(project => 
-    selectedCategory === 'All' || project.category === selectedCategory
+  const filteredEvents = events.filter(event => 
+    selectedCategory === 'All' || event.category === selectedCategory
   );
 
-  const featuredProject = projects.find(project => project.featured);
-  const regularProjects = filteredProjects.filter(project => !project.featured);
+  const featuredEvent = events.find(event => event.featured);
+  const regularEvents = filteredEvents.filter(event => !event.featured);
 
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case 'Residential':
-        return <Home className="h-4 w-4" />;
-      case 'Commercial':
-        return <Building2 className="h-4 w-4" />;
-      case 'Hospitality':
-        return <Hotel className="h-4 w-4" />;
-      case 'Retail':
-        return <ShoppingBag className="h-4 w-4" />;
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'upcoming':
+        return 'bg-green-100 text-green-800';
+      case 'ongoing':
+        return 'bg-blue-100 text-blue-800';
+      case 'completed':
+        return 'bg-gray-100 text-gray-800';
       default:
-        return <Building2 className="h-4 w-4" />;
+        return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'upcoming':
+        return 'Upcoming';
+      case 'ongoing':
+        return 'Ongoing';
+      case 'completed':
+        return 'Completed';
+      default:
+        return 'Unknown';
     }
   };
 
@@ -156,18 +184,18 @@ const ProjectsPage = () => {
         <div className="container-max relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-6 py-3 mb-8">
-              <Building2 className="h-5 w-5 text-primary" />
-              <span className="text-sm font-medium text-primary">OUR PROJECTS</span>
+              <Calendar className="h-5 w-5 text-primary" />
+              <span className="text-sm font-medium text-primary">OUR EVENTS</span>
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
               Our
-              <span className="text-primary"> Projects</span>
+              <span className="text-primary"> Events</span>
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12">
-              Explore our portfolio of completed projects showcasing excellence in flooring, 
-              tiling, and stone installations across residential and commercial spaces.
+              Join us at industry-leading events, workshops, and conferences to stay updated 
+              with the latest trends and innovations in stone care technology.
             </p>
 
             {/* Filter Bar */}
@@ -227,8 +255,8 @@ const ProjectsPage = () => {
         </div>
       </section>
 
-      {/* Featured Project */}
-      {featuredProject && (
+      {/* Featured Event */}
+      {featuredEvent && (
         <section className="section-padding bg-background">
           <div className="container-max">
             <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
@@ -236,8 +264,8 @@ const ProjectsPage = () => {
                 {/* Featured Image */}
                 <div className="relative aspect-[4/3] lg:aspect-square overflow-hidden">
                   <img
-                    src={featuredProject.image}
-                    alt={featuredProject.name}
+                    src={featuredEvent.image}
+                    alt={featuredEvent.name}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -245,16 +273,22 @@ const ProjectsPage = () => {
                   {/* Featured Badge */}
                   <div className="absolute top-6 left-6">
                     <span className="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold">
-                      FEATURED PROJECT
+                      FEATURED EVENT
                     </span>
                   </div>
 
-                  {/* Category Badge */}
+                  {/* Status Badge */}
                   <div className="absolute top-6 right-6">
-                    <span className="bg-white/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
-                      {getCategoryIcon(featuredProject.category)}
-                      <span>{featuredProject.category}</span>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(featuredEvent.status)}`}>
+                      {getStatusText(featuredEvent.status)}
                     </span>
+                  </div>
+
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 shadow-lg">
+                      <Play className="h-8 w-8 text-primary ml-1" />
+                    </div>
                   </div>
                 </div>
 
@@ -263,39 +297,43 @@ const ProjectsPage = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-muted-foreground mb-6">
                     <div className="flex items-center space-x-2">
                       <MapPin className="h-4 w-4" />
-                      <span>{featuredProject.location}</span>
+                      <span>{featuredEvent.location}</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Calendar className="h-4 w-4" />
-                      <span>{featuredProject.completionDate}</span>
+                      <span>{featuredEvent.date}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Clock className="h-4 w-4" />
+                      <span>{featuredEvent.time}</span>
                     </div>
                   </div>
 
                   <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                    {featuredProject.name}
+                    {featuredEvent.name}
                   </h2>
 
                   <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                    {featuredProject.description}
+                    {featuredEvent.description}
                   </p>
 
-                  {/* Project Stats */}
+                  {/* Event Stats */}
                   <div className="grid grid-cols-2 gap-6 mb-8">
                     <div className="bg-gray-50 rounded-xl p-4">
-                      <div className="text-2xl font-bold text-primary mb-1">{featuredProject.area}</div>
-                      <div className="text-sm text-muted-foreground">Total Area</div>
+                      <div className="text-2xl font-bold text-primary mb-1">{featuredEvent.attendees}</div>
+                      <div className="text-sm text-muted-foreground">Expected Attendees</div>
                     </div>
                     <div className="bg-gray-50 rounded-xl p-4">
-                      <div className="text-2xl font-bold text-primary mb-1">{featuredProject.duration}</div>
+                      <div className="text-2xl font-bold text-primary mb-1">{featuredEvent.duration}</div>
                       <div className="text-sm text-muted-foreground">Duration</div>
                     </div>
                   </div>
 
                   <Link
-                    to={`/projects/${featuredProject.id}`}
+                    to={`/events/${featuredEvent.id}`}
                     className="inline-flex items-center space-x-2 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 group text-base"
                   >
-                    <span>View Project Details</span>
+                    <span>View Event Details</span>
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -305,29 +343,42 @@ const ProjectsPage = () => {
         </section>
       )}
 
-      {/* Projects Grid */}
+      {/* Events Grid */}
       <section className="section-padding bg-gray-50">
         <div className="container-max">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularProjects.map((project) => (
+            {regularEvents.map((event) => (
               <article 
-                key={project.id}
+                key={event.id}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100"
               >
-                {/* Project Image */}
+                {/* Event Image */}
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
-                    src={project.image}
-                    alt={project.name}
+                    src={event.image}
+                    alt={event.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   
-                  {/* Category Badge */}
+                  {/* Status Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
-                      {getCategoryIcon(project.category)}
-                      <span>{project.category}</span>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(event.status)}`}>
+                      {getStatusText(event.status)}
                     </span>
+                  </div>
+
+                  {/* Category Badge */}
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {event.category}
+                    </span>
+                  </div>
+
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
+                      <Play className="h-6 w-6 text-primary ml-0.5" />
+                    </div>
                   </div>
 
                   {/* Overlay on hover */}
@@ -340,39 +391,29 @@ const ProjectsPage = () => {
                   <div className="flex items-center space-x-4 mb-4 text-sm text-muted-foreground">
                     <div className="flex items-center space-x-1">
                       <MapPin className="h-4 w-4" />
-                      <span>{project.location}</span>
+                      <span>{event.location}</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <Calendar className="h-4 w-4" />
-                      <span>{project.completionDate}</span>
+                      <span>{event.date}</span>
                     </div>
                   </div>
 
                   {/* Title */}
                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                    {project.name}
+                    {event.name}
                   </h3>
 
                   {/* Description */}
                   <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
-                    {project.description}
+                    {event.description}
                   </p>
 
-                  {/* Project Stats */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-lg font-bold text-primary mb-1">{project.area}</div>
-                      <div className="text-xs text-muted-foreground">Area</div>
-                    </div>
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-lg font-bold text-primary mb-1">{project.duration}</div>
-                      <div className="text-xs text-muted-foreground">Duration</div>
-                    </div>
-                  </div>
+
 
                   {/* View Details Link */}
                   <Link
-                    to={`/projects/${project.id}`}
+                    to={`/events/${event.id}`}
                     className="inline-flex items-center space-x-2 text-primary font-semibold group-hover:translate-x-2 transition-transform duration-300 text-base"
                   >
                     <span>View Details</span>
@@ -384,22 +425,22 @@ const ProjectsPage = () => {
           </div>
 
           {/* Load More Button */}
-          {regularProjects.length > 0 && (
+          {regularEvents.length > 0 && (
             <div className="text-center mt-16">
               <button className="bg-white border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 text-base">
-                Load More Projects
+                Load More Events
               </button>
             </div>
           )}
 
           {/* No Results */}
-          {regularProjects.length === 0 && (
+          {regularEvents.length === 0 && (
             <div className="text-center py-16">
               <div className="max-w-md mx-auto">
                 <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Building2 className="h-12 w-12 text-primary" />
+                  <Calendar className="h-12 w-12 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">No projects found</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-4">No events found</h3>
                 <p className="text-muted-foreground mb-8">
                   Try adjusting your category filter to find what you're looking for.
                 </p>
@@ -407,7 +448,7 @@ const ProjectsPage = () => {
                   onClick={() => setSelectedCategory('All')}
                   className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 text-base"
                 >
-                  View All Projects
+                  View All Events
                 </button>
               </div>
             </div>
@@ -421,4 +462,4 @@ const ProjectsPage = () => {
   );
 };
 
-export default ProjectsPage;
+export default EventsPage; 

@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
@@ -13,6 +14,9 @@ import StoneCarePage from "./pages/StoneCarePage";
 import StoneAdhesivePage from "./pages/StoneAdhesivePage";
 import ConstructionChemicalPage from "./pages/ConstructionChemicalPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
+import EventsPage from "./pages/EventsPage";
+import EventDetailPage from "./pages/EventDetailPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -25,6 +29,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
@@ -40,6 +45,13 @@ const App = () => (
                   
                   {/* Product Details Routes */}
                   <Route path="/product/:productId" element={<ProductDetailsPage />} />
+                  
+                  {/* Project Details Routes */}
+                  <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
+                  
+                  {/* Events Routes */}
+                  <Route path="/events" element={<EventsPage />} />
+                  <Route path="/events/:eventId" element={<EventDetailPage />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
