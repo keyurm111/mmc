@@ -75,52 +75,31 @@ const categoryProducts = {
   ]
 };
 
-// Magik Stories preview data
+// Magik Stories preview data (real projects and events)
 const magikStoriesData = {
   'projects': [
     {
       id: 'p1',
-      name: 'Luxury Villa Project',
-      code: 'VIP-001',
-      description: 'Complete marble installation and finishing for luxury villa.',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      name: 'Prodapt IT Park, Chennai',
+      code: 'Commercial · 40,000 sq ft',
+      description: 'Complete stone care and polishing delivering 5-star resort aesthetics.',
+      image: '/it park/1.png'
     },
     {
       id: 'p2',
-      name: 'Commercial Complex',
-      code: 'CC-002',
-      description: 'Large-scale stone flooring and wall cladding project.',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
-    },
-    {
-      id: 'p3',
-      name: 'Hotel Renovation',
-      code: 'HR-003',
-      description: 'Premium stone restoration and enhancement project.',
-      image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      name: 'Ram Mandir, Ayodhya',
+      code: 'Religious · Completed',
+      description: 'Prestigious stone cleaning for Shri Ram Janmbhoomi Teerth Kshetra Trust.',
+      image: '/ayodhya/1.jpg'
     }
   ],
   'events': [
     {
       id: 'e1',
-      name: 'Stone Care Workshop',
-      code: 'SCW-001',
-      description: 'Professional training on stone care and maintenance.',
-      image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
-    },
-    {
-      id: 'e2',
-      name: 'Product Launch Event',
-      code: 'PLE-002',
-      description: 'Launch of new Magik stone care products.',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
-    },
-    {
-      id: 'e3',
-      name: 'Industry Exhibition',
-      code: 'IE-003',
-      description: 'Showcasing latest innovations in stone care technology.',
-      image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      name: 'Annual Meet – 2022',
+      code: 'Completed',
+      description: 'Celebrating 16 years of Spreading the Magik with awards and discussions.',
+      image: '/event 2022/1.jpg'
     }
   ],
   'brand-awareness': [
@@ -154,6 +133,8 @@ const Header: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [isDropdownHovered, setIsDropdownHovered] = useState(false);
+  const [hoveredDropdown, setHoveredDropdown] = useState<string | null>(null);
+  const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -207,23 +188,51 @@ const Header: React.FC = () => {
     setActiveDropdown(null);
     setHoveredCategory(null);
     setIsDropdownHovered(false);
+    setHoveredDropdown(null);
+    setIsHoveringDropdown(false);
   };
 
   const toggleDropdown = (itemName: string) => {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
   };
 
+  const handleDropdownMouseEnter = (itemName: string) => {
+    setHoveredDropdown(itemName);
+    setActiveDropdown(itemName);
+    setIsHoveringDropdown(true);
+  };
+
+  const handleDropdownMouseLeave = () => {
+    setIsHoveringDropdown(false);
+    // Add a longer delay to prevent accidental closing when moving between trigger and dropdown
+    setTimeout(() => {
+      if (!isHoveringDropdown) {
+        setHoveredDropdown(null);
+        setActiveDropdown(null);
+        setHoveredCategory(null);
+      }
+    }, 300);
+  };
+
   const handleCategoryHover = (category: string | null) => {
     setHoveredCategory(category);
   };
 
-  const handleDropdownMouseEnter = () => {
+  const handleDropdownContentMouseEnter = () => {
     setIsDropdownHovered(true);
+    setIsHoveringDropdown(true);
   };
 
-  const handleDropdownMouseLeave = () => {
+  const handleDropdownContentMouseLeave = () => {
     setIsDropdownHovered(false);
+    setIsHoveringDropdown(false);
     setHoveredCategory(null);
+    // Add a longer delay to prevent accidental closing when moving between dropdown and trigger
+    setTimeout(() => {
+      if (!isHoveringDropdown) {
+        setActiveDropdown(null);
+      }
+    }, 300);
   };
 
   return (
@@ -243,9 +252,12 @@ const Header: React.FC = () => {
               {navItems.map((item) => (
                 <li key={item.name} className="nav-item">
                   {item.dropdown ? (
-                    <div className="dropdown-container">
+                    <div 
+                      className="dropdown-container"
+                      onMouseEnter={() => handleDropdownMouseEnter(item.name)}
+                      onMouseLeave={handleDropdownMouseLeave}
+                    >
                       <button
-                        onClick={() => toggleDropdown(item.name)}
                         className={`dropdown-trigger ${location.pathname.startsWith(item.href) ? 'active' : ''}`}
                       >
                         {item.name}
@@ -254,8 +266,8 @@ const Header: React.FC = () => {
                       {activeDropdown === item.name && (
                         <div 
                           className={`dropdown-menu-container ${hoveredCategory ? 'with-preview' : ''}`}
-                          onMouseEnter={handleDropdownMouseEnter}
-                          onMouseLeave={handleDropdownMouseLeave}
+                          onMouseEnter={handleDropdownContentMouseEnter}
+                          onMouseLeave={handleDropdownContentMouseLeave}
                         >
                           <ul className="dropdown-menu">
                             {item.dropdown.map((dropdownItem) => (

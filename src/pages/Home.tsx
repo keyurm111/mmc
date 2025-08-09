@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   ArrowRight, 
   Play, 
@@ -12,85 +12,76 @@ import {
   Video,
   CheckCircle
 } from 'lucide-react';
+import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 
 
 const Home = () => {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+
+  // Magik Stories Data
+  const magikStoriesData = [
+    {
+      id: 'p1',
+      title: 'Ram Mandir, Ayodhya',
+      category: 'PROJECT',
+      description: 'A monumental project showcasing our expertise in stone care and construction solutions for one of India\'s most sacred sites.',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      type: 'project',
+      size: 'large'
+    },
+    {
+      id: 'p2',
+      title: 'Luxury Villa Project',
+      category: 'CORPORATE',
+      description: 'Complete marble installation and finishing for premium residential development.',
+      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      type: 'project',
+      size: 'medium'
+    },
+    {
+      id: 'e1',
+      title: 'Stone Care Workshop 2024',
+      category: 'EVENT',
+      description: 'Professional training on advanced stone care and maintenance techniques.',
+      image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      type: 'event',
+      size: 'medium'
+    },
+    {
+      id: 'ba1',
+      title: 'Spreading the Magik Across the Nation',
+      category: 'BRAND',
+      description: 'Our journey of expanding our brand presence and delivering quality solutions nationwide.',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      type: 'brand',
+      size: 'large'
+    },
+    {
+      id: 'p3',
+      title: 'Commercial Complex',
+      category: 'LATEST',
+      description: 'Large-scale stone flooring and wall cladding project for modern office complex.',
+      image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      type: 'project',
+      size: 'small'
+    },
+    {
+      id: 'e2',
+      title: 'Product Launch Event',
+      category: 'INNOVATION',
+      description: 'Launch of revolutionary new Magik stone care products and technologies.',
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      type: 'event',
+      size: 'small'
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="hero-section relative min-h-screen flex items-center">
-        <div className="warm-bg absolute inset-0"></div>
-        
-        <div className="section-padding relative z-10">
-          <div className="container-max">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              {/* Left Content - Text */}
-              <div>
-                <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-8 text-gray-900">
-                  Come Help Us
-                  <span className="block text-primary"> Improve</span>
-                  <span className="block">Your House</span>
-                </h1>
-                
-                <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-                  Transform your living space with our expert tiling and flooring services. 
-                  We combine precision craftsmanship with premium materials to create 
-                  stunning, durable surfaces that elevate your home.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <Link
-                    to="/about"
-                    className="btn-primary inline-flex items-center space-x-3"
-                  >
-                    <span>DISCOVER MORE</span>
-                    <ArrowRight className="h-5 w-5" />
-                  </Link>
-                  
-                  <Link
-                    to="/contact"
-                    className="btn-outline inline-flex items-center space-x-3"
-                  >
-                    <span>GET A QUOTE</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Content - Image/Video */}
-              <div>
-                <div className="relative">
-                  <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                    <img
-                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                      alt="Modern elegant living room with premium flooring"
-                      className="w-full h-full object-cover"
-                    />
-                    
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="group cursor-pointer">
-                        <div className="w-24 h-24 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl hover:bg-white transition-all duration-300 group-hover:scale-110">
-                          <Play className="h-10 w-10 text-primary ml-1" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Floating Elements */}
-                  <div className="absolute -top-6 -right-6 w-20 h-20 bg-primary/10 rounded-full animate-float"></div>
-                  <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-secondary/10 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-                  
-                  {/* Decorative Corner Element */}
-                  <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-primary/30 rounded-tl-2xl"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Categories Section */}
       <section className="section-padding bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
@@ -127,7 +118,10 @@ const Home = () => {
           {/* Categories Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {/* Stone Care */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in-left border border-gray-100 category-card">
+            <div 
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in-left border border-gray-100 category-card cursor-pointer"
+              onClick={() => navigate('/categories/stone-care')}
+            >
               {/* Image Layer */}
               <div className="aspect-[4/3] relative overflow-hidden">
                 <img
@@ -160,11 +154,6 @@ const Home = () => {
               
               {/* Details Layer - Hidden by default, shown on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                  </svg>
-                </div>
                 <h3 className="text-2xl font-bold mb-4 text-center">STONE CARE</h3>
                 <p className="text-white/90 text-base mb-6 leading-relaxed text-center">
                   Premium stone care solutions for maintaining the beauty and longevity of your stone surfaces. From cleaning to sealing.
@@ -183,17 +172,15 @@ const Home = () => {
                     <span className="text-white font-medium">Professional Grade</span>
                   </div>
                 </div>
-                <div className="flex justify-center">
-                  <div className="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-3 flex items-center space-x-2 hover:bg-white/30 transition-all duration-300">
-                    <span className="font-semibold">Learn More</span>
-                    <ArrowRight className="h-5 w-5" />
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* Stone Adhesive */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in border border-gray-100 category-card" style={{ animationDelay: '0.1s' }}>
+            <div 
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in border border-gray-100 category-card cursor-pointer" 
+              style={{ animationDelay: '0.1s' }}
+              onClick={() => navigate('/categories/stone-adhesive')}
+            >
               {/* Image Layer */}
               <div className="aspect-[4/3] relative overflow-hidden">
                 <img
@@ -225,41 +212,34 @@ const Home = () => {
               </div>
               
               {/* Details Layer - Hidden by default, shown on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm">
-                <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                  <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                  </svg>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm">
                 <h3 className="text-2xl font-bold mb-4 text-center">STONE ADHESIVE</h3>
                 <p className="text-white/90 text-base mb-6 leading-relaxed text-center">
                   High-performance adhesives and mortars designed specifically for stone and tile installations. Ensure secure bonds.
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <CheckCircle className="h-5 w-5 text-white" />
                     <span className="text-white font-medium">Strong Bond</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <CheckCircle className="h-5 w-5 text-white" />
                     <span className="text-white font-medium">Durable</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <CheckCircle className="h-5 w-5 text-white" />
                     <span className="text-white font-medium">Fast Setting</span>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <div className="bg-primary/20 backdrop-blur-sm rounded-xl px-6 py-3 flex items-center space-x-2 hover:bg-primary/30 transition-all duration-300">
-                    <span className="font-semibold">Learn More</span>
-                    <ArrowRight className="h-5 w-5" />
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Construction Chemicals */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in border border-gray-100 category-card" style={{ animationDelay: '0.2s' }}>
+            <div 
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 animate-fade-in border border-gray-100 category-card cursor-pointer" 
+              style={{ animationDelay: '0.2s' }}
+              onClick={() => navigate('/categories/construction-chemical')}
+            >
               {/* Image Layer */}
               <div className="aspect-[4/3] relative overflow-hidden">
                 <img
@@ -279,7 +259,7 @@ const Home = () => {
                 {/* Icon Overlay */}
                 <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
                   <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                   </svg>
                 </div>
                 
@@ -290,13 +270,8 @@ const Home = () => {
                 </div>
               </div>
               
-              {/* Details Layer - Hidden by default, shown on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
+               {/* Details Layer - Hidden by default, shown on hover */}
+               <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm">
                 <h3 className="text-2xl font-bold mb-4 text-center">CONSTRUCTION CHEMICALS</h3>
                 <p className="text-white/90 text-base mb-6 leading-relaxed text-center">
                   Advanced construction chemicals including waterproofing, sealants, and protective coatings for enhanced durability.
@@ -313,12 +288,6 @@ const Home = () => {
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-white" />
                     <span className="text-white font-medium">Long-lasting</span>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <div className="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-3 flex items-center space-x-2 hover:bg-white/30 transition-all duration-300">
-                    <span className="font-semibold">Learn More</span>
-                    <ArrowRight className="h-5 w-5" />
                   </div>
                 </div>
               </div>
@@ -501,173 +470,66 @@ const Home = () => {
 
           {/* Stories Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 auto-rows-[200px]">
-            {/* Story 1: Ram Mandir, Ayodhya - Large Card */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-4 md:row-span-2">
-              <div className="absolute inset-0">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Ram Mandir, Ayodhya"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                
-                {/* Story Badge */}
-                <div className="absolute top-6 left-6">
-                  <span className="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                    PROJECT
-                  </span>
-                </div>
-                
-                {/* Content */}
-                <div className="absolute bottom-6 left-6 right-6 bento-content">
-                  <h3 className="text-2xl font-bold text-white mb-3">Ram Mandir, Ayodhya</h3>
-                  <p className="text-white/90 text-sm mb-4 line-clamp-2">
-                    A monumental project showcasing our expertise in stone care and construction solutions.
-                  </p>
-                  <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-white hover:text-primary group-hover:shadow-lg bento-button">
-                    Know More
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Story 2: Prodapt IT Park, Chennai - Medium Card */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-2 md:row-span-1">
-              <div className="absolute inset-0">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Prodapt IT Park, Chennai"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                
-                {/* Story Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-gray-800 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    CORPORATE
-                  </span>
-                </div>
-                
-                {/* Content */}
-                <div className="absolute bottom-4 left-4 right-4 bento-content">
-                  <h3 className="text-lg font-bold text-white mb-2">Prodapt IT Park, Chennai</h3>
-                  <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-primary bento-button">
-                    Know More
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Story 3: Annual Meet 2022 - Medium Card */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-2 md:row-span-1">
-              <div className="absolute inset-0">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Annual Meet 2022"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                
-                {/* Story Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    EVENT
-                  </span>
-                </div>
-                
-                {/* Content */}
-                <div className="absolute bottom-4 left-4 right-4 bento-content">
-                  <h3 className="text-lg font-bold text-white mb-2">Annual Meet 2022</h3>
-                  <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-primary bento-button">
-                    Know More
-                  </button>
+            {magikStoriesData.map((story) => (
+              <div 
+                key={story.id}
+                className={`group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card ${
+                  story.size === 'large' ? 'md:col-span-4 md:row-span-2' : 'md:col-span-2 md:row-span-1'
+                }`}
+              >
+                <div className="absolute inset-0">
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
+                  />
+                  <div className={`absolute inset-0 ${
+                    story.size === 'large' 
+                      ? 'bg-gradient-to-t from-black/80 via-black/30 to-transparent' 
+                      : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'
+                  }`}></div>
+                  
+                  {/* Story Badge */}
+                  <div className={`absolute ${story.size === 'large' ? 'top-6 left-6' : 'top-4 left-4'}`}>
+                    <span className={`${
+                      story.category === 'PROJECT' || story.category === 'EVENT' || story.category === 'BRAND' || story.category === 'LATEST'
+                        ? 'bg-primary text-white'
+                        : 'bg-gray-800 text-white'
+                    } ${
+                      story.size === 'large' ? 'px-4 py-2 text-sm' : 'px-3 py-1 text-xs'
+                    } rounded-full font-bold shadow-lg`}>
+                      {story.category}
+                    </span>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className={`absolute ${story.size === 'large' ? 'bottom-6 left-6 right-6' : 'bottom-4 left-4 right-4'} bento-content`}>
+                    <h3 className={`font-bold text-white mb-2 ${
+                      story.size === 'large' ? 'text-2xl mb-3' : 'text-lg'
+                    }`}>
+                      {story.title}
+                    </h3>
+                    {story.description && story.size === 'large' && (
+                      <p className="text-white/90 text-sm mb-4 line-clamp-2">
+                        {story.description}
+                      </p>
+                    )}
+                    <Link 
+                      to={story.type === 'project' ? `/projects/${story.id}` : 
+                          story.type === 'event' ? `/events/${story.id}` : 
+                          `/magik-stories/${story.id}`}
+                      className={`bg-white/20 backdrop-blur-sm text-white font-semibold transition-all duration-300 hover:bg-white hover:text-primary ${
+                        story.size === 'large' 
+                          ? 'px-6 py-3 rounded-xl group-hover:shadow-lg' 
+                          : 'px-4 py-2 rounded-lg text-sm'
+                      } bento-button inline-block`}
+                    >
+                      Know More
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Story 4: Spreading the Magik Across the Nation - Large Card */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-4 md:row-span-2">
-              <div className="absolute inset-0">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Spreading the Magik Across the Nation"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                
-                {/* Story Badge */}
-                <div className="absolute top-6 left-6">
-                  <span className="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                    BRAND
-                  </span>
-                </div>
-                
-                {/* Content */}
-                <div className="absolute bottom-6 left-6 right-6 bento-content">
-                  <h3 className="text-2xl font-bold text-white mb-3">Spreading the Magik Across the Nation</h3>
-                  <p className="text-white/90 text-sm mb-4 line-clamp-2">
-                    Our journey of expanding our brand presence and delivering quality solutions nationwide.
-                  </p>
-                  <button className="bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-white hover:text-primary group-hover:shadow-lg bento-button">
-                    Know More
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Additional Story 5: New Project - Small Card */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-2 md:row-span-1">
-              <div className="absolute inset-0">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="New Project"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                
-                {/* Story Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    LATEST
-                  </span>
-                </div>
-                
-                {/* Content */}
-                <div className="absolute bottom-4 left-4 right-4 bento-content">
-                  <h3 className="text-lg font-bold text-white mb-2">New Project</h3>
-                  <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-primary bento-button">
-                    Know More
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Additional Story 6: Innovation Hub - Small Card */}
-            <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card md:col-span-2 md:row-span-1">
-              <div className="absolute inset-0">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Innovation Hub"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                
-                {/* Story Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-gray-800 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                    INNOVATION
-                  </span>
-                </div>
-                
-                {/* Content */}
-                <div className="absolute bottom-4 left-4 right-4 bento-content">
-                  <h3 className="text-lg font-bold text-white mb-2">Innovation Hub</h3>
-                  <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white hover:text-primary bento-button">
-                    Know More
-                  </button>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1043,107 +905,7 @@ const Home = () => {
 
 
       {/* Footer */}
-      <footer className="bg-white">
-        {/* Top Banner */}
-        <div className="bg-gray-100 rounded-lg mx-4 mt-8 mb-6 p-4">
-          <div className="flex items-center justify-between">
-            <div className="text-gray-700 font-medium text-sm">
-              EXCITED? US TOO. LET'S GET MOVING.
-            </div>
-            <button className="bg-[#5BA142] hover:bg-[#4a8a35] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2">
-              <span>SCHEDULE A CALL</span>
-              <Video className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Main Footer Content */}
-        <div className="px-4 pb-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Left Block - Branding/Logo */}
-            <div className="bg-[#5BA142] rounded-lg p-8 flex flex-col items-center justify-center text-white">
-              <div className="text-center">
-                <h2 className="text-4xl font-bold mb-2">MMC</h2>
-                <p className="text-lg font-medium">Marketing & Media Company</p>
-              </div>
-            </div>
-
-            {/* Right Block - Navigation/Information */}
-            <div className="bg-gray-100 rounded-lg p-8">
-              {/* Navigation Links */}
-              <div className="mb-8">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-3">
-                    <Link to="/services" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
-                      SERVICES
-                    </Link>
-                    <Link to="/projects" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
-                      PROJECTS
-                    </Link>
-                    <Link to="/blog" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
-                      BLOG
-                    </Link>
-                    <Link to="/contact" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
-                      CONTACT
-                    </Link>
-                  </div>
-                  <div className="space-y-3">
-                    <Link to="/about" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
-                      ABOUT
-                    </Link>
-                    <Link to="/testimonials" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
-                      TESTIMONIALS
-                    </Link>
-                    <Link to="/docs" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
-                      DOCS
-                    </Link>
-                    <Link to="/tutorials" className="block text-gray-700 font-semibold text-sm hover:text-[#5BA142] transition-colors">
-                      TUTORIALS
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Legal Links */}
-              <div className="flex justify-between items-center text-xs text-gray-600">
-                <div>© {currentYear} MMC Marketing & Media Company. All rights reserved.</div>
-                <div className="flex space-x-4">
-                  <a href="#" className="hover:text-[#5BA142] transition-colors">TERMS</a>
-                  <a href="#" className="hover:text-[#5BA142] transition-colors">PRIVACY</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Media Section */}
-          <div className="grid grid-cols-4 gap-4 mt-6">
-            <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center">
-              <a href="#" className="text-[#5BA142] hover:text-[#4a8a35] transition-colors">
-                <Twitter className="h-6 w-6" />
-              </a>
-            </div>
-            <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center">
-              <a href="#" className="text-[#5BA142] hover:text-[#4a8a35] transition-colors">
-                <Linkedin className="h-6 w-6" />
-              </a>
-            </div>
-            <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center">
-              <a href="#" className="text-[#5BA142] hover:text-[#4a8a35] transition-colors">
-                {/* Dribbble-like basketball icon */}
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                  <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
-                </svg>
-              </a>
-            </div>
-            <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center">
-              <a href="#" className="text-[#5BA142] hover:text-[#4a8a35] transition-colors">
-                <Facebook className="h-6 w-6" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

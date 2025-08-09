@@ -16,13 +16,13 @@ const Team = () => {
       name: 'Rajesh Kumar',
       role: 'Co-Founder & CEO',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      bio: 'With over 20 years of experience in the construction industry, Rajesh co-founded Florem with a vision to revolutionize the flooring and tiling industry. His strategic leadership and deep industry knowledge have been instrumental in building our company into a trusted name.',
+              bio: 'With over 20 years of experience in the construction industry, Rajesh co-founded MMC (Marble Magik Corporation) with a vision to revolutionize the stone care and construction chemical industry. His strategic leadership and deep industry knowledge have been instrumental in building our company into a trusted name.',
       experience: '20+ Years',
       projects: '500+',
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'rajesh@florem.com'
+        email: 'rajesh@mmc.com'
       },
       quote: '"We believe that exceptional craftsmanship combined with innovative solutions can transform any space into something extraordinary."'
     },
@@ -31,13 +31,13 @@ const Team = () => {
       name: 'Sarah Johnson',
       role: 'Co-Founder & COO',
       image: 'https://images.unsplash.com/photo-1494790108755-2616b612b647?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      bio: 'Sarah brings 15+ years of operational excellence to Florem. Her expertise in project management and customer satisfaction has been the cornerstone of our company\'s success and reputation for quality.',
+              bio: 'Sarah brings 15+ years of operational excellence to MMC. Her expertise in project management and customer satisfaction has been the cornerstone of our company\'s success and reputation for quality.',
       experience: '15+ Years',
       projects: '300+',
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'sarah@florem.com'
+        email: 'sarah@mmc.com'
       },
       quote: '"Every project is an opportunity to exceed expectations and create lasting relationships with our clients."'
     }
@@ -56,7 +56,7 @@ const Team = () => {
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'michael@florem.com'
+        email: 'michael@mmc.com'
       },
       skills: ['Architectural Design', '3D Modeling', 'Sustainable Design']
     },
@@ -72,7 +72,7 @@ const Team = () => {
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'emily@florem.com'
+        email: 'emily@mmc.com'
       },
       skills: ['Project Coordination', 'Client Relations', 'Risk Management']
     },
@@ -88,7 +88,7 @@ const Team = () => {
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'michael@florem.com'
+        email: 'michael@mmc.com'
       },
       skills: ['Architectural Design', '3D Modeling', 'Sustainable Design']
     },
@@ -104,7 +104,7 @@ const Team = () => {
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'emily@florem.com'
+        email: 'emily@mmc.com'
       },
       skills: ['Project Coordination', 'Client Relations', 'Risk Management']
     },
@@ -120,7 +120,7 @@ const Team = () => {
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'david@florem.com'
+        email: 'david@mmc.com'
       },
       skills: ['Technical Innovation', 'Problem Solving', 'Team Training']
     },
@@ -136,7 +136,7 @@ const Team = () => {
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'lisa@florem.com'
+        email: 'lisa@mmc.com'
       },
       skills: ['Interior Design', 'Color Theory', 'Material Selection']
     }
@@ -174,7 +174,7 @@ const Team = () => {
               Meet Our Visionary Leaders
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              The brilliant minds behind Florem who turned a vision into reality and continue to drive innovation in our industry.
+              The brilliant minds behind MMC who turned a vision into reality and continue to drive innovation in our industry.
             </p>
           </div>
 

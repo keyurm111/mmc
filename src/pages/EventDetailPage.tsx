@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Calendar } from 'lucide-react';
 import Footer from '../components/Footer';
 
 interface EventDetail {
@@ -18,41 +19,54 @@ const EventDetailPage = () => {
   const [showAllImages, setShowAllImages] = useState(false);
   const [fullscreenImageIndex, setFullscreenImageIndex] = useState(0);
 
-  // Sample event database - in real app, this would come from API
+  // Add your real event database here
   const eventsDatabase: { [key: number]: EventDetail } = {
     1: {
       id: 1,
-      name: 'Stone Care Innovation Summit 2024',
-      description: 'Join us for the premier stone care industry conference featuring the latest innovations, expert presentations, and networking opportunities with industry leaders.',
-      fullDescription: 'The Stone Care Innovation Summit 2024 is the premier gathering for professionals in the stone care and maintenance industry. This three-day conference brings together industry leaders, innovators, and professionals to share insights, showcase cutting-edge technologies, and explore the future of stone care. The event features keynote presentations, interactive workshops, product demonstrations, and extensive networking opportunities. Attendees will gain valuable knowledge about the latest trends, best practices, and innovative solutions that are shaping the industry.',
-      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      name: 'Annual Meet – 2022',
+      description:
+        'Catch a glimpse of our Annual Meet 2022, where we celebrated 16 years of Spreading the Magik. From rewarding distributors and employees for their valuable contribution to having fruitful discussions about the company and growth – it was indeed a celebration of hard work, success and the growing bond. Events like these make us continue to do what we do and Spread The Magik across the stone-care and floor-care industry.',
+      fullDescription:
+        'Catch a glimpse of our Annual Meet 2022, where we celebrated 16 years of Spreading the Magik. From rewarding distributors and employees for their valuable contribution to having fruitful discussions about the company and growth – it was indeed a celebration of hard work, success and the growing bond. Events like these make us continue to do what we do and Spread The Magik across the stone-care and floor-care industry.',
+      image: '/event 2022/1.jpg',
+      videoUrl: 'https://www.youtube.com/embed/aUIfnlvf3HA',
       images: [
-        'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-      ]
+        '/event 2022/1.jpg',
+        '/event 2022/2.jpg',
+        '/event 2022/3.jpg',
+        '/event 2022/4.jpg',
+        '/event 2022/5.jpg',
+        '/event 2022/6.jpg',
+        '/event 2022/7.jpg',
+      ],
     },
-    2: {
-      id: 2,
-      name: 'Magik Product Launch Event',
-      description: 'Exclusive launch event for our latest Magik product line. Experience live demonstrations, expert presentations, and hands-on product testing.',
-      fullDescription: 'Join us for an exclusive evening celebrating the launch of our revolutionary Magik product line. This intimate event will feature live product demonstrations, expert presentations on the technology behind our innovations, and hands-on testing opportunities. Network with industry professionals while experiencing the future of stone care technology firsthand.',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      images: [
-        'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-      ]
-    }
   };
 
   // Get event based on ID from URL
-  const event = eventsDatabase[Number(eventId)] || eventsDatabase[1];
+  const event = eventsDatabase[Number(eventId)];
+  
+  // If no event found, show error page
+  if (!event) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto">
+          <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Calendar className="h-12 w-12 text-primary" />
+          </div>
+          <h3 className="text-2xl font-bold text-foreground mb-4">Event Not Found</h3>
+          <p className="text-muted-foreground mb-8">
+            The event you're looking for doesn't exist or has been removed.
+          </p>
+          <Link
+            to="/events"
+            className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 text-base"
+          >
+            Back to Events
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   // Auto-slide functionality
   useEffect(() => {
@@ -189,27 +203,14 @@ const EventDetailPage = () => {
       {/* Event Images Gallery */}
       <section className="py-20 bg-white">
         <div className="container-max">
-                      <div className="text-center mb-16">
+          <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Event Gallery
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                 Explore the moments and memories captured during our amazing events
               </p>
-              <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
-              
-              <button 
-                onClick={() => {
-                  setShowAllImages(true);
-                  setFullscreenImageIndex(selectedImage);
-                }}
-                className="inline-flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors duration-300"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                </svg>
-                <span>View All Images</span>
-              </button>
+              <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
             </div>
           
           {/* Main Image Display */}
@@ -245,29 +246,24 @@ const EventDetailPage = () => {
             </div>
           </div>
 
-          {/* Thumbnail Navigation */}
+          {/* Thumbnail Navigation - single row (first 5) + View All */}
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {event.images.map((image, index) => (
+            <div className="flex items-center justify-center gap-3 overflow-x-auto md:overflow-visible pb-2 w-full">
+              {event.images.slice(0, 5).map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImage(index)}
-                  className={`group relative aspect-[4/3] rounded-2xl overflow-hidden border-2 transition-all duration-500 hover:scale-110 ${
+                  className={`flex-shrink-0 group relative aspect-[4/3] w-28 sm:w-32 rounded-2xl overflow-hidden border-2 transition-all duration-300 ${
                     selectedImage === index 
-                      ? 'border-primary shadow-xl ring-4 ring-primary/20' 
+                      ? 'border-primary shadow-xl ring-2 ring-primary/20' 
                       : 'border-gray-200 hover:border-primary/50 shadow-lg hover:shadow-xl'
                   }`}
                 >
                   <img
                     src={image}
                     alt={`${event.name} thumbnail ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                    selectedImage === index ? 'opacity-100' : ''
-                  }`}></div>
-                  
-                  {/* Selection Indicator */}
                   {selectedImage === index && (
                     <div className="absolute top-2 right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -277,6 +273,17 @@ const EventDetailPage = () => {
                   )}
                 </button>
               ))}
+              {event.images.length > 5 && (
+                <button
+                  onClick={() => {
+                    setShowAllImages(true);
+                    setFullscreenImageIndex(selectedImage);
+                  }}
+                  className="flex-shrink-0 aspect-[4/3] w-28 sm:w-32 rounded-2xl overflow-hidden border-2 border-dashed border-primary/40 bg-primary/5 text-primary hover:bg-primary/10 transition-all duration-300 flex items-center justify-center font-semibold"
+                >
+                  +{event.images.length - 5} View All
+                </button>
+              )}
             </div>
           </div>
 

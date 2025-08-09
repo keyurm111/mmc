@@ -12,7 +12,7 @@ const Testimonials = () => {
       location: 'Manhattan, NY',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1494790108755-2616b612b647?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-      quote: 'Florem transformed our kitchen with beautiful marble flooring that exceeded all our expectations. Their attention to detail and professionalism is unmatched. The team was punctual, clean, and incredibly skilled.',
+              quote: 'MMC transformed our kitchen with beautiful marble flooring that exceeded all our expectations. Their attention to detail and professionalism is unmatched. The team was punctual, clean, and incredibly skilled.',
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const Testimonials = () => {
       location: 'Brooklyn, NY',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-      quote: 'We hired Florem for our restaurant renovation, and they delivered exceptional results on time and within budget. The commercial-grade tiles they installed have been perfect for our high-traffic kitchen.',
+              quote: 'We hired MMC for our restaurant renovation, and they delivered exceptional results on time and within budget. The commercial-grade tiles they installed have been perfect for our high-traffic kitchen.',
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const Testimonials = () => {
       location: 'Queens, NY',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-      quote: 'As an interior designer, I work with many contractors, but Florem stands out for their craftsmanship and reliability. They bring my visions to life with precision and artistry. Highly recommended!',
+              quote: 'As an interior designer, I work with many contractors, but MMC stands out for their craftsmanship and reliability. They bring my visions to life with precision and artistry. Highly recommended!',
     },
     {
       id: 4,
@@ -39,7 +39,7 @@ const Testimonials = () => {
       location: 'Manhattan, NY',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-      quote: 'Florem has been our go-to flooring contractor for multiple properties. Their team is professional, efficient, and delivers consistent quality. The hardwood floors they installed still look pristine after 3 years.',
+              quote: 'MMC has been our go-to flooring contractor for multiple properties. Their team is professional, efficient, and delivers consistent quality. The hardwood floors they installed still look pristine after 3 years.',
     },
     {
       id: 5,
@@ -48,7 +48,7 @@ const Testimonials = () => {
       location: 'Staten Island, NY',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-      quote: 'Our bathroom renovation was a dream come true thanks to Florem. The custom tile work is absolutely stunning, and the team was so accommodating to our specific requests. Outstanding service!',
+              quote: 'Our bathroom renovation was a dream come true thanks to MMC. The custom tile work is absolutely stunning, and the team was so accommodating to our specific requests. Outstanding service!',
     },
   ];
 
@@ -94,7 +94,7 @@ const Testimonials = () => {
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it. Here's what our satisfied clients have to say about 
-            their experience working with Florem.
+            their experience working with MMC.
           </p>
         </div>
 

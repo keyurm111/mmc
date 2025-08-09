@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Florem Tiling & Flooring Design System
+/* MMC (Marble Magik Corporation) Design System
 All colors MUST be HSL.
 */
 
@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 25 8% 15%;
 
-    /* Fresh green primary inspired by Florem design */
+    /* Fresh green primary inspired by MMC design */
     --primary: 100 39% 46%;
     --primary-foreground: 0 0% 98%;
     --primary-hover: 100 39% 40%;
@@ -43,7 +43,7 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    /* Custom design tokens for Florem theme */
+    /* Custom design tokens for MMC theme */
     --hero-gradient: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3));
     --warm-gradient: linear-gradient(180deg, hsl(25 15% 98%), hsl(25 15% 96%));
     --card-shadow: 0 10px 30px -10px hsl(25 35% 25% / 0.15);
@@ -401,20 +401,7 @@ All colors MUST be HSL.
     backdrop-filter: blur(10px);
   }
 
-  .testimonial-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(91, 161, 66, 0.1), transparent);
-    transition: left 0.6s ease;
-  }
 
-  .testimonial-card:hover::before {
-    left: 100%;
-  }
 
   .testimonial-card::after {
     content: '"';
@@ -427,42 +414,20 @@ All colors MUST be HSL.
     line-height: 1;
   }
 
-  .testimonial-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(91, 161, 66, 0.15);
-    border-color: rgba(91, 161, 66, 0.3);
-  }
+
 
   .testimonial-card .avatar {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
 
-  .testimonial-card .avatar::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(45deg, #5BA142, #4a8a35, #5BA142);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
 
-  .testimonial-card:hover .avatar {
-    transform: scale(1.15);
-  }
-
-  .testimonial-card:hover .avatar::before {
-    opacity: 1;
-  }
 
   .testimonial-card .stars {
     transition: all 0.3s ease;
   }
 
-  .testimonial-card:hover .stars {
-    transform: scale(1.05);
-  }
+
 
   .testimonial-card .quote-text {
     position: relative;
@@ -474,10 +439,7 @@ All colors MUST be HSL.
     transition: all 0.3s ease;
   }
 
-  .testimonial-card:hover .verified-badge {
-    color: #5BA142;
-    transform: scale(1.05);
-  }
+
 
   /* Floating elements for testimonials section */
   .testimonials-bg {
@@ -725,6 +687,41 @@ All colors MUST be HSL.
     background-color: rgba(91, 161, 66, 0.1);
   }
 
+  /* Ensure dropdown is visible when trigger is hovered */
+  .dropdown-container:hover .dropdown-menu-container {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Create an invisible bridge to prevent hover gap */
+  .dropdown-container::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: transparent;
+  }
+
+  /* Create a larger hover area for the dropdown */
+  .dropdown-container {
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: -12px;
+  }
+
+  /* Ensure the dropdown menu container doesn't interfere with hover */
+  .dropdown-menu-container {
+    pointer-events: auto;
+  }
+
+  /* Make sure dropdown items are clickable */
+  .dropdown-menu a {
+    pointer-events: auto;
+  }
+
   .dropdown-icon {
     width: 12px;
     height: 12px;
@@ -751,7 +748,8 @@ All colors MUST be HSL.
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    margin-top: 8px;
+    margin-top: 0;
+    padding-top: 8px;
     display: flex;
     min-width: 200px;
     max-width: 250px;
@@ -759,9 +757,11 @@ All colors MUST be HSL.
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
+    pointer-events: auto;
   }
 
-  .dropdown-container:hover .dropdown-menu-container {
+  .dropdown-container:hover .dropdown-menu-container,
+  .dropdown-menu-container:hover {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -1270,20 +1270,22 @@ All colors MUST be HSL.
   /* Mobile Responsive */
   @media (max-width: 768px) {
     .navbar-container {
-      padding: 0 15px;
-      height: 60px;
+      padding: 0 12px !important;
+      height: 60px !important;
     }
 
     .navbar-links-container {
-      display: none;
+      display: none !important;
     }
 
     .navbar-auth {
-      display: none;
+      display: none !important;
     }
 
     .navbar-mobile-toggle {
-      display: block;
+      display: block !important;
+      position: relative;
+      z-index: 10001;
     }
 
     .navbar-brand-text {
@@ -1291,7 +1293,7 @@ All colors MUST be HSL.
     }
 
     .navbar-logo-img {
-      height: 32px;
+      height: 40px !important;
     }
   }
 

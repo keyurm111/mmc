@@ -25,16 +25,16 @@ const About = () => {
           <div className="animate-fade-in-left">
             <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-6 py-2 mb-6">
               <span className="text-primary">👋</span>
-              <span className="text-sm font-medium text-primary">WELCOME TO FLOREM</span>
+              <span className="text-sm font-medium text-primary">WELCOME TO MMC</span>
             </div>
             
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Welcome to Florem - 
+              Welcome to MMC - 
               <span className="text-primary"> Your Trusted Partner</span>
             </h2>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              At Florem, we believe that exceptional flooring and tiling can transform any space into something extraordinary. 
+              At MMC (Marble Magik Corporation), we believe that exceptional stone care and construction solutions can transform any space into something extraordinary. 
               With over 15 years of dedicated service, our team of skilled craftsmen has been helping homeowners and businesses 
               create beautiful, durable, and functional spaces.
             </p>

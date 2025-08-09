@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Eye, ExternalLink } from 'lucide-react';
 
 const Projects = () => {
@@ -9,66 +10,17 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Luxury Kitchen Marble Flooring',
-      category: 'Residential',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'Premium Carrara marble installation with custom patterns'
+      title: 'Prodapt IT Park, Chennai',
+      category: 'Commercial',
+      image: '/it park/1.png',
+      description: 'Complete stone care and polishing project transforming 40,000 sq ft IT Park to achieve 5-star resort aesthetics using specialized chemical formulations.'
     },
     {
       id: 2,
-      title: 'Modern Bathroom Tile Design',
-      category: 'Residential',
-      image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'Contemporary geometric tile patterns with premium finishes'
-    },
-    {
-      id: 3,
-      title: 'Hardwood Living Room',
-      category: 'Residential',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'Rich oak hardwood flooring with natural finish'
-    },
-    {
-      id: 4,
-      title: 'Office Complex Flooring',
-      category: 'Commercial',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'Durable commercial-grade laminate flooring installation'
-    },
-    {
-      id: 5,
-      title: 'Restaurant Kitchen Tiles',
-      category: 'Commercial',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'Anti-slip ceramic tiles for commercial kitchen'
-    },
-    {
-      id: 6,
-      title: 'Victorian Home Restoration',
-      category: 'Renovations',
-      image: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'Historic hardwood floor restoration and refinishing'
-    },
-    {
-      id: 7,
-      title: 'Spa Bathroom Renovation',
-      category: 'Renovations',
-      image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'Luxury spa-inspired bathroom with natural stone tiles'
-    },
-    {
-      id: 8,
-      title: 'Modern Loft Conversion',
-      category: 'Renovations',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'Industrial-style polished concrete and hardwood combination'
-    },
-    {
-      id: 9,
-      title: 'Retail Store Flooring',
-      category: 'Commercial',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      description: 'High-traffic luxury vinyl plank flooring for retail space'
+      title: 'Ram Mandir, Ayodhya',
+      category: 'Religious',
+      image: '/ayodhya/1.jpg',
+      description: 'Prestigious stone cleaning project for Shri Ram Janmbhoomi Teerth Kshetra Trust, removing algae, moss, and dirt from sacred stones.'
     }
   ];
 
@@ -115,49 +67,46 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id}
-              className="group bg-white rounded-2xl overflow-hidden card-elegant animate-fade-in"
+              className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg border border-gray-100 transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex space-x-4">
-                    <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
-                      <Eye className="h-5 w-5" />
-                    </button>
-                    <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300">
-                      <ExternalLink className="h-5 w-5" />
-                    </button>
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
 
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
-                  <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-primary text-white px-2.5 py-1 rounded-full text-xs font-medium">
                     {project.category}
                   </span>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+              <div className="p-4">
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-1">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground line-clamp-2">
                   {project.description}
                 </p>
+                <div className="mt-3">
+                  <Link to={`/projects/${project.id}`} className="inline-flex items-center gap-1.5 text-primary font-semibold text-sm hover:gap-2 transition-all">
+                    View Details
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -165,9 +114,9 @@ const Projects = () => {
 
         {/* Load More Button */}
         <div className="text-center mt-12">
-          <button className="btn-outline">
+          <Link to="/projects" className="btn-outline">
             View All Projects
-          </button>
+          </Link>
         </div>
       </div>
     </section>

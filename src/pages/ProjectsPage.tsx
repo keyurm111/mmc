@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Calendar, ArrowRight, Filter, ChevronDown, Building2, Home, Office, Hotel, ShoppingBag } from 'lucide-react';
+import { MapPin, Calendar, ArrowRight, ChevronDown, Building, Home, Hotel, ShoppingBag } from 'lucide-react';
+import { projects as projectsData } from '../data/projects';
 import Footer from '../components/Footer';
 
 interface Project {
@@ -21,126 +22,30 @@ const ProjectsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Retail'];
+  const categories = ['All', 'Residential', 'Commercial', 'Hospitality', 'Retail', 'Religious'];
 
-  const projects: Project[] = [
-    {
-      id: 1,
-      name: 'Luxury Villa Marble Installation',
-      category: 'Residential',
-      location: 'Beverly Hills, CA',
-      completionDate: 'March 2024',
-      description: 'Complete marble flooring and wall installation for a luxury 5-bedroom villa featuring premium Italian marble with custom patterns and finishes.',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      featured: true,
-      area: '8,500 sq ft',
-      duration: '6 weeks'
-    },
-    {
-      id: 2,
-      name: 'Modern Office Complex Flooring',
-      category: 'Commercial',
-      location: 'Downtown LA, CA',
-      completionDate: 'February 2024',
-      description: 'Contemporary office space featuring sustainable flooring solutions with acoustic properties and modern design aesthetics.',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      featured: false,
-      area: '25,000 sq ft',
-      duration: '8 weeks'
-    },
-    {
-      id: 3,
-      name: 'Boutique Hotel Renovation',
-      category: 'Hospitality',
-      location: 'Santa Monica, CA',
-      completionDate: 'January 2024',
-      description: 'Complete renovation of a boutique hotel featuring premium tile installations, custom mosaics, and luxury bathroom finishes.',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      featured: false,
-      area: '15,000 sq ft',
-      duration: '10 weeks'
-    },
-    {
-      id: 4,
-      name: 'Shopping Mall Flooring',
-      category: 'Retail',
-      location: 'Glendale, CA',
-      completionDate: 'December 2023',
-      description: 'Large-scale commercial flooring project for a premium shopping mall featuring durable and stylish flooring solutions.',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      featured: false,
-      area: '45,000 sq ft',
-      duration: '12 weeks'
-    },
-    {
-      id: 5,
-      name: 'Penthouse Luxury Finishes',
-      category: 'Residential',
-      location: 'Century City, CA',
-      completionDate: 'November 2023',
-      description: 'Ultra-luxury penthouse featuring custom marble installations, heated floors, and premium stone finishes throughout.',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      featured: false,
-      area: '6,500 sq ft',
-      duration: '7 weeks'
-    },
-    {
-      id: 6,
-      name: 'Corporate Headquarters',
-      category: 'Commercial',
-      location: 'Irvine, CA',
-      completionDate: 'October 2023',
-      description: 'Modern corporate headquarters featuring sustainable flooring, collaborative spaces, and premium finishes.',
-      image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      featured: false,
-      area: '35,000 sq ft',
-      duration: '9 weeks'
-    },
-    {
-      id: 7,
-      name: 'Resort Spa & Pool Area',
-      category: 'Hospitality',
-      location: 'Palm Springs, CA',
-      completionDate: 'September 2023',
-      description: 'Luxury resort spa featuring slip-resistant pool decking, custom mosaic installations, and premium stone finishes.',
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      featured: false,
-      area: '12,000 sq ft',
-      duration: '8 weeks'
-    },
-    {
-      id: 8,
-      name: 'High-End Retail Store',
-      category: 'Retail',
-      location: 'Beverly Hills, CA',
-      completionDate: 'August 2023',
-      description: 'Premium retail space featuring custom flooring designs, luxury materials, and sophisticated finishes.',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      featured: false,
-      area: '8,000 sq ft',
-      duration: '5 weeks'
-    }
-  ];
+  const projects = projectsData;
 
   const filteredProjects = projects.filter(project => 
     selectedCategory === 'All' || project.category === selectedCategory
   );
-
-  const featuredProject = projects.find(project => project.featured);
-  const regularProjects = filteredProjects.filter(project => !project.featured);
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Residential':
         return <Home className="h-4 w-4" />;
       case 'Commercial':
-        return <Building2 className="h-4 w-4" />;
+        return <Building className="h-4 w-4" />;
       case 'Hospitality':
         return <Hotel className="h-4 w-4" />;
       case 'Retail':
         return <ShoppingBag className="h-4 w-4" />;
+      case 'Religious':
+        return <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>;
       default:
-        return <Building2 className="h-4 w-4" />;
+        return <Building className="h-4 w-4" />;
     }
   };
 
@@ -156,7 +61,7 @@ const ProjectsPage = () => {
         <div className="container-max relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-6 py-3 mb-8">
-              <Building2 className="h-5 w-5 text-primary" />
+              <Building className="h-5 w-5 text-primary" />
               <span className="text-sm font-medium text-primary">OUR PROJECTS</span>
             </div>
             
@@ -206,15 +111,21 @@ const ProjectsPage = () => {
                 </div>
 
                 {/* Desktop Category Filter */}
-                <div className="hidden sm:flex items-center gap-2 bg-gray-50/80 backdrop-blur-sm rounded-xl p-2 overflow-x-auto">
+                <div
+                  className="hidden sm:flex items-center justify-center gap-3 bg-gray-50/80 backdrop-blur-sm rounded-2xl p-3"
+                  role="tablist"
+                  aria-label="Project categories"
+                >
                   {categories.map((category) => (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 ${
+                      role="tab"
+                      aria-pressed={selectedCategory === category}
+                      className={`px-5 py-2.5 rounded-full text-base font-semibold transition-all duration-200 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-primary/30 ${
                         selectedCategory === category
-                          ? 'bg-primary text-white shadow-lg'
-                          : 'text-muted-foreground hover:text-primary hover:bg-white hover:shadow-md'
+                          ? 'bg-primary text-white shadow-md'
+                          : 'bg-white text-foreground border border-gray-200 hover:bg-gray-50'
                       }`}
                     >
                       {category}
@@ -227,104 +138,28 @@ const ProjectsPage = () => {
         </div>
       </section>
 
-      {/* Featured Project */}
-      {featuredProject && (
-        <section className="section-padding bg-background">
-          <div className="container-max">
-            <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                {/* Featured Image */}
-                <div className="relative aspect-[4/3] lg:aspect-square overflow-hidden">
-                  <img
-                    src={featuredProject.image}
-                    alt={featuredProject.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  
-                  {/* Featured Badge */}
-                  <div className="absolute top-6 left-6">
-                    <span className="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold">
-                      FEATURED PROJECT
-                    </span>
-                  </div>
-
-                  {/* Category Badge */}
-                  <div className="absolute top-6 right-6">
-                    <span className="bg-white/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
-                      {getCategoryIcon(featuredProject.category)}
-                      <span>{featuredProject.category}</span>
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-muted-foreground mb-6">
-                    <div className="flex items-center space-x-2">
-                      <MapPin className="h-4 w-4" />
-                      <span>{featuredProject.location}</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-4 w-4" />
-                      <span>{featuredProject.completionDate}</span>
-                    </div>
-                  </div>
-
-                  <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                    {featuredProject.name}
-                  </h2>
-
-                  <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                    {featuredProject.description}
-                  </p>
-
-                  {/* Project Stats */}
-                  <div className="grid grid-cols-2 gap-6 mb-8">
-                    <div className="bg-gray-50 rounded-xl p-4">
-                      <div className="text-2xl font-bold text-primary mb-1">{featuredProject.area}</div>
-                      <div className="text-sm text-muted-foreground">Total Area</div>
-                    </div>
-                    <div className="bg-gray-50 rounded-xl p-4">
-                      <div className="text-2xl font-bold text-primary mb-1">{featuredProject.duration}</div>
-                      <div className="text-sm text-muted-foreground">Duration</div>
-                    </div>
-                  </div>
-
-                  <Link
-                    to={`/projects/${featuredProject.id}`}
-                    className="inline-flex items-center space-x-2 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 group text-base"
-                  >
-                    <span>View Project Details</span>
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Featured Project removed: all cards use the same layout */}
 
       {/* Projects Grid */}
       <section className="section-padding bg-gray-50">
         <div className="container-max">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularProjects.map((project) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project) => (
               <article 
                 key={project.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100"
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100"
               >
                 {/* Project Image */}
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
-                    src={project.image}
+                    src={(project as any).coverImage || (project as any).image}
                     alt={project.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
+                    <span className="bg-primary text-white px-2.5 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
                       {getCategoryIcon(project.category)}
                       <span>{project.category}</span>
                     </span>
@@ -335,45 +170,44 @@ const ProjectsPage = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-4">
                   {/* Meta Information */}
-                  <div className="flex items-center space-x-4 mb-4 text-sm text-muted-foreground">
-                    <div className="flex items-center space-x-1">
-                      <MapPin className="h-4 w-4" />
-                      <span>{project.location}</span>
+                  <div className="flex items-center gap-2 mb-2 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <MapPin className="h-3.5 w-3.5" />
+                      <span className="truncate max-w-[10rem] sm:max-w-[12rem]">{project.location}</span>
                     </div>
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="h-4 w-4" />
+                    <span className="opacity-50">•</span>
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-3.5 w-3.5" />
                       <span>{project.completionDate}</span>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300 line-clamp-1">
                     {project.name}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
                     {project.description}
                   </p>
 
-                  {/* Project Stats */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-lg font-bold text-primary mb-1">{project.area}</div>
-                      <div className="text-xs text-muted-foreground">Area</div>
-                    </div>
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="text-lg font-bold text-primary mb-1">{project.duration}</div>
-                      <div className="text-xs text-muted-foreground">Duration</div>
-                    </div>
+                  {/* Compact Stats */}
+                  <div className="flex items-center flex-wrap gap-2 mb-3">
+                    <span className="px-2 py-1 rounded-full bg-gray-50 text-xs text-muted-foreground border border-gray-100">
+                      {project.area}
+                    </span>
+                    <span className="px-2 py-1 rounded-full bg-gray-50 text-xs text-muted-foreground border border-gray-100">
+                      {project.duration}
+                    </span>
                   </div>
 
                   {/* View Details Link */}
                   <Link
                     to={`/projects/${project.id}`}
-                    className="inline-flex items-center space-x-2 text-primary font-semibold group-hover:translate-x-2 transition-transform duration-300 text-base"
+                    className="inline-flex items-center gap-1.5 text-primary font-semibold text-sm hover:gap-2 transition-all"
                   >
                     <span>View Details</span>
                     <ArrowRight className="h-4 w-4" />
@@ -383,35 +217,7 @@ const ProjectsPage = () => {
             ))}
           </div>
 
-          {/* Load More Button */}
-          {regularProjects.length > 0 && (
-            <div className="text-center mt-16">
-              <button className="bg-white border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 text-base">
-                Load More Projects
-              </button>
-            </div>
-          )}
 
-          {/* No Results */}
-          {regularProjects.length === 0 && (
-            <div className="text-center py-16">
-              <div className="max-w-md mx-auto">
-                <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Building2 className="h-12 w-12 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">No projects found</h3>
-                <p className="text-muted-foreground mb-8">
-                  Try adjusting your category filter to find what you're looking for.
-                </p>
-                <button
-                  onClick={() => setSelectedCategory('All')}
-                  className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 text-base"
-                >
-                  View All Projects
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </section>
 

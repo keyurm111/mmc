@@ -967,7 +967,7 @@ const ProductDetailsPage = () => {
                           <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
                             <span className="text-white font-bold text-2xl">F</span>
                           </div>
-                          <h4 className="font-bold text-foreground text-lg">Florem App</h4>
+                          <h4 className="font-bold text-foreground text-lg">MMC App</h4>
                           <p className="text-xs text-muted-foreground">Your Flooring Partner</p>
                         </div>
 

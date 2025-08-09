@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle, Building2, Users, Award } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle, Building, Users, Award } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +47,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Send Us an Email',
-      details: ['info@florem.com', 'quotes@florem.com'],
+              details: ['info@mmc.com', 'quotes@mmc.com'],
       action: 'Send Email',
       color: 'bg-primary'
     },
@@ -63,7 +63,7 @@ const Contact = () => {
   const stats = [
     { number: '500+', label: 'Happy Clients', icon: Users },
     { number: '15+', label: 'Years Experience', icon: Award },
-    { number: '1000+', label: 'Projects Completed', icon: Building2 },
+    { number: '1000+', label: 'Projects Completed', icon: Building },
     { number: '24/7', label: 'Support Available', icon: MessageCircle }
   ];
 
@@ -294,7 +294,7 @@ const Contact = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Florem Showroom Location"
+                title="MMC Showroom Location"
               />
               <div className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                 <button className="bg-white text-primary px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-primary hover:text-white transition-all duration-300 text-lg">
@@ -447,7 +447,7 @@ const Contact = () => {
                           <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
                             <span className="text-white font-bold text-2xl">F</span>
                           </div>
-                          <h4 className="font-bold text-foreground text-lg">Florem App</h4>
+                          <h4 className="font-bold text-foreground text-lg">MMC App</h4>
                           <p className="text-xs text-muted-foreground">Your Flooring Partner</p>
                         </div>
 
