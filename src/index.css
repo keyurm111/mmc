@@ -581,14 +581,55 @@ All colors MUST be HSL.
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 0 20px;
     height: 70px;
+  }
+
+  /* Footer container - matches navbar container for consistency */
+  .footer-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px 24px 20px;
+  }
+
+  /* Large screen optimization */
+  @media (min-width: 1200px) {
+    .navbar-container {
+      padding: 0 40px;
+    }
+    
+    .footer-container {
+      padding: 0 40px 24px 40px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .navbar-container {
+      padding: 0 60px;
+    }
+    
+    .footer-container {
+      padding: 0 60px 24px 60px;
+    }
+
+    .navbar-brand {
+      gap: 16px;
+    }
+
+    .navbar-auth {
+      gap: 24px;
+    }
   }
 
   .navbar-brand {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
+    z-index: 10;
   }
 
   .navbar-logo-img {
@@ -622,6 +663,40 @@ All colors MUST be HSL.
     border-radius: 8px;
     padding: 6px 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+
+  /* Center the navigation on larger screens */
+  @media (min-width: 1200px) {
+    .navbar-links-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Medium screen adjustments */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .navbar-container {
+      padding: 0 30px;
+    }
+    
+    .footer-container {
+      padding: 0 30px 24px 30px;
+    }
+    
+    .navbar-links {
+      gap: 18px;
+    }
+
+    .navbar-brand {
+      gap: 10px;
+    }
+
+    .navbar-auth {
+      gap: 16px;
+    }
   }
 
   .navbar-links {
@@ -631,6 +706,23 @@ All colors MUST be HSL.
     padding: 0;
     gap: 16px;
     align-items: center;
+  }
+
+  /* Responsive gap adjustments */
+  @media (min-width: 1200px) {
+    .navbar-links {
+      gap: 20px;
+    }
+
+    .navbar-links-container {
+      padding: 8px 16px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .navbar-links {
+      gap: 24px;
+    }
   }
 
   .nav-item {
@@ -1197,6 +1289,8 @@ All colors MUST be HSL.
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-shrink: 0;
+    z-index: 10;
   }
 
   .login-link {
@@ -1274,6 +1368,10 @@ All colors MUST be HSL.
       height: 60px !important;
     }
 
+    .footer-container {
+      padding: 0 12px 24px 12px !important;
+    }
+
     .navbar-links-container {
       display: none !important;
     }
@@ -1295,6 +1393,10 @@ All colors MUST be HSL.
     .navbar-logo-img {
       height: 40px !important;
     }
+
+    .navbar-brand {
+      gap: 8px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -1310,6 +1412,18 @@ All colors MUST be HSL.
       height: 25px;
       width: 25px;
       font-size: 14px;
+    }
+
+    .navbar-container {
+      padding: 0 15px;
+    }
+
+    .footer-container {
+      padding: 0 15px 24px 15px;
+    }
+
+    .navbar-links {
+      gap: 12px;
     }
   }
 

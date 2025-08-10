@@ -32,7 +32,7 @@ const Footer = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div className="px-4 pb-6">
+      <div className="footer-container">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Left Block - Branding/Logo */}
           <div className="bg-[#5BA142] rounded-lg p-6 flex flex-col items-center justify-center text-white">
