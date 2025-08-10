@@ -18,21 +18,21 @@ const Footer = () => {
 
   return (
     <footer className="bg-white">
-      {/* Top Banner */}
-      <div className="bg-gray-100 rounded-lg mx-4 mt-6 mb-4 p-3">
-        <div className="flex items-center justify-between">
-          <div className="text-gray-700 font-medium text-sm">
-            EXCITED? US TOO. LET'S GET MOVING.
-          </div>
-          <button className="bg-[#5BA142] hover:bg-[#4a8a35] text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 text-sm">
-            <span>SCHEDULE A CALL</span>
-            <Video className="h-3 w-3" />
-          </button>
-        </div>
-      </div>
-
       {/* Main Footer Content */}
       <div className="footer-container">
+        {/* Top Banner */}
+        <div className="bg-gray-100 rounded-lg mt-6 mb-4 p-3">
+          <div className="flex items-center justify-between">
+            <div className="text-gray-700 font-medium text-sm">
+              EXCITED? US TOO. LET'S GET MOVING.
+            </div>
+            <button className="bg-[#5BA142] hover:bg-[#4a8a35] text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 text-sm">
+              <span>SCHEDULE A CALL</span>
+              <Video className="h-3 w-3" />
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Left Block - Branding/Logo */}
           <div className="bg-[#5BA142] rounded-lg p-6 flex flex-col items-center justify-center text-white">
