@@ -17,7 +17,26 @@ const EventDetailPage = () => {
   const { eventId } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
   const [showAllImages, setShowAllImages] = useState(false);
-  const [fullscreenImageIndex, setFullscreenImageIndex] = useState(0);
+    const [fullscreenImageIndex, setFullscreenImageIndex] = useState(0);
+
+  // Add CSS for smooth fade transition
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   // Add your real event database here
   const eventsDatabase: { [key: number]: EventDetail } = {
@@ -61,7 +80,7 @@ const EventDetailPage = () => {
             to="/events"
             className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 text-base"
           >
-            Back to Events
+            Back
           </Link>
         </div>
       </div>
@@ -81,8 +100,36 @@ const EventDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Breadcrumb */}
+      <section className="pt-24 pb-6">
+        <div className="container-max px-4 sm:px-6">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <span className="opacity-60">/</span>
+            <Link to="/events" className="hover:text-primary transition-colors">Events</Link>
+            <span className="opacity-60">/</span>
+            <span className="text-foreground">{event.name}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Back Button */}
+      <section className="pb-6">
+        <div className="container-max px-4 sm:px-6">
+          <Link
+            to="/events"
+            className="inline-flex items-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-lg text-sm sm:text-base"
+          >
+            <svg className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="font-medium">Back</span>
+          </Link>
+        </div>
+      </section>
+
       {/* Hero Section with Event Banner */}
-      <section className="relative pt-24 pb-20 overflow-hidden">
+      <section className="relative pt-8 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10"></div>
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float"></div>
@@ -112,9 +159,13 @@ const EventDetailPage = () => {
             <div className="relative">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src={event.images[0]}
+                  key={selectedImage}
+                  src={event.images[selectedImage]}
                   alt={event.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-all duration-500 ease-in-out"
+                  style={{
+                    animation: 'fadeInScale 0.5s ease-in-out'
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
               </div>
@@ -218,9 +269,13 @@ const EventDetailPage = () => {
             <div className="relative group">
               <div className="aspect-[16/9] rounded-3xl overflow-hidden bg-white shadow-2xl border border-gray-100 transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-3xl">
                 <img
+                  key={selectedImage}
                   src={event.images[selectedImage]}
                   alt={`${event.name} ${selectedImage + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110"
+                  style={{
+                    animation: 'fadeIn 0.5s ease-in-out'
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
@@ -253,10 +308,10 @@ const EventDetailPage = () => {
                 <button
                   key={index}
                   onClick={() => setSelectedImage(index)}
-                  className={`flex-shrink-0 group relative aspect-[4/3] w-28 sm:w-32 rounded-2xl overflow-hidden border-2 transition-all duration-300 ${
+                  className={`flex-shrink-0 group relative aspect-[4/3] w-28 sm:w-32 rounded-2xl overflow-hidden border-2 transition-all duration-300 ease-in-out ${
                     selectedImage === index 
-                      ? 'border-primary shadow-xl ring-2 ring-primary/20' 
-                      : 'border-gray-200 hover:border-primary/50 shadow-lg hover:shadow-xl'
+                      ? 'border-primary shadow-lg ring-2 ring-primary/20' 
+                      : 'border-gray-200 hover:border-primary/50 shadow-md hover:shadow-lg'
                   }`}
                 >
                   <img
@@ -264,13 +319,7 @@ const EventDetailPage = () => {
                     alt={`${event.name} thumbnail ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
-                  {selectedImage === index && (
-                    <div className="absolute top-2 right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  )}
+
                 </button>
               ))}
               {event.images.length > 5 && (
@@ -302,16 +351,34 @@ const EventDetailPage = () => {
 
       {/* Fullscreen Image Gallery Modal */}
       {showAllImages && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="relative w-full max-w-6xl h-full max-h-[90vh] flex flex-col">
-            {/* Header */}
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[9999] flex items-center justify-center p-4">
+          {/* Click outside to close */}
+          <div 
+            className="absolute inset-0" 
+            onClick={() => setShowAllImages(false)}
+          ></div>
+          
+          <div className="relative w-full max-w-6xl h-full max-h-[90vh] flex flex-col z-[10000]">
+            {/* Additional close button in top-right corner */}
+            <button
+              onClick={() => setShowAllImages(false)}
+              className="absolute top-0 right-0 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl z-[10001]"
+              aria-label="Close gallery"
+            >
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* Header with prominent close button */}
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-white text-xl font-semibold">
                 {event.name} - Gallery
               </h3>
               <button
                 onClick={() => setShowAllImages(false)}
-                className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-300"
+                className="w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                aria-label="Close gallery"
               >
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

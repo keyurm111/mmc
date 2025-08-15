@@ -71,7 +71,7 @@ const Testimonials = () => {
       <Star
         key={i}
         className={`h-5 w-5 ${
-          i < rating ? 'text-green-500 fill-current' : 'text-gray-300'
+          i < rating ? 'text-green-600 fill-current' : 'text-gray-300'
         }`}
       />
     ));
@@ -87,12 +87,12 @@ const Testimonials = () => {
             <span className="text-sm font-medium text-primary">WHAT OUR CLIENTS SAY</span>
           </div>
           
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-black mb-6">
             Trusted by
-            <span className="text-primary"> Happy Customers</span>
+            <span className="text-green-600"> Happy Customers</span>
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it. Here's what our satisfied clients have to say about 
             their experience working with MMC.
           </p>
@@ -114,7 +114,7 @@ const Testimonials = () => {
                 {renderStars(testimonials[currentSlide].rating)}
               </div>
               
-              <blockquote className="text-xl lg:text-2xl text-foreground leading-relaxed font-medium mb-8">
+              <blockquote className="text-xl lg:text-2xl text-black leading-relaxed font-medium mb-8">
                 "{testimonials[currentSlide].quote}"
               </blockquote>
 
@@ -126,13 +126,13 @@ const Testimonials = () => {
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div className="text-left">
-                  <h4 className="font-bold text-foreground text-lg">
+                  <h4 className="font-bold text-black text-lg">
                     {testimonials[currentSlide].name}
                   </h4>
-                  <p className="text-muted-foreground">
+                  <p className="text-black">
                     {testimonials[currentSlide].role}
                   </p>
-                  <p className="text-sm text-primary">
+                  <p className="text-sm text-green-600">
                     {testimonials[currentSlide].location}
                   </p>
                 </div>
@@ -172,19 +172,19 @@ const Testimonials = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
           <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">4.9/5</div>
-            <div className="text-muted-foreground">Average Rating</div>
+            <div className="text-4xl font-bold text-green-600 mb-2">4.9/5</div>
+            <div className="text-black">Average Rating</div>
             <div className="flex justify-center mt-2">
               {renderStars(5)}
             </div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">500+</div>
-            <div className="text-muted-foreground">Happy Customers</div>
+            <div className="text-4xl font-bold text-green-600 mb-2">500+</div>
+            <div className="text-black">Happy Customers</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-primary mb-2">98%</div>
-            <div className="text-muted-foreground">Would Recommend</div>
+            <div className="text-4xl font-bold text-green-600 mb-2">98%</div>
+            <div className="text-black">Would Recommend</div>
           </div>
         </div>
       </div>

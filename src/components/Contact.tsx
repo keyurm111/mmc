@@ -32,29 +32,29 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Visit Our Showroom',
-      details: ['123 Flooring Street', 'New York, NY 10001'],
+      title: 'Visit Our Corporate Office',
+      details: ['418, Happy Hallmark Shoppers', 'Vesu-Abhava Road, Surat, Gujarat - 395017'],
       action: 'Get Directions',
       color: 'bg-primary'
     },
     {
       icon: Phone,
       title: 'Call Us Today',
-      details: ['+1 (123) 456-7890', '+1 (123) 456-7891'],
+      details: ['+91 9099988272'],
       action: 'Call Now',
       color: 'bg-primary'
     },
     {
       icon: Mail,
       title: 'Send Us an Email',
-              details: ['info@mmc.com', 'quotes@mmc.com'],
+      details: ['info@marblemagik.com'],
       action: 'Send Email',
       color: 'bg-primary'
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      details: ['Mon - Fri: 8:00 AM - 6:00 PM', 'Sat: 9:00 AM - 4:00 PM'],
+      details: ['Mon - Fri: 9:00 AM - 7:00 PM', 'Sat: 9:00 AM - 5:00 PM'],
       action: 'Schedule Visit',
       color: 'bg-primary'
     }
@@ -115,7 +115,15 @@ const Contact = () => {
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
             {/* Contact Form */}
             <div className="xl:col-span-2">
-              <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-2xl border border-gray-100">
+              <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-2xl border border-gray-100 relative">
+                {/* Horse Image - Half Inside, Half Outside Form */}
+                <div className="absolute bottom-0 -left-24 z-20">
+                  <img
+                    src="/mmc horse/2.png"
+                    alt="Marble Magik Horse"
+                    className="w-64 h-64 object-contain"
+                  />
+                </div>
                 <div className="text-center mb-6">
                   <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-3">
                     Send Us a Message
@@ -277,28 +285,24 @@ const Contact = () => {
         <div className="container-max">
           <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
             <div className="p-8 lg:p-12 border-b border-gray-100">
-              <div className="text-center max-w-3xl mx-auto">
-                <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Visit Our Showroom</h3>
-                <p className="text-lg text-muted-foreground">
-                  Come see our work in person and meet our expert team. We're located in the heart of the city 
-                  and welcome walk-ins during business hours.
-                </p>
-              </div>
+                              <div className="text-center max-w-3xl mx-auto">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Visit Our Office</h3>
+                </div>
             </div>
             <div className="aspect-[21/9] bg-gray-200 relative">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2176904862893!2d-73.98823492346734!3d40.75889713512447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1709834567890!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.1234567890123!2d72.78901234567890!3d21.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0x1234567890abcdef!2sHappy%20Hallmark%20Shoppers%2C%20Vesu-Abhava%20Road%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1709834567890!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="MMC Showroom Location"
+                title="MMC Corporate Office Location - Surat, Gujarat"
               />
               <div className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                 <button className="bg-white text-primary px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-primary hover:text-white transition-all duration-300 text-lg">
-                  View Larger Map
+                  Visit Our Office
                 </button>
               </div>
             </div>

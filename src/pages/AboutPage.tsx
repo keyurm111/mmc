@@ -82,35 +82,15 @@ const AboutPage = () => {
             <div className="animate-fade-in-right">
               <div className="relative">
                 {/* Main Image */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl overflow-hidden">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Professional team working on flooring installation"
-                    className="w-full h-full object-cover"
+                    src="https://marblemagik.in/wp-content/uploads/2022/09/Group-917.png"
+                    alt="Marble Magik Corporation Team"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
-                {/* Floating Stats Card */}
-                <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl p-6 shadow-2xl card-elegant">
-                  <div className="grid grid-cols-2 gap-4">
-                    {stats.slice(0, 2).map((stat, index) => (
-                      <div key={index} className="text-center">
-                        <stat.icon className="h-8 w-8 text-primary mx-auto mb-2" />
-                        <div className="text-2xl font-bold text-foreground">{stat.number}</div>
-                        <div className="text-sm text-muted-foreground">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
 
-                {/* Additional Stats */}
-                <div className="absolute -top-8 -right-8 bg-primary rounded-2xl p-6 text-white shadow-2xl">
-                  <div className="text-center">
-                    <Award className="h-8 w-8 mx-auto mb-2" />
-                    <div className="text-2xl font-bold">200+</div>
-                    <div className="text-sm opacity-90">Projects</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

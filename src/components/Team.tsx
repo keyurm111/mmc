@@ -13,33 +13,33 @@ const Team = () => {
   const founders = [
     {
       id: 1,
-      name: 'Rajesh Kumar',
-      role: 'Co-Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-              bio: 'With over 20 years of experience in the construction industry, Rajesh co-founded MMC (Marble Magik Corporation) with a vision to revolutionize the stone care and construction chemical industry. His strategic leadership and deep industry knowledge have been instrumental in building our company into a trusted name.',
-      experience: '20+ Years',
+      name: 'PRAMOD SALUNKE',
+      role: 'Founder, Marketing & Sales Head',
+      image: 'https://marblemagik.in/wp-content/uploads/2023/04/Untitled-design-34.jpg',
+      bio: '',
+      experience: '15+ Years',
       projects: '500+',
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'rajesh@mmc.com'
+        email: 'pramod@marblemagik.in'
       },
-      quote: '"We believe that exceptional craftsmanship combined with innovative solutions can transform any space into something extraordinary."'
+      quote: '"We Aspire To Be One Of The Leading Producers & Suppliers Of Floorcare Solutions In Both, Domestic And International Markets."'
     },
     {
       id: 2,
-      name: 'Sarah Johnson',
-      role: 'Co-Founder & COO',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b647?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-              bio: 'Sarah brings 15+ years of operational excellence to MMC. Her expertise in project management and customer satisfaction has been the cornerstone of our company\'s success and reputation for quality.',
+      name: 'MITAL PATEL',
+      role: 'Founder, R&D Head',
+      image: 'https://marblemagik.in/wp-content/uploads/2023/04/Untitled-design-35.jpg',
+      bio: '',
       experience: '15+ Years',
-      projects: '300+',
+      projects: '500+',
       social: {
         linkedin: '#',
         twitter: '#',
-        email: 'sarah@mmc.com'
+        email: 'mital@marblemagik.in'
       },
-      quote: '"Every project is an opportunity to exceed expectations and create lasting relationships with our clients."'
+      quote: '"We Are Realising Our Vision Of Make In India By Exploring The Floorcare Industry And Supplying High-Quality Products Worldwide."'
     }
   ];
 
@@ -189,7 +189,7 @@ const Team = () => {
                   {/* Founder Image */}
                   <div className="flex-shrink-0">
                     <div className="relative">
-                      <div className="w-32 h-32 rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg">
+                                             <div className="w-48 h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg">
                         <img
                           src={founder.image}
                           alt={founder.name}
@@ -213,46 +213,12 @@ const Team = () => {
                       {founder.bio}
                     </p>
 
-                    {/* Stats */}
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="text-center bg-white/50 rounded-lg p-3">
-                        <div className="text-lg font-bold text-foreground">{founder.experience}</div>
-                        <div className="text-xs text-muted-foreground">Experience</div>
-                      </div>
-                      <div className="text-center bg-white/50 rounded-lg p-3">
-                        <div className="text-lg font-bold text-foreground">{founder.projects}</div>
-                        <div className="text-xs text-muted-foreground">Projects</div>
-                      </div>
-                    </div>
-
-                    {/* Quote */}
-                    <div className="bg-white/30 rounded-xl p-4 mb-6">
-                      <p className="text-foreground italic text-sm leading-relaxed">
-                        {founder.quote}
-                      </p>
-                    </div>
-
-                    {/* Social Links */}
-                    <div className="flex space-x-3">
-                      <a 
-                        href={founder.social.linkedin}
-                        className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
-                      >
-                        <Linkedin className="h-5 w-5" />
-                      </a>
-                      <a 
-                        href={founder.social.twitter}
-                        className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
-                      >
-                        <Twitter className="h-5 w-5" />
-                      </a>
-                      <a 
-                        href={`mailto:${founder.social.email}`}
-                        className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
-                      >
-                        <Mail className="h-5 w-5" />
-                      </a>
-                    </div>
+                                         {/* Quote */}
+                     <div className="bg-white/30 rounded-xl p-4 mb-6">
+                       <p className="text-foreground italic text-sm leading-relaxed">
+                         {founder.quote}
+                       </p>
+                     </div>
                   </div>
                 </div>
               </div>
@@ -388,13 +354,11 @@ const Team = () => {
                 <div className="text-center">
                   <div className="relative w-24 h-24 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-2xl group-hover:scale-110 transition-transform duration-500 overflow-hidden border-4 border-white">
                     <img 
-                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=95" 
+                      src="https://marblemagik.in/wp-content/uploads/2022/11/Group-939.png" 
                       alt="Corporate Office" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute -top-3 -right-3 bg-red-500 text-white rounded-full px-3 py-1.5 text-sm font-bold shadow-xl border-3 border-white">
-                      HQ
-                    </div>
+
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">Corporate Office</h4>
                   <p className="text-primary font-semibold text-sm bg-primary/10 px-4 py-1.5 rounded-full inline-block mb-4">Headquarters</p>
@@ -417,9 +381,9 @@ const Team = () => {
                 <div className="text-center">
                   <div className="relative w-24 h-24 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-2xl group-hover:scale-110 transition-transform duration-500 overflow-hidden border-4 border-white">
                     <img 
-                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=95" 
+                      src="https://marblemagik.in/wp-content/uploads/2022/09/Group-930.png" 
                       alt="Manufacturing Office" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">Manufacturing Office</h4>
@@ -443,9 +407,9 @@ const Team = () => {
                 <div className="text-center">
                   <div className="relative w-24 h-24 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-2xl group-hover:scale-110 transition-transform duration-500 overflow-hidden border-4 border-white">
                     <img 
-                      src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=95" 
+                      src="https://marblemagik.in/wp-content/uploads/2022/09/Group-929.png" 
                       alt="Delhi Office" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">Delhi Office</h4>
@@ -469,9 +433,9 @@ const Team = () => {
                 <div className="text-center">
                   <div className="relative w-24 h-24 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-2xl group-hover:scale-110 transition-transform duration-500 overflow-hidden border-4 border-white">
                     <img 
-                      src="https://images.unsplash.com/photo-1577760258779-e787a1733016?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=95" 
+                      src="https://marblemagik.in/wp-content/uploads/2022/09/Group-932.png" 
                       alt="Bengaluru Office" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">Bengaluru Office</h4>
@@ -495,9 +459,9 @@ const Team = () => {
                 <div className="text-center">
                   <div className="relative w-24 h-24 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-2xl group-hover:scale-110 transition-transform duration-500 overflow-hidden border-4 border-white">
                     <img 
-                      src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=95" 
+                      src="https://marblemagik.in/wp-content/uploads/2022/09/Group-928.png" 
                       alt="Hyderabad Office" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">Hyderabad Office</h4>

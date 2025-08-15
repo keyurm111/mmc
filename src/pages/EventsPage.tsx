@@ -134,15 +134,17 @@ const EventsPage = () => {
                 </div>
 
                 {/* Desktop Category Filter */}
-                <div className="hidden sm:flex items-center gap-2 bg-gray-50/80 backdrop-blur-sm rounded-xl p-2 overflow-x-auto">
+                <div className="hidden sm:flex items-center justify-center gap-3 bg-gray-50/80 backdrop-blur-sm rounded-2xl p-3" role="tablist" aria-label="Event categories">
                   {categories.map((category) => (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 ${
+                      role="tab"
+                      aria-pressed={selectedCategory === category}
+                      className={`px-5 py-2.5 rounded-full text-base font-semibold transition-all duration-200 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-primary/30 ${
                         selectedCategory === category
-                          ? 'bg-primary text-white shadow-lg'
-                          : 'text-muted-foreground hover:text-primary hover:bg-white hover:shadow-md'
+                          ? 'bg-primary text-white shadow-md'
+                          : 'bg-white text-foreground border border-gray-200 hover:bg-gray-50'
                       }`}
                     >
                       {category}

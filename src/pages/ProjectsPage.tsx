@@ -111,11 +111,7 @@ const ProjectsPage = () => {
                 </div>
 
                 {/* Desktop Category Filter */}
-                <div
-                  className="hidden sm:flex items-center justify-center gap-3 bg-gray-50/80 backdrop-blur-sm rounded-2xl p-3"
-                  role="tablist"
-                  aria-label="Project categories"
-                >
+                <div className="hidden sm:flex items-center justify-center gap-3 bg-gray-50/80 backdrop-blur-sm rounded-2xl p-3" role="tablist" aria-label="Project categories">
                   {categories.map((category) => (
                     <button
                       key={category}
@@ -137,8 +133,6 @@ const ProjectsPage = () => {
           </div>
         </div>
       </section>
-
-      {/* Featured Project removed: all cards use the same layout */}
 
       {/* Projects Grid */}
       <section className="section-padding bg-gray-50">
@@ -216,8 +210,6 @@ const ProjectsPage = () => {
               </article>
             ))}
           </div>
-
-
         </div>
       </section>
 

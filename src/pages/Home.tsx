@@ -20,61 +20,67 @@ const Home = () => {
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
-  // Magik Stories Data
+  // Magik Stories Data - Real Content
   const magikStoriesData = [
     {
       id: 'p1',
       title: 'Ram Mandir, Ayodhya',
       category: 'PROJECT',
-      description: 'A monumental project showcasing our expertise in stone care and construction solutions for one of India\'s most sacred sites.',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Prestigious stone cleaning for Shri Ram Janmbhoomi Teerth Kshetra Trust. Our team delivered exceptional results using Magik BSR Cleaner for removing algae, moss, and dirt particles from sacred stones.',
+      image: '/ayodhya/1.jpg',
       type: 'project',
-      size: 'large'
+      size: 'large',
+      route: '/projects/2'
     },
     {
       id: 'p2',
-      title: 'Luxury Villa Project',
-      category: 'CORPORATE',
-      description: 'Complete marble installation and finishing for premium residential development.',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      title: 'Prodapt IT Park, Chennai',
+      category: 'COMMERCIAL',
+      description: 'Complete stone care and polishing delivering 5-star resort aesthetics. Covered 40,000 sq ft with specialized chemical formulations and professional transformation.',
+      image: '/it park/1.png',
       type: 'project',
-      size: 'medium'
+      size: 'medium',
+      route: '/projects/1'
     },
     {
       id: 'e1',
-      title: 'Stone Care Workshop 2024',
+      title: 'Annual Meet – 2022',
       category: 'EVENT',
-      description: 'Professional training on advanced stone care and maintenance techniques.',
-      image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Celebrating 16 years of Spreading the Magik with awards and discussions. From rewarding distributors and employees to fruitful discussions about company growth.',
+      image: '/event 2022/1.jpg',
       type: 'event',
-      size: 'medium'
+      size: 'medium',
+      route: '/events/1'
     },
     {
       id: 'ba1',
       title: 'Spreading the Magik Across the Nation',
       category: 'BRAND',
-      description: 'Our journey of expanding our brand presence and delivering quality solutions nationwide.',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Our journey of expanding brand presence and delivering quality solutions nationwide. From humble beginnings to becoming a trusted name in stone care and construction chemicals.',
+      image: '/mmc logo.png',
       type: 'brand',
-      size: 'large'
+      size: 'large',
+      route: '/about'
     },
     {
       id: 'p3',
-      title: 'Commercial Complex',
+      title: 'MMC Horse Project',
       category: 'LATEST',
-      description: 'Large-scale stone flooring and wall cladding project for modern office complex.',
-      image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      description: 'Latest stone care and maintenance project showcasing our expertise in preserving and enhancing equestrian facility surfaces with premium Magik products.',
+      image: '/mmc horse/1.png',
       type: 'project',
-      size: 'small'
+      size: 'small',
+      route: '/projects'
     },
     {
       id: 'e2',
-      title: 'Product Launch Event',
+      title: 'Stone Care Innovation',
       category: 'INNOVATION',
-      description: 'Launch of revolutionary new Magik stone care products and technologies.',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      type: 'event',
-      size: 'small'
+      description: 'Launch of revolutionary new Magik stone care products and technologies. Introducing advanced solutions for modern construction challenges.',
+      image: '/it park/5.png',
+      type: 'innovation',
+      size: 'small',
+      route: '/categories/stone-care'
     }
   ];
 
@@ -125,7 +131,7 @@ const Home = () => {
               {/* Image Layer */}
               <div className="aspect-[4/3] relative overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="https://marblemagik.in/wp-content/uploads/2022/10/1-1.png"
                   alt="Stone Care"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
                 />
@@ -184,7 +190,7 @@ const Home = () => {
               {/* Image Layer */}
               <div className="aspect-[4/3] relative overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="https://marblemagik.in/wp-content/uploads/2022/10/2-1.png"
                   alt="Stone Adhesive"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
                 />
@@ -243,7 +249,7 @@ const Home = () => {
               {/* Image Layer */}
               <div className="aspect-[4/3] relative overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="https://marblemagik.in/wp-content/uploads/2022/11/MMC-Category-1.png"
                   alt="Construction Chemicals"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
                 />
@@ -318,13 +324,13 @@ const Home = () => {
                 <div className="relative mb-6">
                   <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform rotate-2 image-rotate-left">
                     <img
-                      src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                      alt="Modern Kitchen with Marble Countertops"
+                      src="https://cdn.magicdecor.in/com/2023/09/29153843/White-Marble-Wallpaper-for-Walls.jpg"
+                      alt="White Marble Wallpaper for Walls"
                       className="w-full h-64 object-cover"
                     />
                     <div className="p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">Modern Kitchen Design</h3>
-                      <p className="text-gray-600 text-sm">Premium marble countertops with advanced stone care solutions</p>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">White Marble</h3>
+                      <p className="text-gray-600 text-sm">Premium marble for elegant wall finishes</p>
                     </div>
                   </div>
                 </div>
@@ -333,13 +339,13 @@ const Home = () => {
                 <div className="relative -mt-8 ml-8">
                   <div className="bg-white rounded-2xl shadow-2xl overflow-hidden transform -rotate-2 image-rotate-right">
                     <img
-                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                      alt="Outdoor Patio with Pergola"
+                      src="https://media.istockphoto.com/id/1387242475/photo/cleaning-the-floor-with-machine.jpg?s=612x612&w=0&k=20&c=Q7welGyGu-d8ZGRKDTdIIk5HPy3olVGKwPjRXEbNV9o="
+                      alt="Floor Cleaning with Machine"
                       className="w-full h-48 object-cover"
                     />
                     <div className="p-4">
-                      <h3 className="text-base font-bold text-gray-900 mb-1">Outdoor Living Space</h3>
-                      <p className="text-gray-600 text-xs">Durable construction with weather-resistant materials</p>
+                      <h3 className="text-base font-bold text-gray-900 mb-1">Professional Floor Cleaning</h3>
+                      <p className="text-gray-600 text-xs">Advanced cleaning solutions for stone and tile surfaces</p>
                     </div>
                   </div>
                 </div>
@@ -515,9 +521,7 @@ const Home = () => {
                       </p>
                     )}
                     <Link 
-                      to={story.type === 'project' ? `/projects/${story.id}` : 
-                          story.type === 'event' ? `/events/${story.id}` : 
-                          `/magik-stories/${story.id}`}
+                      to={story.route}
                       className={`bg-white/20 backdrop-blur-sm text-white font-semibold transition-all duration-300 hover:bg-white hover:text-primary ${
                         story.size === 'large' 
                           ? 'px-6 py-3 rounded-xl group-hover:shadow-lg' 
@@ -554,7 +558,7 @@ const Home = () => {
               <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
               <span className="text-sm font-bold text-gray-700 tracking-wider">CLIENT SUCCESS STORIES</span>
             </div>
-            <h2 className="text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-gray-900 via-primary to-gray-900 bg-clip-text text-transparent">
+            <h2 className="text-5xl lg:text-6xl font-bold mb-8 text-primary">
               What Our Clients Say
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">

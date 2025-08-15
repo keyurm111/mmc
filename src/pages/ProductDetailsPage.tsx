@@ -505,6 +505,26 @@ const ProductDetailsPage = () => {
         </div>
       </section>
 
+      {/* Back Button */}
+      <section className="pb-6">
+        <div className="container-max px-4 sm:px-6">
+          <Link
+            to={product.category === 'Polishing Compound' || product.category === 'Cleaner' || product.category === 'Enhancer' || product.category === 'Grouts' || product.category === 'Bonding Agent' || product.category === 'Anti Slip' || product.category === 'Sealer' 
+              ? '/categories/stone-care' 
+              : product.category === 'Adhesive' || product.category === 'White Adhesive' || product.category === 'Premium Adhesive'
+              ? '/categories/stone-adhesive'
+              : '/categories/construction-chemical'
+            }
+            className="inline-flex items-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-lg text-sm sm:text-base"
+          >
+            <svg className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            <span className="font-medium">Back</span>
+          </Link>
+        </div>
+      </section>
+
       {/* Product Details */}
       <section className="py-8">
         <div className="container-max">

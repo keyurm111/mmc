@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 import ContactPage from "./pages/ContactPage";
 import StoneCarePage from "./pages/StoneCarePage";
 import StoneAdhesivePage from "./pages/StoneAdhesivePage";
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:blogId" element={<BlogDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
           
                             {/* Category Routes */}
