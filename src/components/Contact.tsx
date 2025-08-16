@@ -367,22 +367,44 @@ const Contact = () => {
                         </div>
                       </div>
                     </div>
+
+                    {/* Rating Section - Below Digital Wallet */}
+                    <div className="flex items-center justify-center space-x-2 pt-2">
+                      <div className="flex space-x-1">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="text-yellow-400 text-sm">★</span>
+                        ))}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        <span className="font-semibold text-foreground">4.8/5</span> from 10K+ downloads
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Right Side - Mobile Phone Mockup */}
+                  {/* Right Side - Mobile Phone with Horse on Left */}
                   <div className="flex justify-center">
                     <div className="relative">
+                      {/* Horse Image - Left Side of Mobile with Hand Overlapping */}
+                      <div className="absolute -left-28 bottom-0 z-30">
+                        <img
+                          src="/mmc horse/4.png"
+                          alt="MMC Horse"
+                          className="w-48 h-48 object-contain opacity-100"
+                        />
+                      </div>
+                      
+                      {/* Mobile Phone */}
                       <img 
                         src="/mobile.png"
                         alt="MMC Mobile App"
-                        className="w-28 h-56 object-contain"
+                        className="w-28 h-56 object-contain relative z-20"
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Bottom Section - Download Button and Info */}
-                <div className="space-y-4">
+                {/* Bottom Section - Download Button and Company Info */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
                   {/* Download Button */}
                   <a 
                     href="https://play.google.com/store/apps/details?id=com.mmc.mmc_flutter_app&hl=en_IN"
@@ -401,19 +423,8 @@ const Contact = () => {
                     </div>
                   </a>
 
-                  {/* Rating and App Info */}
-                  <div className="text-center space-y-2">
-                    <div className="flex items-center justify-center space-x-2">
-                      <div className="flex space-x-1">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-yellow-400 text-sm">★</span>
-                        ))}
-                      </div>
-                      <div className="text-xs text-muted-foreground">
-                        <span className="font-semibold text-foreground">4.8/5</span> from 10K+ downloads
-                      </div>
-                    </div>
-                    
+                  {/* Company Info */}
+                  <div className="text-center">
                     <div className="bg-white/60 backdrop-blur-sm rounded-lg p-3 border border-white/20">
                       <p className="text-xs text-muted-foreground leading-relaxed">
                         <span className="font-semibold text-foreground">Marble Magik Corporation</span> - Your one-stop shop for stone care chemicals
