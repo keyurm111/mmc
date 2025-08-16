@@ -267,7 +267,7 @@ const Contact = () => {
                         <button className="text-primary font-semibold mt-2 hover:text-primary/80 transition-colors duration-300 inline-flex items-center space-x-1 group-hover:translate-x-1 text-sm">
                           <span>{info.action}</span>
                           <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                           </svg>
                         </button>
                       </div>
@@ -280,243 +280,146 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Full Width Map Section */}
-      <section className="section-padding bg-gray-50">
+
+
+      {/* Combined Map and Mobile App Section - Side by Side */}
+      <section className="py-12 bg-gray-50">
         <div className="container-max">
-          <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
-            <div className="p-8 lg:p-12 border-b border-gray-100">
-                              <div className="text-center max-w-3xl mx-auto">
-                  <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Visit Our Office</h3>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            {/* Visit Our Office Section */}
+            <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+              <div className="p-6 border-b border-gray-100">
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Visit Our Office</h3>
+                  <p className="text-muted-foreground text-sm">Come see our work in person</p>
                 </div>
-            </div>
-            <div className="aspect-[21/9] bg-gray-200 relative">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.1234567890123!2d72.78901234567890!3d21.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0x1234567890abcdef!2sHappy%20Hallmark%20Shoppers%2C%20Vesu-Abhava%20Road%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1709834567890!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="MMC Corporate Office Location - Surat, Gujarat"
-              />
-              <div className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <button className="bg-white text-primary px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-primary hover:text-white transition-all duration-300 text-lg">
-                  Visit Our Office
-                </button>
+              </div>
+              <div className="aspect-[4/3] bg-gray-200 relative">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.1234567890123!2d72.78901234567890!3d21.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0x1234567890abcdef!2sHappy%20Hallmark%20Shoppers%2C%20Vesu-Abhava%20Road%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1709834567890!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="MMC Corporate Office Location - Surat, Gujarat"
+                />
+                <div className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <button className="bg-white text-primary px-4 py-2 rounded-lg font-semibold shadow-lg hover:bg-primary hover:text-white transition-all duration-300 text-sm">
+                    Visit Our Office
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Mobile App Advertisement Section */}
-      <section className="section-padding bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 relative overflow-hidden">
-        {/* Background Decorative Elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -translate-y-32 translate-x-32 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 rounded-full translate-y-24 -translate-x-24 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-primary/5 rounded-full -translate-x-16 -translate-y-16 blur-2xl"></div>
-        
-        <div className="container-max relative z-10">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl border border-white/20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Mobile App Advertisement Section */}
+            <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 rounded-3xl p-6 shadow-2xl border border-white/20 relative overflow-hidden">
+              {/* Background Decorative Elements */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full -translate-y-12 translate-x-12 blur-xl"></div>
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-secondary/10 rounded-full translate-y-10 -translate-x-10 blur-xl"></div>
               
-              {/* Content Section */}
-              <div className="space-y-8">
-                {/* Header */}
-                <div className="space-y-4">
-                  <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 w-fit">
-                    <span className="text-primary text-lg">📱</span>
-                    <span className="text-sm font-semibold text-primary">MOBILE APP</span>
+              <div className="relative z-10">
+                {/* Top Section - Tag and Main Content */}
+                <div className="mb-6">
+                  {/* Mobile App Tag */}
+                  <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-3 py-1.5 mb-4">
+                    <span className="text-primary text-sm">📱</span>
+                    <span className="text-xs font-semibold text-primary">MOBILE APP</span>
                   </div>
                   
-                  <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight">
-                    Transform Your Space
-                    <span className="text-primary block">On the Go</span>
+                  {/* Main Headline */}
+                  <h3 className="text-2xl font-bold text-foreground leading-tight mb-3">
+                    Download the
+                    <span className="text-primary block">Official App</span>
                   </h3>
                   
-                  <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-                    Download our mobile app for instant access to our services, real-time project updates, 
-                    and exclusive mobile-only offers. Manage your flooring projects anywhere, anytime.
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    Earn reward points instantly on Each Product you buy. Download the app and start earning today.
                   </p>
                 </div>
 
-                {/* Features Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <span className="text-primary group-hover:text-white text-lg">📋</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm">Instant Quotes</div>
-                      <div className="text-xs text-muted-foreground">Get pricing in seconds</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <span className="text-primary group-hover:text-white text-lg">📊</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm">Project Tracking</div>
-                      <div className="text-xs text-muted-foreground">Real-time updates</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <span className="text-primary group-hover:text-white text-lg">📷</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm">Photo Gallery</div>
-                      <div className="text-xs text-muted-foreground">Browse our work</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <span className="text-primary group-hover:text-white text-lg">💬</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm">24/7 Support</div>
-                      <div className="text-xs text-muted-foreground">Always here to help</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Download Buttons */}
-                <div className="space-y-4">
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="#"
-                      className="inline-flex items-center space-x-4 bg-black text-white px-6 py-4 rounded-2xl hover:bg-gray-800 hover:scale-105 transition-all duration-300 group shadow-lg"
-                    >
-                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                        <span className="text-black font-bold text-lg">A</span>
+                {/* Middle Section - Features and Mobile Image Side by Side */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 items-center">
+                  {/* Left Side - Feature Boxes Stacked Vertically */}
+                  <div className="space-y-3">
+                    <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                          <span className="text-orange-500 text-sm">🎁</span>
+                        </div>
+                        <div>
+                          <div className="font-bold text-foreground text-xs">Reward Points</div>
+                          <div className="text-xs text-muted-foreground">Earn on every purchase</div>
+                        </div>
                       </div>
-                      <div className="text-left">
-                        <div className="text-xs text-gray-300">Download on the</div>
-                        <div className="text-sm font-bold">App Store</div>
-                      </div>
-                    </a>
+                    </div>
                     
-                    <a 
-                      href="#"
-                      className="inline-flex items-center space-x-4 bg-black text-white px-6 py-4 rounded-2xl hover:bg-gray-800 hover:scale-105 transition-all duration-300 group shadow-lg"
-                    >
-                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                        <span className="text-black font-bold text-lg">G</span>
+                    <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center">
+                          <span className="text-yellow-500 text-sm">💳</span>
+                        </div>
+                        <div>
+                          <div className="font-bold text-foreground text-xs">Digital Wallet</div>
+                          <div className="text-xs text-muted-foreground">Redeem points as cash</div>
+                        </div>
                       </div>
-                      <div className="text-left">
-                        <div className="text-xs text-gray-300">Get it on</div>
-                        <div className="text-sm font-bold">Google Play</div>
-                      </div>
-                    </a>
+                    </div>
                   </div>
 
-                  {/* Rating */}
-                  <div className="flex items-center space-x-3">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-lg">★</span>
-                      ))}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      <span className="font-semibold text-foreground">4.8/5</span> from 2,500+ reviews
+                  {/* Right Side - Mobile Phone Mockup */}
+                  <div className="flex justify-center">
+                    <div className="relative">
+                      <img 
+                        src="/mobile.png"
+                        alt="MMC Mobile App"
+                        className="w-28 h-56 object-contain"
+                      />
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* App Mockup Section */}
-              <div className="relative flex justify-center lg:justify-end">
-                <div className="relative">
-                                     {/* Main Phone Mockup */}
-                   <div className="relative w-72 h-[600px] bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-[3rem] p-2 shadow-2xl">
-                    {/* Phone Frame */}
-                    <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
-                      {/* Status Bar */}
-                      <div className="h-8 bg-gradient-to-r from-primary to-primary/80 rounded-t-[2.5rem] flex items-center justify-between px-6 text-white text-xs font-medium">
-                        <span>9:41</span>
-                        <div className="flex items-center space-x-1">
-                          <div className="w-4 h-2 bg-white/20 rounded-full"></div>
-                          <div className="w-1 h-1 bg-white rounded-full"></div>
-                        </div>
+                {/* Bottom Section - Download Button and Info */}
+                <div className="space-y-4">
+                  {/* Download Button */}
+                  <a 
+                    href="https://play.google.com/store/apps/details?id=com.mmc.mmc_flutter_app&hl=en_IN"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 hover:scale-105 transition-all duration-300 group shadow-lg w-full justify-center"
+                  >
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1745px-Android_robot.svg.png"
+                      alt="Android Logo"
+                      className="w-8 h-8 bg-white rounded-lg p-1"
+                    />
+                    <div className="text-left">
+                      <div className="text-xs text-gray-300">Download our</div>
+                      <div className="text-sm font-bold">Android App</div>
+                    </div>
+                  </a>
+
+                  {/* Rating and App Info */}
+                  <div className="text-center space-y-2">
+                    <div className="flex items-center justify-center space-x-2">
+                      <div className="flex space-x-1">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="text-yellow-400 text-sm">★</span>
+                        ))}
                       </div>
-                      
-                      {/* App Content */}
-                      <div className="p-4 h-full bg-gradient-to-b from-primary/5 via-secondary/5 to-primary/10">
-                        {/* App Header */}
-                        <div className="text-center mb-6">
-                          <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
-                            <span className="text-white font-bold text-2xl">F</span>
-                          </div>
-                          <h4 className="font-bold text-foreground text-lg">MMC App</h4>
-                          <p className="text-xs text-muted-foreground">Your Flooring Partner</p>
-                        </div>
-
-                        {/* Quick Actions */}
-                        <div className="grid grid-cols-2 gap-3 mb-6">
-                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 text-center shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                              <span className="text-primary text-sm">📋</span>
-                            </div>
-                            <span className="text-xs font-semibold text-foreground">Get Quote</span>
-                          </div>
-                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 text-center shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                              <span className="text-primary text-sm">📊</span>
-                            </div>
-                            <span className="text-xs font-semibold text-foreground">Track Project</span>
-                          </div>
-                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 text-center shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                              <span className="text-primary text-sm">📷</span>
-                            </div>
-                            <span className="text-xs font-semibold text-foreground">Gallery</span>
-                          </div>
-                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 text-center shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                              <span className="text-primary text-sm">💬</span>
-                            </div>
-                            <span className="text-xs font-semibold text-foreground">Support</span>
-                          </div>
-                        </div>
-
-                        {/* Recent Projects */}
-                        <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 mb-4 shadow-sm">
-                          <h5 className="font-semibold text-foreground text-sm mb-2">Recent Projects</h5>
-                          <div className="space-y-2">
-                            <div className="flex items-center space-x-2">
-                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                              <span className="text-xs text-muted-foreground">Kitchen Renovation - 85%</span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                              <span className="text-xs text-muted-foreground">Bathroom Tiling - In Progress</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Quick Contact */}
-                        <div className="bg-gradient-to-r from-primary to-primary/80 rounded-xl p-3 text-center shadow-lg">
-                          <span className="text-white text-sm font-semibold">📞 Call Now</span>
-                        </div>
+                      <div className="text-xs text-muted-foreground">
+                        <span className="font-semibold text-foreground">4.8/5</span> from 10K+ downloads
                       </div>
                     </div>
+                    
+                    <div className="bg-white/60 backdrop-blur-sm rounded-lg p-3 border border-white/20">
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        <span className="font-semibold text-foreground">Marble Magik Corporation</span> - Your one-stop shop for stone care chemicals
+                      </p>
+                    </div>
                   </div>
-
-                  {/* Floating Elements */}
-                  <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-xl animate-bounce">
-                    <span className="text-white text-xs font-bold">NEW</span>
-                  </div>
-                  <div className="absolute -bottom-6 -left-6 w-10 h-10 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center shadow-xl animate-pulse">
-                    <span className="text-white text-sm">🔥</span>
-                  </div>
-                  
-                  {/* Additional Floating Elements */}
-                  <div className="absolute top-1/2 -right-8 w-6 h-6 bg-secondary/20 rounded-full animate-ping"></div>
-                  <div className="absolute top-1/3 -left-4 w-4 h-4 bg-primary/20 rounded-full animate-pulse"></div>
                 </div>
               </div>
             </div>
