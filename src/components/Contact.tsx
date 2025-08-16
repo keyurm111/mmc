@@ -368,7 +368,7 @@ const Contact = () => {
                     </div>
 
                     {/* Rating Section */}
-                    <div className="flex items-center justify-center space-x-2">
+                    <div className="flex items-center justify-center space-x-2 pt-6">
                       <div className="flex space-x-1">
                         {[...Array(5)].map((_, i) => (
                           <span key={i} className="text-yellow-400 text-sm">★</span>
