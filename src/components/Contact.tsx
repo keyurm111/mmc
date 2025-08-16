@@ -321,7 +321,7 @@ const Contact = () => {
               
               <div className="relative z-10">
                 {/* Top Section - Tag and Main Content */}
-                <div className="mb-6">
+                <div className="mb-6 text-center">
                   {/* Mobile App Tag */}
                   <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-3 py-1.5 mb-4">
                     <span className="text-primary text-sm">📱</span>
@@ -330,8 +330,7 @@ const Contact = () => {
                   
                   {/* Main Headline */}
                   <h3 className="text-2xl font-bold text-foreground leading-tight mb-3">
-                    Download the
-                    <span className="text-primary block">Official App</span>
+                    Download the <span className="text-primary">Official App</span>
                   </h3>
                   
                   {/* Description */}
@@ -342,8 +341,8 @@ const Contact = () => {
 
                 {/* Middle Section - Features and Mobile Image Side by Side */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 items-center">
-                  {/* Left Side - Feature Boxes Stacked Vertically */}
-                  <div className="space-y-3">
+                  {/* Left Side - Feature Boxes, Rating, and Download Button */}
+                  <div className="space-y-4">
                     <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
@@ -359,7 +358,7 @@ const Contact = () => {
                     <div className="bg-white/80 backdrop-blur-sm rounded-lg p-3 border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center">
-                          <span className="text-yellow-500 text-sm">💳</span>
+                          <span className="text-orange-500 text-sm">💳</span>
                         </div>
                         <div>
                           <div className="font-bold text-foreground text-xs">Digital Wallet</div>
@@ -368,8 +367,8 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    {/* Rating Section - Below Digital Wallet */}
-                    <div className="flex items-center justify-center space-x-2 pt-2">
+                    {/* Rating Section */}
+                    <div className="flex items-center justify-center space-x-2">
                       <div className="flex space-x-1">
                         {[...Array(5)].map((_, i) => (
                           <span key={i} className="text-yellow-400 text-sm">★</span>
@@ -379,6 +378,24 @@ const Contact = () => {
                         <span className="font-semibold text-foreground">4.8/5</span> from 10K+ downloads
                       </div>
                     </div>
+
+                    {/* Download Button */}
+                    <a 
+                      href="https://play.google.com/store/apps/details?id=com.mmc.mmc_flutter_app&hl=en_IN"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 hover:scale-105 transition-all duration-300 group shadow-lg w-full justify-center"
+                    >
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1745px-Android_robot.svg.png"
+                        alt="Android Logo"
+                        className="w-8 h-8 bg-white rounded-lg p-1"
+                      />
+                      <div className="text-left">
+                        <div className="text-xs text-gray-300">Download our</div>
+                        <div className="text-sm font-bold">Android App</div>
+                      </div>
+                    </a>
                   </div>
 
                   {/* Right Side - Mobile Phone with Horse on Left */}
@@ -397,41 +414,13 @@ const Contact = () => {
                       <img 
                         src="/mobile.png"
                         alt="MMC Mobile App"
-                        className="w-28 h-56 object-contain relative z-20"
+                        className="w-40 h-80 object-contain relative z-20"
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Bottom Section - Download Button and Company Info */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
-                  {/* Download Button */}
-                  <a 
-                    href="https://play.google.com/store/apps/details?id=com.mmc.mmc_flutter_app&hl=en_IN"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 hover:scale-105 transition-all duration-300 group shadow-lg w-full justify-center"
-                  >
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1745px-Android_robot.svg.png"
-                      alt="Android Logo"
-                      className="w-8 h-8 bg-white rounded-lg p-1"
-                    />
-                    <div className="text-left">
-                      <div className="text-xs text-gray-300">Download our</div>
-                      <div className="text-sm font-bold">Android App</div>
-                    </div>
-                  </a>
 
-                  {/* Company Info */}
-                  <div className="text-center">
-                    <div className="bg-white/60 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        <span className="font-semibold text-foreground">Marble Magik Corporation</span> - Your one-stop shop for stone care chemicals
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
