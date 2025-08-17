@@ -78,7 +78,7 @@ const EventDetailPage = () => {
           </p>
           <Link
             to="/events"
-            className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 text-base"
+            className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 text-base"
           >
             Back
           </Link>
@@ -118,7 +118,7 @@ const EventDetailPage = () => {
         <div className="container-max px-4 sm:px-6">
           <Link
             to="/events"
-            className="inline-flex items-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-lg text-sm sm:text-base"
+            className="inline-flex items-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-xl hover:-translate-y-1 text-sm sm:text-base"
           >
             <svg className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -283,7 +283,7 @@ const EventDetailPage = () => {
               {/* Navigation Arrows */}
               <button 
                 onClick={() => setSelectedImage(selectedImage > 0 ? selectedImage - 1 : event.images.length - 1)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:-translate-y-1 hover:shadow-xl transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -292,7 +292,7 @@ const EventDetailPage = () => {
               
               <button 
                 onClick={() => setSelectedImage(selectedImage < event.images.length - 1 ? selectedImage + 1 : 0)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:-translate-y-1 hover:shadow-xl transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -328,7 +328,7 @@ const EventDetailPage = () => {
                     setShowAllImages(true);
                     setFullscreenImageIndex(selectedImage);
                   }}
-                  className="flex-shrink-0 aspect-[4/3] w-28 sm:w-32 rounded-2xl overflow-hidden border-2 border-dashed border-primary/40 bg-primary/5 text-primary hover:bg-primary/10 transition-all duration-300 flex items-center justify-center font-semibold"
+                  className="flex-shrink-0 aspect-[4/3] w-28 sm:w-32 rounded-2xl overflow-hidden border-2 border-dashed border-primary/40 bg-primary/5 text-primary hover:bg-primary/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center font-semibold"
                 >
                   +{event.images.length - 5} View All
                 </button>
@@ -362,7 +362,7 @@ const EventDetailPage = () => {
             {/* Additional close button in top-right corner */}
             <button
               onClick={() => setShowAllImages(false)}
-              className="absolute top-0 right-0 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl z-[10001]"
+              className="absolute top-0 right-0 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300 shadow-lg z-[10001]"
               aria-label="Close gallery"
             >
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -377,7 +377,7 @@ const EventDetailPage = () => {
               </h3>
               <button
                 onClick={() => setShowAllImages(false)}
-                className="w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300 shadow-lg"
                 aria-label="Close gallery"
               >
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -397,7 +397,7 @@ const EventDetailPage = () => {
               {/* Navigation Arrows */}
               <button 
                 onClick={() => setFullscreenImageIndex(fullscreenImageIndex > 0 ? fullscreenImageIndex - 1 : event.images.length - 1)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 transition-all duration-300"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
               >
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -406,7 +406,7 @@ const EventDetailPage = () => {
               
               <button 
                 onClick={() => setFullscreenImageIndex(fullscreenImageIndex < event.images.length - 1 ? fullscreenImageIndex + 1 : 0)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 transition-all duration-300"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/70 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
               >
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -206,7 +206,7 @@ const Home = () => {
                 {/* Icon Overlay */}
                 <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg">
                   <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                   </svg>
                 </div>
                 
@@ -434,7 +434,7 @@ const Home = () => {
                     <h3 className="text-xl font-bold mb-2">Ready to Transform Your Space?</h3>
                     <p className="text-white/90">Join thousands of satisfied customers worldwide</p>
                   </div>
-                  <button className="bg-white text-primary px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2">
+                  <button className="bg-white text-primary px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center space-x-2">
                     <span>Get Started</span>
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -522,7 +522,7 @@ const Home = () => {
                     )}
                     <Link 
                       to={story.route}
-                      className={`bg-white/20 backdrop-blur-sm text-white font-semibold transition-all duration-300 hover:bg-white hover:text-primary ${
+                      className={`bg-white/20 backdrop-blur-sm text-white font-semibold transition-all duration-300 hover:bg-white hover:text-primary hover:-translate-y-1 hover:shadow-lg ${
                         story.size === 'large' 
                           ? 'px-6 py-3 rounded-xl group-hover:shadow-lg' 
                           : 'px-4 py-2 rounded-lg text-sm'

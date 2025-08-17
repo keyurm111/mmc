@@ -152,7 +152,7 @@ All colors MUST be HSL.
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl px-8 py-4 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl px-8 py-4 font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1;
   }
 
   .btn-secondary {
@@ -160,7 +160,7 @@ All colors MUST be HSL.
   }
 
   .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-xl px-8 py-4 font-semibold transition-all duration-300;
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:-translate-y-1 hover:shadow-2xl rounded-xl px-8 py-4 font-semibold transition-all duration-300;
   }
 
   .section-padding {
@@ -1336,8 +1336,8 @@ All colors MUST be HSL.
 
   .signup-button:hover {
     background-color: hsl(var(--primary-hover));
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   .navbar-mobile-toggle {

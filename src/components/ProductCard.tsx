@@ -56,13 +56,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <div className="flex gap-2">
         <button 
           onClick={handleViewDetails}
-          className="flex-1 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors duration-300"
+          className="flex-1 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
         >
           View Details
         </button>
         <button 
           onClick={handleInquiry}
-          className="flex-1 bg-white text-gray-900 border border-gray-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 hover:border-gray-400 transition-colors duration-300"
+          className="flex-1 bg-white text-gray-900 border border-gray-300 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 hover:border-gray-400 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
         >
           Inquiry Now
         </button>

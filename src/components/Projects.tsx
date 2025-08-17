@@ -58,7 +58,7 @@ const Projects = () => {
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                 activeFilter === filter
                   ? 'bg-primary text-white shadow-lg'
-                  : 'bg-white text-foreground hover:bg-primary/10 border border-border'
+                  : 'bg-white text-foreground hover:bg-primary/10 hover:-translate-y-1 hover:shadow-lg border border-border'
               }`}
             >
               {filter}
@@ -114,7 +114,7 @@ const Projects = () => {
 
         {/* Load More Button */}
         <div className="text-center mt-12">
-          <Link to="/projects" className="btn-outline">
+          <Link to="/projects" className="btn-outline hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
             View All Projects
           </Link>
         </div>

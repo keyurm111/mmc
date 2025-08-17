@@ -297,19 +297,19 @@ const Team = () => {
               <div className="flex justify-center space-x-2">
                 <a 
                   href={member.social.linkedin}
-                  className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                 >
                   <Linkedin className="h-4 w-4" />
                 </a>
                 <a 
                   href={member.social.twitter}
-                  className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                 >
                   <Twitter className="h-4 w-4" />
                 </a>
                 <a 
                   href={`mailto:${member.social.email}`}
-                  className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                 >
                   <Mail className="h-4 w-4" />
                 </a>
@@ -490,10 +490,10 @@ const Team = () => {
               Let's discuss your project and see how our expert team can help bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button className="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300">
+              <button className="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
                 Schedule Consultation
               </button>
-              <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all duration-300">
+              <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
                 View Our Portfolio
               </button>
             </div>

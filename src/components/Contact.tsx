@@ -234,7 +234,7 @@ const Contact = () => {
 
                     <button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-primary to-primary/90 text-white py-3 px-6 rounded-xl font-semibold text-base hover:from-primary/90 hover:to-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 inline-flex items-center justify-center space-x-2"
+                      className="w-full bg-gradient-to-r from-primary to-primary/90 text-white py-3 px-6 rounded-xl font-semibold text-base hover:from-primary/90 hover:to-primary hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 shadow-lg inline-flex items-center justify-center space-x-2"
                     >
                       <Send className="h-4 w-4" />
                       <span>Send Message</span>
@@ -264,7 +264,7 @@ const Contact = () => {
                             {detail}
                           </p>
                         ))}
-                        <button className="text-primary font-semibold mt-2 hover:text-primary/80 transition-colors duration-300 inline-flex items-center space-x-1 group-hover:translate-x-1 text-sm">
+                        <button className="text-primary font-semibold mt-2 hover:text-primary/80 hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center space-x-1 group-hover:translate-x-1 text-sm">
                           <span>{info.action}</span>
                           <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -306,7 +306,7 @@ const Contact = () => {
                   title="MMC Corporate Office Location - Surat, Gujarat"
                 />
                 <div className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  <button className="bg-white text-primary px-4 py-2 rounded-lg font-semibold shadow-lg hover:bg-primary hover:text-white transition-all duration-300 text-sm">
+                  <button className="bg-white text-primary px-4 py-2 rounded-lg font-semibold shadow-lg hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 text-sm">
                     Visit Our Office
                   </button>
                 </div>
@@ -384,7 +384,7 @@ const Contact = () => {
                       href="https://play.google.com/store/apps/details?id=com.mmc.mmc_flutter_app&hl=en_IN"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 hover:scale-105 transition-all duration-300 group shadow-lg w-full justify-center"
+                      className="inline-flex items-center space-x-3 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group shadow-lg w-full justify-center"
                     >
                       <img 
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1745px-Android_robot.svg.png"

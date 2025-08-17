@@ -90,7 +90,7 @@ const BlogDetailPage = () => {
           </p>
           <Link
             to="/blog"
-            className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 text-base"
+            className="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 text-base"
           >
             Back to Blog
           </Link>
@@ -123,7 +123,7 @@ const BlogDetailPage = () => {
               {/* Back Button */}
               <Link
                 to="/blog"
-                className="inline-flex items-center justify-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-lg text-sm sm:text-base"
+                className="inline-flex items-center justify-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-xl hover:-translate-y-1 text-sm sm:text-base"
               >
                 <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="font-medium">Back</span>
@@ -171,7 +171,7 @@ const BlogDetailPage = () => {
               <div className="relative lg:ml-auto">
                 <button
                   onClick={() => setShowShareMenu(!showShareMenu)}
-                  className="flex items-center space-x-2 bg-white hover:bg-gray-50 text-foreground px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg border border-gray-100 text-sm sm:text-base"
+                  className="flex items-center space-x-2 bg-white hover:bg-gray-50 text-foreground px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1 border border-gray-100 text-sm sm:text-base"
                 >
                   <Share2 className="h-4 w-4" />
                   <span className="font-medium">Share</span>
@@ -342,7 +342,7 @@ const BlogDetailPage = () => {
             <div className="text-center mt-12 sm:mt-16">
               <Link
                 to="/blog"
-                className="inline-flex items-center space-x-3 bg-primary text-white px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-semibold hover:bg-primary/90 transition-all duration-300 text-base sm:text-lg shadow-lg hover:shadow-xl"
+                className="inline-flex items-center space-x-3 bg-primary text-white px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 text-base sm:text-lg shadow-lg"
               >
                 <span>View All Blog Posts</span>
                 <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 rotate-180" />
@@ -375,7 +375,7 @@ const BlogDetailPage = () => {
                 placeholder="Enter your email address"
                 className="flex-1 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-5 rounded-xl border border-gray-200 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary bg-gray-50/50 text-sm sm:text-base lg:text-lg"
               />
-              <button className="bg-primary text-white whitespace-nowrap text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl">
+              <button className="bg-primary text-white whitespace-nowrap text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 shadow-lg">
                 Subscribe Now
               </button>
             </div>

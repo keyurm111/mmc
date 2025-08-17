@@ -64,7 +64,7 @@ const Blog = () => {
                 <div className="block sm:hidden">
                   <button
                     onClick={() => setIsFilterOpen(!isFilterOpen)}
-                    className="w-full flex items-center justify-between px-4 py-4 rounded-xl border-2 border-gray-200 bg-gray-50/50 text-base font-medium text-foreground focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all duration-300"
+                    className="w-full flex items-center justify-between px-4 py-4 rounded-xl border-2 border-gray-200 bg-gray-50/50 text-base font-medium text-foreground focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
                   >
                     <span>Category: {selectedCategory}</span>
                     <ChevronDown className={`h-5 w-5 transition-transform ${isFilterOpen ? 'rotate-180' : ''}`} />
@@ -103,7 +103,7 @@ const Blog = () => {
                       className={`px-5 py-2.5 rounded-full text-base font-semibold transition-all duration-200 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-primary/30 ${
                         selectedCategory === category
                           ? 'bg-primary text-white shadow-md'
-                          : 'bg-white text-foreground border border-gray-200 hover:bg-gray-50'
+                          : 'bg-white text-foreground border border-gray-200 hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg'
                       }`}
                     >
                       {category}
@@ -196,7 +196,7 @@ const Blog = () => {
           {/* Load More Button */}
           {regularPosts.length > 0 && (
             <div className="text-center mt-12 sm:mt-16">
-              <button className="bg-white border-2 border-primary text-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 text-sm sm:text-base">
+              <button className="bg-white border-2 border-primary text-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 text-sm sm:text-base">
                 Load More Articles
               </button>
             </div>
@@ -218,7 +218,7 @@ const Blog = () => {
                     setSearchQuery('');
                     setSelectedCategory('All');
                   }}
-                  className="bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300 text-sm sm:text-base"
+                  className="bg-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 text-sm sm:text-base"
                 >
                   Clear Filters
                 </button>
@@ -251,7 +251,7 @@ const Blog = () => {
                 placeholder="Enter your email address"
                 className="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-lg sm:rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-gray-50/50 text-sm sm:text-base"
               />
-              <button className="bg-primary text-white whitespace-nowrap text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary/90 transition-all duration-300">
+              <button className="bg-primary text-white whitespace-nowrap text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
                 Subscribe Now
               </button>
             </div>

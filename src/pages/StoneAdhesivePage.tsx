@@ -133,7 +133,7 @@ const StoneAdhesivePage = () => {
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap ${
                       selectedCategory === category
                         ? 'bg-primary text-white shadow-md'
-                        : 'text-muted-foreground hover:text-primary hover:bg-white'
+                        : 'text-muted-foreground hover:text-primary hover:bg-white hover:-translate-y-1 hover:shadow-lg'
                     }`}
                   >
                     {category}
@@ -145,7 +145,7 @@ const StoneAdhesivePage = () => {
               <div className="lg:hidden flex-1 relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white text-sm font-medium flex items-center justify-between hover:border-primary transition-colors duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white text-sm font-medium flex items-center justify-between hover:border-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
                 >
                   <span>{selectedCategory}</span>
                   <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />

@@ -101,7 +101,7 @@ const Hero = () => {
                 
                 <Link
                   to="/contact"
-                  className="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-3 hover:shadow-lg"
+                  className="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-3 hover:shadow-xl hover:-translate-y-1"
                 >
                   <span>GET A QUOTE</span>
                 </Link>
@@ -148,7 +148,7 @@ const Hero = () => {
                                   <button
                                     key={index}
                                     onClick={() => setCurrentImageIndex(index)}
-                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                    className={`w-2 h-2 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                                       index === currentImageIndex 
                                         ? 'bg-white scale-125' 
                                         : 'bg-white/50 hover:bg-white/75'

@@ -515,7 +515,7 @@ const ProductDetailsPage = () => {
               ? '/categories/stone-adhesive'
               : '/categories/construction-chemical'
             }
-            className="inline-flex items-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-lg text-sm sm:text-base"
+            className="inline-flex items-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-xl hover:-translate-y-1 text-sm sm:text-base"
           >
             <svg className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -561,7 +561,7 @@ const ProductDetailsPage = () => {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all hover:-translate-y-1 hover:shadow-lg ${
                       selectedImage === index ? 'border-primary' : 'border-gray-200 hover:border-primary/50'
                     }`}
                   >
@@ -632,11 +632,11 @@ const ProductDetailsPage = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 transition-colors duration-300 flex items-center justify-center space-x-2">
+                <button className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2">
                   <span>Inquiry Now</span>
                   <ChevronRight className="h-5 w-5" />
                 </button>
-                <button className="flex-1 bg-secondary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-secondary/90 transition-colors duration-300 flex items-center justify-center space-x-2">
+                <button className="flex-1 bg-secondary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-secondary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2">
                   <Download className="h-5 w-5" />
                   <span>Download TDS</span>
                 </button>
@@ -646,12 +646,12 @@ const ProductDetailsPage = () => {
               <div className="flex gap-4">
                 <button 
                   onClick={handleDownloadMSDS}
-                  className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-300 flex items-center justify-center space-x-2"
+                  className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
                 >
                   <Download className="h-4 w-4" />
                   <span className="text-sm font-medium">MSDS</span>
                 </button>
-                <button className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-300 flex items-center justify-center space-x-2">
+                <button className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
                   <Share2 className="h-4 w-4" />
                   <span className="text-sm font-medium">Share</span>
                 </button>
@@ -684,11 +684,11 @@ const ProductDetailsPage = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 transition-colors duration-300 flex items-center justify-center space-x-2">
+              <button className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2">
                 <span>Inquiry Now</span>
                 <ChevronRight className="h-5 w-5" />
               </button>
-              <button className="flex-1 bg-secondary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-secondary/90 transition-colors duration-300 flex items-center justify-center space-x-2">
+              <button className="flex-1 bg-secondary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-secondary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2">
                 <Download className="h-5 w-5" />
                 <span>Download TDS</span>
               </button>
@@ -698,12 +698,12 @@ const ProductDetailsPage = () => {
             <div className="flex gap-4">
               <button 
                 onClick={handleDownloadMSDS}
-                className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-300 flex items-center justify-center space-x-2"
+                className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 <Download className="h-4 w-4" />
                 <span className="text-sm font-medium">MSDS</span>
               </button>
-              <button className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-300 flex items-center justify-center space-x-2">
+              <button className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
                 <Share2 className="h-4 w-4" />
                 <span className="text-sm font-medium">Share</span>
               </button>
@@ -729,7 +729,7 @@ const ProductDetailsPage = () => {
                 className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
                   selectedTab === tab.id
                     ? 'bg-primary text-white shadow-md'
-                    : 'bg-white text-muted-foreground hover:text-primary hover:bg-white/80'
+                    : 'bg-white text-muted-foreground hover:text-primary hover:bg-white/80 hover:-translate-y-1 hover:shadow-lg'
                 }`}
               >
                 {tab.label}
@@ -925,7 +925,7 @@ const ProductDetailsPage = () => {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a 
                       href="#"
-                      className="inline-flex items-center space-x-4 bg-black text-white px-6 py-4 rounded-2xl hover:bg-gray-800 hover:scale-105 transition-all duration-300 group shadow-lg"
+                      className="inline-flex items-center space-x-4 bg-black text-white px-6 py-4 rounded-2xl hover:bg-gray-800 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group shadow-lg"
                     >
                       <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
                         <span className="text-black font-bold text-lg">A</span>
@@ -938,7 +938,7 @@ const ProductDetailsPage = () => {
                     
                     <a 
                       href="#"
-                      className="inline-flex items-center space-x-4 bg-black text-white px-6 py-4 rounded-2xl hover:bg-gray-800 hover:scale-105 transition-all duration-300 group shadow-lg"
+                      className="inline-flex items-center space-x-4 bg-black text-white px-6 py-4 rounded-2xl hover:bg-gray-800 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group shadow-lg"
                     >
                       <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
                         <span className="text-black font-bold text-lg">G</span>

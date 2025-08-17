@@ -26,7 +26,7 @@ const Footer = () => {
             <div className="text-gray-700 font-medium text-sm">
               EXCITED? US TOO. LET'S GET MOVING.
             </div>
-            <button className="bg-[#5BA142] hover:bg-[#4a8a35] text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center space-x-2 text-sm">
+            <button className="bg-[#5BA142] hover:bg-[#4a8a35] text-white px-4 py-2 rounded-lg font-semibold hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center space-x-2 text-sm">
               <span>SCHEDULE A CALL</span>
               <Video className="h-3 w-3" />
             </button>
@@ -52,28 +52,28 @@ const Footer = () => {
           <div className="bg-gray-100 rounded-lg p-6">
             <h3 className="text-[#5BA142] font-bold text-sm mb-3 uppercase tracking-wide">Quick Links</h3>
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <Link to="/" className="text-gray-700 hover:text-[#5BA142] transition-colors">
+              <Link to="/" className="text-gray-700 hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">
                 HOME
               </Link>
-              <Link to="/about" className="text-gray-700 hover:text-[#5BA142] transition-colors">
+              <Link to="/about" className="text-gray-700 hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">
                 ABOUT US
               </Link>
-              <Link to="/contact" className="text-gray-700 hover:text-[#5BA142] transition-colors">
+              <Link to="/contact" className="text-gray-700 hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">
                 CONTACT US
               </Link>
-              <Link to="/blog" className="text-gray-700 hover:text-[#5BA142] transition-colors">
+              <Link to="/blog" className="text-gray-700 hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">
                 BLOGS
               </Link>
-              <Link to="/categories/stone-care" className="text-gray-700 hover:text-[#5BA142] transition-colors">
+              <Link to="/categories/stone-care" className="text-gray-700 hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">
                 STONE CARE
               </Link>
-              <Link to="/categories/stone-adhesive" className="text-gray-700 hover:text-[#5BA142] transition-colors">
+              <Link to="/categories/stone-adhesive" className="text-gray-700 hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">
                 STONE ADHESIVE
               </Link>
-              <Link to="/categories/construction-chemical" className="text-gray-700 hover:text-[#5BA142] transition-colors">
+              <Link to="/categories/construction-chemical" className="text-gray-700 hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">
                 CONSTRUCTION CHEMICAL
               </Link>
-              <Link to="/privacy" className="text-gray-700 hover:text-[#5BA142] transition-colors">
+              <Link to="/privacy" className="text-gray-700 hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">
                 PRIVACY POLICY
               </Link>
             </div>
@@ -158,33 +158,33 @@ const Footer = () => {
             href="https://www.facebook.com/MarbleMagikCorporation" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group bg-gray-100 rounded-lg p-3 flex items-center justify-center hover:bg-[#5BA142] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            className="group bg-gray-100 rounded-lg p-3 flex items-center justify-center hover:bg-[#5BA142] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
           >
-            <Facebook className="h-5 w-5 text-[#5BA142] group-hover:text-white group-hover:scale-110 transition-all duration-300" />
+            <Facebook className="h-5 w-5 text-[#5BA142] group-hover:text-white transition-all duration-300" />
           </a>
           <a 
             href="https://www.instagram.com/marblemagik/?igshid=MjAxZDBhZDhlNA%3D%3D" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group bg-gray-100 rounded-lg p-3 flex items-center justify-center hover:bg-[#5BA142] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            className="group bg-gray-100 rounded-lg p-3 flex items-center justify-center hover:bg-[#5BA142] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
           >
-            <Instagram className="h-5 w-5 text-[#5BA142] group-hover:text-white group-hover:scale-110 transition-all duration-300" />
+            <Instagram className="h-5 w-5 text-[#5BA142] group-hover:text-white transition-all duration-300" />
           </a>
           <a 
             href="https://www.linkedin.com/company/marble-magik-corporations/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group bg-gray-100 rounded-lg p-3 flex items-center justify-center hover:bg-[#5BA142] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            className="group bg-gray-100 rounded-lg p-3 flex items-center justify-center hover:bg-[#5BA142] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
           >
-            <Linkedin className="h-5 w-5 text-[#5BA142] group-hover:text-white group-hover:scale-110 transition-all duration-300" />
+            <Linkedin className="h-5 w-5 text-[#5BA142] group-hover:text-white transition-all duration-300" />
           </a>
           <a 
             href="https://www.youtube.com/@marblemagikcorporation3188" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group bg-gray-100 rounded-lg p-3 flex items-center justify-center hover:bg-[#5BA142] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+            className="group bg-gray-100 rounded-lg p-3 flex items-center justify-center hover:bg-[#5BA142] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
           >
-            <Video className="h-5 w-5 text-[#5BA142] group-hover:text-white group-hover:scale-110 transition-all duration-300" />
+            <Video className="h-5 w-5 text-[#5BA142] group-hover:text-white transition-all duration-300" />
           </a>
         </div>
 
@@ -192,8 +192,8 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-gray-600 mt-4 pt-4 border-t border-gray-200">
           <div>© {currentYear} Marble Magik Corporation. All rights reserved.</div>
           <div className="flex space-x-4 mt-2 sm:mt-0">
-            <a href="#" className="hover:text-[#5BA142] transition-colors">TERMS OF USE</a>
-            <a href="#" className="hover:text-[#5BA142] transition-colors">PRIVACY STATEMENT</a>
+            <a href="#" className="hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">TERMS OF USE</a>
+            <a href="#" className="hover:text-[#5BA142] hover:-translate-y-0.5 transition-all duration-300">PRIVACY STATEMENT</a>
           </div>
         </div>
       </div>
