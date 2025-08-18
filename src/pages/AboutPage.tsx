@@ -51,13 +51,13 @@ const AboutPage = () => {
                 <span className="text-primary"> Your Trusted Partner</span>
               </h2>
               
-                              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                              <p className="text-lg text-muted-foreground mb-8 leading-relaxed text-justify">
                   At MMC (Marble Magik Corporation), we believe that exceptional stone care and construction solutions can transform any space into something extraordinary. 
                 With over 15 years of dedicated service, our team of skilled craftsmen has been helping homeowners and businesses 
                 create beautiful, durable, and functional spaces.
               </p>
               
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed text-justify">
                 From luxury marble installations to cozy hardwood floors, we combine traditional craftsmanship with modern 
                 techniques to deliver results that exceed expectations. Every project is a testament to our commitment to 
                 quality, precision, and customer satisfaction.

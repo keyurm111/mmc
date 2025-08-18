@@ -118,7 +118,7 @@ const ProjectDetailPage = () => {
             <Building className="h-12 w-12 text-primary" />
           </div>
           <h3 className="text-2xl font-bold text-foreground mb-4">Project Not Found</h3>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-muted-foreground mb-8 text-justify">
             The project you're looking for doesn't exist or has been removed.
           </p>
           <Link
@@ -192,8 +192,21 @@ const ProjectDetailPage = () => {
       </section>
 
       {/* Project Header */}
-      <section className="py-4 sm:py-6 lg:py-8">
-        <div className="container-max px-4 sm:px-6 lg:px-8">
+      <section className="py-4 sm:py-6 lg:py-8 px-4 sm:px-6 lg:px-0">
+        <div className="container-max">
+          {/* Mobile: Project Heading First */}
+          <div className="xl:hidden mb-6">
+            <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 mb-4 mx-2">
+              <span className="text-primary text-sm font-medium flex items-center space-x-1">
+                {getCategoryIcon(project.category)}
+                <span>{project.category}</span>
+              </span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 px-2">
+              {project.name}
+            </h1>
+          </div>
+
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start w-full">
             {/* Project Images */}
             <div className="space-y-3 sm:space-y-4">
@@ -268,8 +281,8 @@ const ProjectDetailPage = () => {
 
             {/* Project Info */}
             <div className="space-y-8">
-              {/* Project Header */}
-              <div>
+              {/* Project Header - Desktop Only */}
+              <div className="hidden xl:block">
                 <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 mb-4">
                   <span className="text-primary text-sm font-medium flex items-center space-x-1">
                     {getCategoryIcon(project.category)}
@@ -279,7 +292,7 @@ const ProjectDetailPage = () => {
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
                   {project.name}
                 </h1>
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-justify">
                   {project.description}
                 </p>
               </div>
@@ -323,13 +336,13 @@ const ProjectDetailPage = () => {
       </section>
 
       {/* Project Video */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
-        <div className="container-max px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-50 px-4 sm:px-6 lg:px-0">
+        <div className="container-max">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground mb-3 sm:mb-4">
               Project Video
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-2 text-justify">
               Watch our team in action as we transform this space with precision and expertise
             </p>
           </div>
@@ -352,8 +365,8 @@ const ProjectDetailPage = () => {
       </section>
 
       {/* Project Tabs */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-background">
-        <div className="container-max px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-12 lg:py-16 bg-background px-4 sm:px-6 lg:px-0">
+        <div className="container-max">
           {/* Tab Navigation */}
           <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
             {[
@@ -377,11 +390,11 @@ const ProjectDetailPage = () => {
           </div>
 
           {/* Tab Content */}
-          <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-sm">
+          <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-sm mx-2 sm:mx-0">
             {selectedTab === 'overview' && (
               <div className="space-y-4 sm:space-y-6">
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground">Project Overview</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base lg:text-lg">
+                <p className="text-muted-foreground leading-relaxed text-justify text-sm sm:text-base lg:text-lg">
                   {project.fullDescription}
                 </p>
               </div>
@@ -402,7 +415,7 @@ const ProjectDetailPage = () => {
                       </div>
                       <h4 className="font-bold text-foreground mb-2 text-sm sm:text-base">{product.name}</h4>
                       <p className="text-xs sm:text-sm text-muted-foreground mb-2">{product.category}</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">{product.description}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground text-justify">{product.description}</p>
                     </div>
                   ))}
                 </div>

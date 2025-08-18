@@ -73,7 +73,7 @@ const EventDetailPage = () => {
             <Calendar className="h-12 w-12 text-primary" />
           </div>
           <h3 className="text-2xl font-bold text-foreground mb-4">Event Not Found</h3>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-muted-foreground mb-8 text-justify">
             The event you're looking for doesn't exist or has been removed.
           </p>
           <Link
@@ -128,7 +128,7 @@ const EventDetailPage = () => {
       </section>
 
       {/* Hero Section with Event Banner */}
-      <section className="relative pt-8 pb-20 overflow-hidden">
+      <section className="relative pt-8 pb-20 overflow-hidden px-4 sm:px-6 lg:px-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10"></div>
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float"></div>
@@ -140,16 +140,16 @@ const EventDetailPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Event Info */}
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-primary">FEATURED EVENT</span>
-              </div>
+                          <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 mb-6 shadow-lg mx-2 sm:mx-0">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-primary">FEATURED EVENT</span>
+            </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight px-2 sm:px-0">
                 {event.name}
               </h1>
               
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed text-justify px-2 sm:px-0">
                 {event.description}
               </p>
             </div>
@@ -178,7 +178,7 @@ const EventDetailPage = () => {
       </section>
 
       {/* Event Video Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white px-4 sm:px-6 lg:px-0">
         <div className="container-max">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
@@ -191,7 +191,7 @@ const EventDetailPage = () => {
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Experience the Event
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-justify">
                 Get a firsthand look at the excitement and energy of our events
               </p>
             </div>
@@ -226,7 +226,7 @@ const EventDetailPage = () => {
       </section>
 
       {/* Event Description Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white px-4 sm:px-6 lg:px-0">
         <div className="container-max">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -236,12 +236,12 @@ const EventDetailPage = () => {
               <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
             </div>
             
-            <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-2xl border border-gray-100 relative overflow-hidden">
+            <div className="bg-white rounded-3xl p-4 sm:p-6 lg:p-8 xl:p-12 shadow-2xl border border-gray-100 relative overflow-hidden mx-2 sm:mx-0">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full translate-y-12 -translate-x-12"></div>
               
               <div className="relative z-10">
-                <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed text-justify">
                   {event.fullDescription}
                 </p>
               </div>
@@ -251,20 +251,20 @@ const EventDetailPage = () => {
       </section>
 
       {/* Event Images Gallery */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white px-4 sm:px-6 lg:px-0">
         <div className="container-max">
           <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Event Gallery
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6 text-justify">
                 Explore the moments and memories captured during our amazing events
               </p>
               <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
             </div>
           
           {/* Main Image Display */}
-          <div className="max-w-5xl mx-auto mb-12">
+          <div className="max-w-5xl mx-auto mb-12 px-2 sm:px-0">
             <div className="relative group">
               <div className="aspect-[16/9] rounded-3xl overflow-hidden bg-white shadow-2xl border border-gray-100 transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-3xl">
                 <img
@@ -301,7 +301,7 @@ const EventDetailPage = () => {
           </div>
 
           {/* Thumbnail Navigation - single row (first 5) + View All */}
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto px-2 sm:px-0">
             <div className="flex items-center justify-center gap-3 overflow-x-auto md:overflow-visible pb-2 w-full">
               {event.images.slice(0, 5).map((image, index) => (
                 <button

@@ -478,7 +478,7 @@ const ProductDetailsPage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Breadcrumb and Back Button */}
-      <section className="pt-24 pb-3">
+      <section className="pt-24 pb-3 px-4 sm:px-6 lg:px-0">
         <div className="container-max">
           <div className="flex items-center justify-between">
             {/* Breadcrumb */}
@@ -525,19 +525,19 @@ const ProductDetailsPage = () => {
       </section>
 
       {/* Product Details */}
-      <section className="py-8">
+      <section className="py-8 px-4 sm:px-6 lg:px-0">
         <div className="container-max">
           {/* Mobile Layout: Product Name First */}
           <div className="lg:hidden mb-6">
             {/* Product Header - Mobile */}
-            <div className="mb-6">
+            <div className="mb-6 px-2">
               <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 mb-4">
                 <span className="text-primary text-sm font-medium">{product.category}</span>
               </div>
               <h1 className="text-3xl font-bold text-foreground mb-4">
                 {product.name}
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed text-justify">
                 {product.description}
               </p>
             </div>
@@ -603,7 +603,7 @@ const ProductDetailsPage = () => {
                 <h1 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                   {product.name}
                 </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-lg text-muted-foreground leading-relaxed text-justify">
                   {product.description}
                 </p>
               </div>
@@ -659,9 +659,9 @@ const ProductDetailsPage = () => {
           </div>
 
           {/* Mobile Product Details - After Images */}
-          <div className="lg:hidden mt-8 space-y-8">
+          <div className="lg:hidden mt-8 space-y-8 px-4 sm:px-6">
             {/* Product Code */}
-            <div className="bg-gray-50 rounded-xl p-4">
+            <div className="bg-gray-50 rounded-xl p-4 mx-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-muted-foreground">Product Code:</span>
                 <span className="text-lg font-bold text-foreground">{product.code}</span>
@@ -669,7 +669,7 @@ const ProductDetailsPage = () => {
             </div>
 
             {/* Key Features */}
-            <div>
+            <div className="px-2">
               <h3 className="text-xl font-bold text-foreground mb-4">Key Features</h3>
               <div className="space-y-3">
                 {product.features?.map((feature, index) => (
@@ -682,7 +682,7 @@ const ProductDetailsPage = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 px-2">
               <button className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2">
                 <span>Inquiry Now</span>
                 <ChevronRight className="h-5 w-5" />
@@ -694,7 +694,7 @@ const ProductDetailsPage = () => {
             </div>
 
             {/* Additional Downloads */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 px-2">
               <button 
                 onClick={handleDownloadMSDS}
                 className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
@@ -703,7 +703,7 @@ const ProductDetailsPage = () => {
                 <span className="text-sm font-medium">MSDS</span>
               </button>
               <button className="flex-1 bg-white border border-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
-                <Share2 className="h-4 w-4" />
+                <Share2 className="h-5 w-4" />
                 <span className="text-sm font-medium">Share</span>
               </button>
             </div>
@@ -712,7 +712,7 @@ const ProductDetailsPage = () => {
       </section>
 
       {/* Product Tabs */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-gray-50 px-4 sm:px-6 lg:px-0">
         <div className="container-max">
           {/* Tab Navigation */}
           <div className="flex flex-wrap gap-2 mb-8">
@@ -737,11 +737,11 @@ const ProductDetailsPage = () => {
           </div>
 
           {/* Tab Content */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm">
+          <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-sm">
             {selectedTab === 'description' && (
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-foreground">Product Description</h3>
-                <p className="text-muted-foreground leading-relaxed text-lg">
+                <p className="text-muted-foreground leading-relaxed text-justify text-lg">
                   {product.description}
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -819,13 +819,13 @@ const ProductDetailsPage = () => {
       </section>
 
       {/* Related Products */}
-      <section className="py-16">
+      <section className="py-16 px-4 sm:px-6 lg:px-0">
         <div className="container-max">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Related Products
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-justify">
               Discover more products from our comprehensive range of stone care solutions
             </p>
           </div>
@@ -846,212 +846,147 @@ const ProductDetailsPage = () => {
       </section>
 
       {/* Mobile App Advertisement Section */}
-      <section className="section-padding bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 relative overflow-hidden">
-        {/* Background Decorative Elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -translate-y-32 translate-x-32 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 rounded-full translate-y-24 -translate-x-24 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-primary/5 rounded-full -translate-x-16 -translate-y-16 blur-2xl"></div>
-        
-        <div className="container-max relative z-10">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-2xl border border-white/20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              
-              {/* Content Section */}
-              <div className="space-y-8">
-                {/* Header */}
-                <div className="space-y-4">
-                  <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 w-fit">
-                    <span className="text-primary text-lg">📱</span>
-                    <span className="text-sm font-semibold text-primary">MOBILE APP</span>
-                  </div>
-                  
-                  <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight">
-                    Transform Your Space
-                    <span className="text-primary block">On the Go</span>
-                  </h3>
-                  
-                  <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-                    Download our mobile app for instant access to our services, real-time project updates, 
-                    and exclusive mobile-only offers. Manage your flooring projects anywhere, anytime.
-                  </p>
+      <section className="py-12 bg-gradient-to-br from-gray-50 via-white to-gray-50 px-4 sm:px-6 lg:px-0">
+        <div className="container-max">
+          <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 rounded-3xl p-6 lg:p-8 shadow-2xl border border-white/20 relative overflow-hidden max-w-5xl mx-auto">
+            {/* Background Decorative Elements */}
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full -translate-y-12 translate-x-12 blur-xl"></div>
+            <div className="absolute bottom-0 left-0 w-20 h-20 bg-secondary/10 rounded-full translate-y-10 -translate-x-10 blur-xl"></div>
+            
+            <div className="relative z-10">
+              {/* Top Section - Tag and Main Content */}
+              <div className="text-center mb-8">
+                {/* Mobile App Tag */}
+                <div className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-5 py-2.5 mb-4 shadow-lg border border-white/20">
+                  <span className="text-primary text-lg">📱</span>
+                  <span className="text-sm font-bold text-primary">MOBILE APP</span>
                 </div>
-
-                {/* Features Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <span className="text-primary group-hover:text-white text-lg">📋</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm">Instant Quotes</div>
-                      <div className="text-xs text-muted-foreground">Get pricing in seconds</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <span className="text-primary group-hover:text-white text-lg">📊</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm">Project Tracking</div>
-                      <div className="text-xs text-muted-foreground">Real-time updates</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <span className="text-primary group-hover:text-white text-lg">📷</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm">Photo Gallery</div>
-                      <div className="text-xs text-muted-foreground">Browse our work</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <span className="text-primary group-hover:text-white text-lg">💬</span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm">24/7 Support</div>
-                      <div className="text-xs text-muted-foreground">Always here to help</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Download Buttons */}
-                <div className="space-y-4">
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="#"
-                      className="inline-flex items-center space-x-4 bg-black text-white px-6 py-4 rounded-2xl hover:bg-gray-800 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group shadow-lg"
-                    >
-                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                        <span className="text-black font-bold text-lg">A</span>
-                      </div>
-                      <div className="text-left">
-                        <div className="text-xs text-gray-300">Download on the</div>
-                        <div className="text-sm font-bold">App Store</div>
-                      </div>
-                    </a>
-                    
-                    <a 
-                      href="#"
-                      className="inline-flex items-center space-x-4 bg-black text-white px-6 py-4 rounded-2xl hover:bg-gray-800 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group shadow-lg"
-                    >
-                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                        <span className="text-black font-bold text-lg">G</span>
-                      </div>
-                      <div className="text-left">
-                        <div className="text-xs text-gray-300">Get it on</div>
-                        <div className="text-sm font-bold">Google Play</div>
-                      </div>
-                    </a>
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex items-center space-x-3">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400 text-lg">★</span>
-                      ))}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      <span className="font-semibold text-foreground">4.8/5</span> from 2,500+ reviews
-                    </div>
-                  </div>
-                </div>
+                
+                {/* Main Headline */}
+                <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground leading-tight mb-4">
+                  Download the <span className="text-primary">Official MMC App</span>
+                </h3>
+                
+                {/* Description */}
+                <p className="text-base text-muted-foreground leading-relaxed mb-6 text-center max-w-3xl mx-auto">
+                  Earn reward points instantly on every product you buy. Download the app and start earning today with exclusive mobile-only offers.
+                </p>
               </div>
 
-              {/* App Mockup Section */}
-              <div className="relative flex justify-center lg:justify-end">
-                <div className="relative">
-                  {/* Main Phone Mockup */}
-                  <div className="relative w-72 h-[600px] bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 rounded-[3rem] p-2 shadow-2xl">
-                    {/* Phone Frame */}
-                    <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
-                      {/* Status Bar */}
-                      <div className="h-8 bg-gradient-to-r from-primary to-primary/80 rounded-t-[2.5rem] flex items-center justify-between px-6 text-white text-xs font-medium">
-                        <span>9:41</span>
-                        <div className="flex items-center space-x-1">
-                          <div className="w-4 h-2 bg-white/20 rounded-full"></div>
-                          <div className="w-1 h-1 bg-white rounded-full"></div>
+              {/* Middle Section - Features and Mobile Image Side by Side */}
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
+                {/* Left Side - Feature Boxes, Rating, and Download Button */}
+                <div className="space-y-4 ml-12 lg:ml-20">
+                  {/* Feature Boxes */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <span className="text-orange-500 text-lg">🎁</span>
+                        </div>
+                        <div>
+                          <div className="font-bold text-foreground text-sm mb-1">Reward Points</div>
+                          <div className="text-xs text-muted-foreground">Earn on every purchase</div>
                         </div>
                       </div>
-                      
-                      {/* App Content */}
-                      <div className="p-4 h-full bg-gradient-to-b from-primary/5 via-secondary/5 to-primary/10">
-                        {/* App Header */}
-                        <div className="text-center mb-6">
-                          <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
-                            <span className="text-white font-bold text-2xl">F</span>
-                          </div>
-                          <h4 className="font-bold text-foreground text-lg">MMC App</h4>
-                          <p className="text-xs text-muted-foreground">Your Flooring Partner</p>
+                    </div>
+                    
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <span className="text-yellow-500 text-lg">💳</span>
                         </div>
-
-                        {/* Quick Actions */}
-                        <div className="grid grid-cols-2 gap-3 mb-6">
-                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 text-center shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                              <span className="text-primary text-sm">📋</span>
-                            </div>
-                            <span className="text-xs font-semibold text-foreground">Get Quote</span>
-                          </div>
-                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 text-center shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                              <span className="text-primary text-sm">📊</span>
-                            </div>
-                            <span className="text-xs font-semibold text-foreground">Track Project</span>
-                          </div>
-                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 text-center shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                              <span className="text-primary text-sm">📷</span>
-                            </div>
-                            <span className="text-xs font-semibold text-foreground">Gallery</span>
-                          </div>
-                          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 text-center shadow-sm hover:bg-white hover:shadow-md transition-all duration-300">
-                            <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                              <span className="text-primary text-sm">💬</span>
-                            </div>
-                            <span className="text-xs font-semibold text-foreground">Support</span>
-                          </div>
-                        </div>
-
-                        {/* Recent Projects */}
-                        <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 mb-4 shadow-sm">
-                          <h5 className="font-semibold text-foreground text-sm mb-2">Recent Projects</h5>
-                          <div className="space-y-2">
-                            <div className="flex items-center space-x-2">
-                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                              <span className="text-xs text-muted-foreground">Kitchen Renovation - 85%</span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                              <span className="text-xs text-muted-foreground">Bathroom Tiling - In Progress</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Quick Contact */}
-                        <div className="bg-gradient-to-r from-primary to-primary/80 rounded-xl p-3 text-center shadow-lg">
-                          <span className="text-white text-sm font-semibold">📞 Call Now</span>
+                        <div>
+                          <div className="font-bold text-foreground text-sm mb-1">Digital Wallet</div>
+                          <div className="text-xs text-muted-foreground">Redeem points as cash</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Floating Elements */}
-                  <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-xl animate-bounce">
-                    <span className="text-white text-xs font-bold">NEW</span>
+                  {/* Additional Features */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <span className="text-blue-500 text-lg">📊</span>
+                        </div>
+                        <div>
+                          <div className="font-bold text-foreground text-sm mb-1">Project Tracking</div>
+                          <div className="text-xs text-muted-foreground">Real-time updates</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <span className="text-green-500 text-lg">💬</span>
+                        </div>
+                        <div>
+                          <div className="font-bold text-foreground text-sm mb-1">24/7 Support</div>
+                          <div className="text-xs text-muted-foreground">Always here to help</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="absolute -bottom-6 -left-6 w-10 h-10 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center shadow-xl animate-pulse">
-                    <span className="text-white text-sm">🔥</span>
+
+                  {/* Rating Section */}
+                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-white/20 text-center">
+                    <div className="flex items-center justify-center space-x-2 mb-2">
+                      <div className="flex space-x-1">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="text-yellow-400 text-lg">★</span>
+                        ))}
+                      </div>
+                      <div className="text-xl font-bold text-foreground">4.8/5</div>
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      from <span className="font-semibold text-foreground">10,000+</span> happy downloads
+                    </div>
                   </div>
-                  
-                  {/* Additional Floating Elements */}
-                  <div className="absolute top-1/2 -right-8 w-6 h-6 bg-secondary/20 rounded-full animate-ping"></div>
-                  <div className="absolute top-1/3 -left-4 w-4 h-4 bg-primary/20 rounded-full animate-pulse"></div>
+
+                  {/* Download Button */}
+                  <a 
+                    href="https://play.google.com/store/apps/details?id=com.mmc.mmc_flutter_app&hl=en_IN"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-3 bg-gradient-to-r from-black to-gray-800 text-white px-6 py-3 rounded-xl hover:from-gray-800 hover:to-black hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group shadow-lg w-full justify-center text-base font-semibold"
+                  >
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1745px-Android_robot.svg.png"
+                      alt="Android Logo"
+                      className="w-8 h-8 bg-white rounded-lg p-1 group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="text-left">
+                      <div className="text-xs text-gray-300">Download our</div>
+                      <div className="text-sm font-bold">Android App</div>
+                    </div>
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                </div>
+
+                {/* Right Side - Mobile Phone with Horse */}
+                <div className="flex justify-center relative">
+                  <div className="relative">
+                    {/* Horse Image - Left Side of Mobile */}
+                    <div className="absolute -left-40 bottom-0 z-30">
+                      <img
+                        src="/mmc horse/4.png"
+                        alt="MMC Horse"
+                        className="w-72 h-72 object-contain opacity-100 drop-shadow-xl"
+                      />
+                    </div>
+                    
+                    {/* Mobile Phone */}
+                    <img 
+                      src="/mobile.png"
+                      alt="MMC Mobile App"
+                      className="w-48 h-96 object-contain relative z-20 drop-shadow-xl mix-blend-multiply"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

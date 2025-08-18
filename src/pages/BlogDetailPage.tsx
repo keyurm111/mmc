@@ -71,7 +71,7 @@ const BlogDetailPage = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading blog post...</p>
+          <p className="text-muted-foreground text-justify">Loading blog post...</p>
         </div>
       </div>
     );
@@ -85,7 +85,7 @@ const BlogDetailPage = () => {
             <BookOpen className="h-12 w-12 text-primary" />
           </div>
           <h3 className="text-2xl font-bold text-foreground mb-4">Blog Post Not Found</h3>
-          <p className="text-muted-foreground mb-8">
+          <p className="text-muted-foreground mb-8 text-justify">
             The blog post you're looking for doesn't exist or has been removed.
           </p>
           <Link
@@ -127,16 +127,16 @@ const BlogDetailPage = () => {
       </section>
 
       {/* Blog Header */}
-      <section className="py-8 sm:py-12 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10">
-        <div className="container-max px-4 sm:px-6">
+      <section className="py-8 sm:py-12 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 px-4 sm:px-6 lg:px-0">
+        <div className="container-max">
           <div className="max-w-6xl mx-auto">
             {/* Title */}
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 sm:mb-10 leading-tight max-w-5xl">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 sm:mb-10 leading-tight max-w-5xl px-2 sm:px-0">
               {blogPost.title}
             </h1>
 
             {/* Meta Information */}
-            <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:items-center lg:gap-8 lg:gap-10 mb-8 sm:mb-12">
+            <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:items-center lg:gap-8 lg:gap-10 mb-8 sm:mb-12 px-2 sm:px-0">
               {/* Author */}
               <div className="flex items-center space-x-3 sm:space-x-4">
                 <img
@@ -209,7 +209,7 @@ const BlogDetailPage = () => {
             </div>
 
             {/* Featured Image */}
-            <div className="aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-primary/10 to-primary/10 mb-8 sm:mb-12 shadow-2xl">
+            <div className="aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-br from-primary/10 to-primary/10 mb-8 sm:mb-12 shadow-2xl mx-2 sm:mx-0">
               <img
                 src={blogPost.image}
                 alt={blogPost.title}
@@ -219,7 +219,7 @@ const BlogDetailPage = () => {
 
             {/* Tags */}
             {blogPost.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12">
+              <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12 px-2 sm:px-0">
                 {blogPost.tags.map((tag, index) => (
                   <span
                     key={index}
@@ -236,12 +236,12 @@ const BlogDetailPage = () => {
       </section>
 
       {/* Blog Content */}
-      <section className="py-12 sm:py-16 bg-white">
-        <div className="container-max px-4 sm:px-6">
+      <section className="py-12 sm:py-16 bg-white px-4 sm:px-6 lg:px-0">
+        <div className="container-max">
           <div className="max-w-5xl mx-auto">
             {/* Content */}
             <div 
-              className="prose prose-sm sm:prose-lg lg:prose-xl max-w-none prose-headings:text-foreground prose-headings:font-bold prose-h2:text-xl sm:text-2xl lg:text-3xl prose-h2:mb-6 sm:mb-8 prose-h2:mt-8 sm:mt-12 prose-h3:text-lg sm:text-xl lg:text-2xl prose-h3:mb-4 sm:mb-6 prose-h3:mt-6 sm:mt-10 prose-p:text-base sm:text-lg prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-4 sm:mb-6 prose-strong:text-foreground prose-strong:font-semibold prose-li:text-muted-foreground prose-ul:text-muted-foreground prose-ul:my-4 sm:my-6 prose-li:my-1 sm:my-2 prose-img:rounded-lg sm:rounded-xl prose-img:shadow-lg prose-img:my-6 sm:my-8 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 sm:pl-6 prose-blockquote:italic prose-blockquote:text-muted-foreground prose-blockquote:bg-gray-50 prose-blockquote:py-3 sm:py-4 prose-blockquote:rounded-r-lg"
+              className="prose prose-sm sm:prose-lg lg:prose-xl max-w-none prose-headings:text-foreground prose-headings:font-bold prose-h2:text-xl sm:text-2xl lg:text-3xl prose-h2:mb-6 sm:mb-8 prose-h2:mt-8 sm:mt-12 prose-h3:text-lg sm:text-xl lg:text-2xl prose-h3:mb-4 sm:mb-6 prose-h3:mt-6 sm:mt-10 prose-p:text-base sm:text-lg prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:text-justify prose-p:mb-4 sm:mb-6 prose-strong:text-foreground prose-strong:font-semibold prose-li:text-muted-foreground prose-ul:text-muted-foreground prose-ul:my-4 sm:my-6 prose-li:my-1 sm:my-2 prose-img:rounded-lg sm:rounded-xl prose-img:shadow-lg prose-img:my-6 sm:my-8 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 sm:pl-6 prose-blockquote:italic prose-blockquote:text-muted-foreground prose-blockquote:bg-gray-50 prose-blockquote:py-3 sm:py-4 prose-blockquote:rounded-r-lg mx-2 sm:mx-0"
               dangerouslySetInnerHTML={{ __html: blogPost.content }}
             />
           </div>
@@ -250,18 +250,18 @@ const BlogDetailPage = () => {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-12 sm:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
-          <div className="container-max px-4 sm:px-6">
+        <section className="py-12 sm:py-20 bg-gradient-to-br from-gray-50 to-gray-100 px-4 sm:px-6 lg:px-0">
+          <div className="container-max">
             <div className="text-center mb-10 sm:mb-16">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4 sm:mb-6">
                 Related Articles
               </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto text-justify">
                 Discover more insights and tips from our expert team
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 px-2 sm:px-0">
               {relatedPosts.map((post) => (
                 <article 
                   key={post.id}
@@ -316,7 +316,7 @@ const BlogDetailPage = () => {
                     </h3>
 
                     {/* Excerpt */}
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6 line-clamp-3">
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed text-justify mb-4 sm:mb-6 line-clamp-3">
                       {post.excerpt}
                     </p>
 
@@ -334,7 +334,7 @@ const BlogDetailPage = () => {
             </div>
 
             {/* View All Posts Button */}
-            <div className="text-center mt-12 sm:mt-16">
+            <div className="text-center mt-12 sm:mt-16 px-2 sm:px-0">
               <Link
                 to="/blog"
                 className="inline-flex items-center space-x-3 bg-primary text-white px-6 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 text-base sm:text-lg shadow-lg"
@@ -348,9 +348,9 @@ const BlogDetailPage = () => {
       )}
 
       {/* Newsletter Section */}
-      <section className="py-12 sm:py-20 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10">
-        <div className="container-max px-4 sm:px-6">
-          <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 shadow-2xl border border-gray-100 max-w-5xl mx-auto text-center">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 px-4 sm:px-6 lg:px-0">
+        <div className="container-max">
+                      <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 shadow-2xl border border-gray-100 max-w-5xl mx-auto text-center">
             <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8">
               <BookOpen className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-primary" />
             </div>
@@ -359,7 +359,7 @@ const BlogDetailPage = () => {
               Stay Updated with Expert Insights
             </h3>
             
-            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8 lg:mb-10 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-8 lg:mb-10 max-w-3xl mx-auto text-justify">
               Subscribe to our newsletter and get the latest flooring and tiling insights, 
               exclusive offers, and maintenance tips delivered to your inbox.
             </p>
@@ -375,7 +375,7 @@ const BlogDetailPage = () => {
               </button>
             </div>
             
-            <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4 lg:mt-6">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4 lg:mt-6 text-justify">
               No spam, unsubscribe at any time. We respect your privacy.
             </p>
           </div>

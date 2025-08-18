@@ -326,8 +326,25 @@ const Home = () => {
         <div className="container-max relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
+            {/* Mobile: Section Header First, Desktop: Hidden */}
+            <div className="lg:hidden space-y-8 mb-8">
+              {/* Section Header */}
+              <div className="mb-8">
+                <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg border border-gray-100">
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                  <span className="text-sm font-semibold text-gray-700 tracking-wide">COMPANY ACHIEVEMENTS</span>
+                </div>
+                <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                  Building Excellence
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed text-justify">
+                  With decades of expertise and thousands of projects, Marble Magik is a trusted leader in stone care and construction solutions.
+                </p>
+              </div>
+            </div>
+            
             {/* Left Side - Visual Examples */}
-            <div className="relative">
+            <div className="relative order-1 lg:order-1">
               <div className="relative z-10">
                 {/* Kitchen Image - Top Left */}
                 <div className="relative mb-6">
@@ -358,9 +375,9 @@ const Home = () => {
             </div>
 
             {/* Right Side - Company Statistics */}
-            <div className="space-y-8">
-              {/* Section Header */}
-              <div className="mb-8">
+            <div className="space-y-8 order-2 lg:order-2">
+              {/* Section Header - Desktop Only */}
+              <div className="hidden lg:block mb-8">
                 <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg border border-gray-100">
                   <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                   <span className="text-sm font-semibold text-gray-700 tracking-wide">COMPANY ACHIEVEMENTS</span>
@@ -368,7 +385,7 @@ const Home = () => {
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                   Building Excellence
                 </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed text-justify">
                   With decades of expertise and thousands of projects, Marble Magik is a trusted leader in stone care and construction solutions.
                 </p>
               </div>
@@ -378,12 +395,13 @@ const Home = () => {
                   {/* Stat 1: Years of Experience */}
                   <div className="group bg-white rounded-2xl p-4 shadow-lg border border-gray-100 stat-card hover:shadow-xl hover:border-primary/20 hover:bg-primary/5 transition-all duration-300">
                     <div className="flex items-center space-x-4">
-                      <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl stat-icon group-hover:scale-110 group-hover:bg-primary/90 transition-all duration-300">
+                      {/* Icon - Hidden on mobile, shown on desktop */}
+                      <div className="hidden lg:flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl stat-icon group-hover:scale-110 group-hover:bg-primary/90 transition-all duration-300">
                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                       </div>
-                      <div className="text-left">
+                      <div className="text-left lg:ml-0 ml-0">
                         <div className="text-3xl font-bold stat-number group-hover:text-primary transition-colors duration-300">20+</div>
                         <div className="text-sm font-semibold text-gray-600">Years Industry Experience</div>
                       </div>
@@ -393,12 +411,13 @@ const Home = () => {
                   {/* Stat 2: Products */}
                   <div className="group bg-white rounded-2xl p-4 shadow-lg border border-gray-100 stat-card hover:shadow-xl hover:border-primary/20 hover:bg-primary/5 transition-all duration-300">
                     <div className="flex items-center space-x-4">
-                      <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl stat-icon group-hover:scale-110 group-hover:bg-primary/90 transition-all duration-300">
+                      {/* Icon - Hidden on mobile, shown on desktop */}
+                      <div className="hidden lg:flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl stat-icon group-hover:scale-110 group-hover:bg-primary/90 transition-all duration-300">
                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                         </svg>
                       </div>
-                      <div className="text-left">
+                      <div className="text-left lg:ml-0 ml-0">
                         <div className="text-3xl font-bold stat-number group-hover:text-primary transition-colors duration-300">100+</div>
                         <div className="text-sm font-semibold text-gray-600">Products</div>
                       </div>
@@ -408,12 +427,13 @@ const Home = () => {
                   {/* Stat 3: Counters */}
                   <div className="group bg-white rounded-2xl p-4 shadow-lg border border-gray-100 stat-card hover:shadow-xl hover:border-primary/20 hover:bg-primary/5 transition-all duration-300">
                     <div className="flex items-center space-x-4">
-                      <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl stat-icon group-hover:scale-110 group-hover:bg-primary/90 transition-all duration-300">
+                      {/* Icon - Hidden on mobile, shown on desktop */}
+                      <div className="hidden lg:flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl stat-icon group-hover:scale-110 group-hover:bg-primary/90 transition-all duration-300">
                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                          <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                         </svg>
                       </div>
-                      <div className="text-left">
+                      <div className="text-left lg:ml-0 ml-0">
                         <div className="text-3xl font-bold stat-number group-hover:text-primary transition-colors duration-300">850+</div>
                         <div className="text-sm font-semibold text-gray-600">Counters</div>
                       </div>
@@ -423,12 +443,13 @@ const Home = () => {
                   {/* Stat 4: Countries */}
                   <div className="group bg-white rounded-2xl p-4 shadow-lg border border-gray-100 stat-card hover:shadow-xl hover:border-primary/20 hover:bg-primary/5 transition-all duration-300">
                     <div className="flex items-center space-x-4">
-                      <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl stat-icon group-hover:scale-110 group-hover:bg-primary/90 transition-all duration-300">
+                      {/* Icon - Hidden on mobile, shown on desktop */}
+                      <div className="hidden lg:flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl stat-icon group-hover:scale-110 group-hover:bg-primary/90 transition-all duration-300">
                         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                          <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                       </div>
-                      <div className="text-left">
+                      <div className="text-left lg:ml-0 ml-0">
                         <div className="text-3xl font-bold stat-number group-hover:text-primary transition-colors duration-300">13</div>
                         <div className="text-sm font-semibold text-gray-600">Countries Spread Across</div>
                       </div>
@@ -452,31 +473,33 @@ const Home = () => {
 
         <div className="container-max relative z-10">
           {/* Section Header */}
-          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 mb-16">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 sm:gap-8 mb-12 sm:mb-16">
             <div className="lg:w-1/3">
-              <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg border border-gray-100">
+              <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6 shadow-lg border border-gray-100">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-gray-700 tracking-wide">OUR STORIES</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-700 tracking-wide">OUR STORIES</span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
                 Magik Stories
               </h2>
             </div>
             <div className="lg:w-2/3 lg:pl-8 lg:border-l-2 lg:border-primary/20">
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed text-justify">
                 There is a lot happening around with us all round the clock. Hence, we thought of keeping you updated of everything latest. Magik Stories is that and beyond. Get to know more about our work, our events, our partner activities and more.
               </p>
             </div>
           </div>
 
           {/* Stories Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 auto-rows-[200px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-4 auto-rows-[160px] sm:auto-rows-[180px] lg:auto-rows-[200px]">
             {magikStoriesData.map((story) => (
               <Link 
                 key={story.id}
                 to={story.route}
                 className={`group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4 border border-gray-100 category-card bento-card cursor-pointer hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/20 ${
-                  story.size === 'large' ? 'md:col-span-4 md:row-span-2' : 'md:col-span-2 md:row-span-1'
+                  story.size === 'large' 
+                    ? 'sm:col-span-2 lg:col-span-4 lg:row-span-2' 
+                    : 'sm:col-span-1 lg:col-span-2 lg:row-span-1'
                 }`}
               >
                 <div className="absolute inset-0">
@@ -485,36 +508,35 @@ const Home = () => {
                     alt={story.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 category-image"
                   />
-                  <div className={`absolute inset-0 ${
-                    story.size === 'large' 
-                      ? 'bg-gradient-to-t from-black/80 via-black/30 to-transparent' 
-                      : 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'
-                  } group-hover:from-primary/20 group-hover:via-primary/10 group-hover:to-transparent transition-all duration-700`}></div>
+                  {/* Removed dark overlay - images now display clearly */}
                   
                   {/* Beautiful shimmer overlay on hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
                   
                   {/* Story Badge */}
-                  <div className={`absolute ${story.size === 'large' ? 'top-6 left-6' : 'top-4 left-4'}`}>
+                  <div className={`absolute ${story.size === 'large' ? 'top-2 sm:top-3 lg:top-6 left-2 sm:left-3 lg:left-6' : 'top-2 sm:top-3 lg:top-4 left-2 sm:left-3 lg:left-4'}`}>
                     <span className={`${
                       story.category === 'PROJECT' || story.category === 'EVENT' || story.category === 'BRAND' || story.category === 'LATEST'
                         ? 'bg-primary text-white'
                         : 'bg-gray-800 text-white'
                     } ${
-                      story.size === 'large' ? 'px-4 py-2 text-sm' : 'px-3 py-1 text-xs'
+                      story.size === 'large' 
+                        ? 'px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 text-xs sm:text-sm' 
+                        : 'px-1.5 py-0.5 sm:px-2 sm:py-1 lg:px-3 lg:py-1 text-xs'
                     } rounded-full font-bold shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-500`}>
                       {story.category}
                     </span>
                   </div>
                   
                   {/* Content */}
-                  <div className={`absolute ${story.size === 'large' ? 'bottom-6 left-6 right-6' : 'bottom-4 left-4 right-4'} bento-content`}>
-                    <h3 className={`font-bold text-white mb-2 group-hover:text-primary transition-colors duration-500 ${
-                      story.size === 'large' ? 'text-2xl mb-3' : 'text-lg'
+                  <div className={`absolute ${story.size === 'large' ? 'bottom-3 sm:bottom-4 lg:bottom-6 left-3 sm:left-4 lg:left-6 right-3 sm:right-4 lg:right-6' : 'bottom-2 sm:bottom-3 lg:bottom-4 left-2 sm:left-3 lg:left-4 right-2 sm:right-3 lg:right-4'} bento-content`}>
+                    <h3 className={`font-bold text-white mb-1 sm:mb-2 group-hover:text-primary transition-colors duration-500 ${
+                      story.size === 'large' 
+                        ? 'text-base sm:text-lg lg:text-xl xl:text-2xl mb-1 sm:mb-2 lg:mb-3' 
+                        : 'text-xs sm:text-sm lg:text-base xl:text-lg'
                     }`}>
                       {story.title}
                     </h3>
-
                   </div>
                 </div>
               </Link>
@@ -546,7 +568,7 @@ const Home = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
               What Our <span className="text-primary">Client Say</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-justify mb-8">
               Join thousands of satisfied customers who have transformed their projects with our innovative solutions
             </p>
           </div>
