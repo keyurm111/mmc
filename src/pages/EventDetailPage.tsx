@@ -100,31 +100,30 @@ const EventDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Breadcrumb */}
-      <section className="pt-24 pb-6">
+      {/* Breadcrumb and Back Button */}
+      <section className="pt-24 pb-3">
         <div className="container-max px-4 sm:px-6">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-            <span className="opacity-60">/</span>
-            <Link to="/events" className="hover:text-primary transition-colors">Events</Link>
-            <span className="opacity-60">/</span>
-            <span className="text-foreground">{event.name}</span>
-          </div>
-        </div>
-      </section>
+          <div className="flex items-center justify-between">
+            {/* Breadcrumb */}
+            <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+              <span className="opacity-60">/</span>
+              <Link to="/events" className="hover:text-primary transition-colors">Events</Link>
+              <span className="opacity-60">/</span>
+              <span className="text-foreground">{event.name}</span>
+            </div>
 
-      {/* Back Button */}
-      <section className="pb-6">
-        <div className="container-max px-4 sm:px-6">
-          <Link
-            to="/events"
-            className="inline-flex items-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-xl hover:-translate-y-1 text-sm sm:text-base"
-          >
-            <svg className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span className="font-medium">Back</span>
-          </Link>
+            {/* Back Button */}
+            <Link
+              to="/events"
+              className="inline-flex items-center space-x-2 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 text-sm"
+            >
+              <svg className="h-4 w-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <span className="font-medium">Back</span>
+            </Link>
+          </div>
         </div>
       </section>
 

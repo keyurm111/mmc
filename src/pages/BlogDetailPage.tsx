@@ -101,15 +101,27 @@ const BlogDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Breadcrumb */}
-      <section className="pt-20 sm:pt-24 pb-4 sm:pb-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10">
+      {/* Breadcrumb and Back Button */}
+      <section className="pt-20 sm:pt-24 pb-3 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10">
         <div className="container-max px-4 sm:px-6">
-          <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
-            <span className="opacity-60">/</span>
-            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
-            <span className="opacity-60">/</span>
-            <span className="text-foreground line-clamp-1 text-xs sm:text-sm">{blogPost.title}</span>
+          <div className="flex items-center justify-between">
+            {/* Breadcrumb */}
+            <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
+              <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+              <span className="opacity-60">/</span>
+              <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
+              <span className="opacity-60">/</span>
+              <span className="text-foreground line-clamp-1 text-xs sm:text-sm">{blogPost.title}</span>
+            </div>
+
+            {/* Back Button */}
+            <Link
+              to="/blog"
+              className="inline-flex items-center justify-center space-x-2 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 py-2 rounded-lg border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-lg hover:-translate-y-0.5 text-sm"
+            >
+              <ChevronLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+              <span className="font-medium">Back</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -118,23 +130,6 @@ const BlogDetailPage = () => {
       <section className="py-8 sm:py-12 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10">
         <div className="container-max px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
-            {/* Header Navigation Row */}
-            <div className="flex flex-row items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-10">
-              {/* Back Button */}
-              <Link
-                to="/blog"
-                className="inline-flex items-center justify-center space-x-2 sm:space-x-3 text-primary hover:text-primary/80 transition-all duration-300 group bg-white/80 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-primary/20 hover:border-primary/40 hover:bg-white shadow-md hover:shadow-xl hover:-translate-y-1 text-sm sm:text-base"
-              >
-                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 group-hover:-translate-x-1 transition-transform" />
-                <span className="font-medium">Back</span>
-              </Link>
-
-              {/* Category Badge */}
-              <div className="inline-flex items-center justify-center space-x-2 bg-primary/10 rounded-full px-3 sm:px-6 py-2 sm:py-3 border border-primary/20 shadow-md">
-                <span className="text-primary font-semibold text-sm sm:text-base">{blogPost.category}</span>
-              </div>
-            </div>
-
             {/* Title */}
             <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6 sm:mb-10 leading-tight max-w-5xl">
               {blogPost.title}

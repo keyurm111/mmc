@@ -72,6 +72,29 @@ const categoryProducts = {
       description: 'For durable waterproof concrete/mortar.',
       image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
     }
+  ],
+  'diamond-pads': [
+    {
+      id: 'dp1',
+      name: 'Magik Diamond Pad 50',
+      code: 'MDP50',
+      description: '50 grit diamond pad for aggressive grinding and leveling.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      id: 'dp2',
+      name: 'Magik Diamond Pad 200',
+      code: 'MDP200',
+      description: '200 grit diamond pad for medium grinding and smoothing.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      id: 'dp3',
+      name: 'Magik Diamond Pad 3000',
+      code: 'MDP3000',
+      description: '3000 grit diamond pad for final polishing and finishing.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    }
   ]
 };
 
@@ -156,7 +179,8 @@ const Header: React.FC = () => {
       dropdown: [
         { name: 'Stone Care', href: '/categories/stone-care', category: 'stone-care' },
         { name: 'Stone Adhesive', href: '/categories/stone-adhesive', category: 'stone-adhesive' },
-        { name: 'Construction Chemical', href: '/categories/construction-chemical', category: 'construction-chemical' }
+        { name: 'Construction Chemical', href: '/categories/construction-chemical', category: 'construction-chemical' },
+        { name: 'Diamond PADs', href: '/categories/diamond-pads', category: 'diamond-pads' }
       ]
     },
     { 
@@ -310,11 +334,11 @@ const Header: React.FC = () => {
                               <div className="preview-products">
                                 {(categoryProducts[hoveredCategory as keyof typeof categoryProducts] || 
                                   magikStoriesData[hoveredCategory as keyof typeof magikStoriesData])?.map((item) => (
-                                  <div key={item.id} className="preview-product-card">
-                                    <div className="preview-product-image">
-                                      <img src={item.image} alt={item.name} />
+                                  <div key={item.id} className="preview-product-card" style={{ display: 'flex', alignItems: 'center', gap: '12px', minHeight: '80px', padding: '16px' }}>
+                                    <div className="preview-product-image" style={{ flexShrink: 0, width: '70px', height: '70px' }}>
+                                      <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-lg" />
                                     </div>
-                                    <div className="preview-product-info">
+                                    <div className="preview-product-info" style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                                       <h4 className="preview-product-name">{item.name}</h4>
                                       <p className="preview-product-code">{item.code}</p>
                                       <p className="preview-product-description">{item.description}</p>

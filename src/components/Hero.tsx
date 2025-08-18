@@ -9,24 +9,20 @@ const Hero = () => {
   // Array of hero images
   const heroImages = [
     {
-      src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Modern elegant living room with premium stone surfaces"
+      src: "https://marblemagik.in/wp-content/uploads/2023/07/MMC-Banners-updated-1.jpg",
+      alt: "MMC Banners updated - Premium stone care solutions"
     },
     {
-      src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Luxury kitchen with marble countertops and stone care solutions"
+      src: "https://marblemagik.in/wp-content/uploads/2022/11/MMC-Banners_1.jpg",
+      alt: "MMC Banners - Professional stone care and construction solutions"
     },
     {
-      src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Elegant bathroom with premium stone tiles and construction chemicals"
+      src: "https://marblemagik.in/wp-content/uploads/2022/11/MMC-Banners_2.jpg",
+      alt: "MMC Banners - Expert stone care and construction chemicals"
     },
     {
-      src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Modern outdoor patio with stone adhesive applications"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      alt: "Contemporary living space with advanced stone care products"
+      src: "https://marblemagik.in/wp-content/uploads/2023/07/MMC-Banners-updated-Map.jpg",
+      alt: "MMC Banners updated with map - Nationwide stone care services"
     }
   ];
 
@@ -41,17 +37,7 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [heroImages.length]);
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-50">
-      {/* Background Decorative Elements */}
-      <div className="absolute inset-0 z-0">
-        {/* Primary decorative elements */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-primary/8 to-transparent rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-tr from-secondary/8 to-transparent rounded-full blur-3xl animate-float-delayed"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/5 to-secondary/5 rounded-full blur-3xl"></div>
-        
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-      </div>
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white">
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-16 lg:py-20 xl:py-24">
@@ -73,38 +59,14 @@ const Hero = () => {
               
               {/* Main Heading */}
               <div className="space-y-4">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-gray-900">
-                  Come Help Us
-                  <span className="block text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                    Improve
-                  </span>
-                  <span className="block">Your House</span>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900">
+                  Elevate Your <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Stone's Glow</span> with Magik
                 </h1>
                 
                 {/* Subtitle */}
                 <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-lg">
-                  Transform your living space with our expert stone care and construction solutions. 
-                  We combine precision craftsmanship with premium Magik products to create 
-                  stunning, durable surfaces that elevate your home.
+                  Transforming spaces with expert stone care. Crafted to last, designed to shine.
                 </p>
-              </div>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                <Link
-                  to="/about"
-                  className="group bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center space-x-3"
-                >
-                  <span>DISCOVER MORE</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-                
-                <Link
-                  to="/contact"
-                  className="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-3 hover:shadow-xl hover:-translate-y-1"
-                >
-                  <span>GET A QUOTE</span>
-                </Link>
               </div>
               
               {/* Trust Indicators */}
@@ -124,6 +86,24 @@ const Hero = () => {
                   <Award className="h-5 w-5 text-primary" />
                   <span className="text-sm text-gray-600">15+ Years Experience</span>
                 </div>
+              </div>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-6">
+                <Link
+                  to="/about"
+                  className="group bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center space-x-3"
+                >
+                  <span>DISCOVER MORE</span>
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+                
+                <Link
+                  to="/contact"
+                  className="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-3 hover:shadow-xl hover:-translate-y-1"
+                >
+                  <span>GET A QUOTE</span>
+                </Link>
               </div>
             </div>
 
