@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Star, Download, Share2, ArrowLeft, CheckCircle, Truck, Shield, Clock, ChevronRight } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
+import InquiryForm from '../components/InquiryForm';
 
 interface Product {
   id: number;
@@ -25,6 +26,7 @@ const ProductDetailsPage = () => {
   const { productId } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedTab, setSelectedTab] = useState('description');
+  const [isInquiryFormOpen, setIsInquiryFormOpen] = useState(false);
 
   // Sample product database - in real app, this would come from API
   const productsDatabase: { [key: number]: Product } = {
@@ -462,7 +464,7 @@ const ProductDetailsPage = () => {
 
   const handleInquiry = (productId: number) => {
     // Handle inquiry action
-    // console.log('Inquiry for product:', productId);
+    setIsInquiryFormOpen(true);
   };
 
   const handleDownloadTDS = () => {
@@ -609,8 +611,8 @@ const ProductDetailsPage = () => {
               </div>
 
               {/* Product Code */}
-              <div className="bg-gray-50 rounded-xl p-4">
-                <div className="flex items-center justify-between">
+              <div className="bg-gray-50 rounded-xl p-4 w-fit">
+                <div className="flex items-center space-x-3">
                   <span className="text-sm font-medium text-muted-foreground">Product Code:</span>
                   <span className="text-lg font-bold text-foreground">{product.code}</span>
                 </div>
@@ -631,7 +633,10 @@ const ProductDetailsPage = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2">
+                <button 
+                  onClick={() => setIsInquiryFormOpen(true)}
+                  className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2"
+                >
                   <span>Inquiry Now</span>
                   <ChevronRight className="h-5 w-5" />
                 </button>
@@ -661,8 +666,8 @@ const ProductDetailsPage = () => {
           {/* Mobile Product Details - After Images */}
           <div className="lg:hidden mt-8 space-y-8 px-4 sm:px-6">
             {/* Product Code */}
-            <div className="bg-gray-50 rounded-xl p-4 mx-2">
-              <div className="flex items-center justify-between">
+            <div className="bg-gray-50 rounded-xl p-4 mx-2 w-fit">
+              <div className="flex items-center space-x-3">
                 <span className="text-sm font-medium text-muted-foreground">Product Code:</span>
                 <span className="text-lg font-bold text-foreground">{product.code}</span>
               </div>
@@ -683,7 +688,10 @@ const ProductDetailsPage = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 px-2">
-              <button className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2">
+              <button 
+                onClick={() => setIsInquiryFormOpen(true)}
+                className="flex-1 bg-primary text-white px-6 py-4 rounded-xl text-lg font-semibold hover:bg-primary/90 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2"
+              >
                 <span>Inquiry Now</span>
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -993,6 +1001,14 @@ const ProductDetailsPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Inquiry Form Modal */}
+      <InquiryForm
+        isOpen={isInquiryFormOpen}
+        onClose={() => setIsInquiryFormOpen(false)}
+        productName={product.name}
+        productCode={product.code}
+      />
 
       {/* Footer */}
       <Footer />

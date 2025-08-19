@@ -24,10 +24,12 @@ const Footer = () => {
         <div className="bg-gray-100 rounded-lg mt-6 mb-4 p-3">
           <div className="flex items-center justify-between">
             <div className="text-gray-700 font-medium text-sm">
-              EXCITED? US TOO. LET'S GET MOVING.
+              <span className="hidden sm:inline">EXCITED? US TOO. LET'S GET MOVING.</span>
+              <span className="sm:hidden text-base font-semibold">Schedule a call</span>
             </div>
             <button className="bg-[#5BA142] hover:bg-[#4a8a35] text-white px-4 py-2 rounded-lg font-semibold hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center space-x-2 text-sm">
-              <span>SCHEDULE A CALL</span>
+              <span className="hidden sm:inline">SCHEDULE A CALL</span>
+              <span className="sm:hidden text-base font-bold">Book</span>
               <Video className="h-3 w-3" />
             </button>
           </div>
@@ -123,7 +125,7 @@ const Footer = () => {
               <div className="flex items-start space-x-2">
                 <Factory className="h-3 w-3 text-[#5BA142] mt-0.5 flex-shrink-0" />
                 <div>
-                  <div className="font-semibold text-gray-800">Manufacturing Office</div>
+                  <div className="font-semibold text-gray-800">Factory</div>
                   <div className="text-gray-600">C-5/4, Hojiwala Industrial Estate, Road No. 8, Susml, Sachin-alsana Road, Surat, Gujarat -394230</div>
                 </div>
               </div>

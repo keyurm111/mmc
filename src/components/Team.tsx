@@ -6,7 +6,8 @@ import {
   Users, 
   Calendar,
   Star,
-  CheckCircle
+  CheckCircle,
+  MapPin
 } from 'lucide-react';
 
 const Team = () => {
@@ -365,7 +366,7 @@ const Team = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0 shadow-sm"></div>
+                    <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
                       418, Happy Hallmark Shoppers, Vesu-Abhava Road, Surat, Gujarat -395017
                     </p>
@@ -374,7 +375,7 @@ const Team = () => {
               </div>
             </div>
 
-            {/* Manufacturing Office */}
+            {/* Factory */}
             <div className="group relative bg-white rounded-3xl p-6 card-elegant hover:border-primary/40 border border-gray-200 transition-all duration-500 hover:-translate-y-4 shadow-xl hover:shadow-3xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
               <div className="relative z-10">
@@ -382,16 +383,16 @@ const Team = () => {
                   <div className="relative w-24 h-24 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-3xl flex items-center justify-center mx-auto mb-5 shadow-2xl group-hover:scale-110 transition-transform duration-500 overflow-hidden border-4 border-white">
                     <img 
                       src="https://marblemagik.in/wp-content/uploads/2022/09/Group-930.png" 
-                      alt="Manufacturing Office" 
+                      alt="Factory" 
                       className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">Manufacturing Office</h4>
+                  <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">Factory</h4>
                   <p className="text-primary font-semibold text-sm bg-primary/10 px-4 py-1.5 rounded-full inline-block mb-4">Production Hub</p>
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0 shadow-sm"></div>
+                    <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
                       C-5/4, Hojiwala Industrial Estate, Road No. 8, Susml, Sachin-alsana Road, Surat, Gujarat -394230
                     </p>
@@ -417,7 +418,7 @@ const Team = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0 shadow-sm"></div>
+                    <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
                       Plot No 155, Ground Floor, Kh. No. 13/25, Udey Vihar Nilothi Extn. Near Manoj Shokin Farm House, Delhi -110041
                     </p>
@@ -443,7 +444,7 @@ const Team = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0 shadow-sm"></div>
+                    <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
                       304/26 Ground Floor, Omkar Nilaya, 7th Main Road, Near Swastik Marble Lakkasandra Extension, Bengaluru, Karnataka – 560030
                     </p>
@@ -469,7 +470,7 @@ const Team = () => {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2.5 flex-shrink-0 shadow-sm"></div>
+                    <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
                       Shop no 11-5-198/1, Bhavani Nagar, Hyderabad, Telangana – 500081
                     </p>

@@ -412,9 +412,6 @@ const Header: React.FC = () => {
         <div className="mobile-sidebar-header">
           <div className="mobile-sidebar-brand">
             <img src="/mmc logo.png" alt="MMC Logo" className="mobile-sidebar-logo" />
-            <div className="mobile-sidebar-slogan">
-              A STONE CARE SOLUTION
-            </div>
           </div>
           <button onClick={closeMenu} className="mobile-sidebar-close">
             <X className="h-6 w-6" />

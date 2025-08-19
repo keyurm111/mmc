@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { Search, Filter, ChevronDown, Check } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
+import InquiryForm from '../components/InquiryForm';
 
 const StoneAdhesivePage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isInquiryFormOpen, setIsInquiryFormOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const categories = ['All'];
@@ -61,8 +64,11 @@ const StoneAdhesivePage = () => {
   };
 
   const handleInquiry = (productId: number) => {
-    // Handle inquiry action
-    // console.log('Inquiry for product:', productId);
+    const product = products.find(p => p.id === productId);
+    if (product) {
+      setSelectedProduct(product);
+      setIsInquiryFormOpen(true);
+    }
   };
 
   // Close dropdown when clicking outside
@@ -110,17 +116,17 @@ const StoneAdhesivePage = () => {
       <section className="pt-0 pb-16">
         <div className="container-max">
           {/* Search and Filter */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 mb-8">
-            <div className="flex flex-col lg:flex-row gap-4">
+          <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 mb-6 sm:mb-8">
+            <div className="flex flex-col lg:flex-row gap-3 sm:gap-4">
               {/* Search Input */}
               <div className="flex-1 relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                 <input
                   type="text"
                   placeholder="Search products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-gray-50/50"
+                  className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-gray-50/50 text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base"
                 />
               </div>
 
@@ -193,6 +199,17 @@ const StoneAdhesivePage = () => {
           )}
         </div>
       </section>
+
+      {/* Inquiry Form Modal */}
+      <InquiryForm
+        isOpen={isInquiryFormOpen}
+        onClose={() => {
+          setIsInquiryFormOpen(false);
+          setSelectedProduct(null);
+        }}
+        productName={selectedProduct?.name}
+        productCode={selectedProduct?.code}
+      />
 
       {/* Footer */}
       <Footer />

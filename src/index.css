@@ -572,6 +572,36 @@ All colors MUST be HSL.
     width: 100%;
   }
 
+  /* Mobile navbar height optimization */
+  @media (max-width: 768px) {
+    .navbar-container {
+      height: 60px;
+    }
+    
+    .navbar-logo-img {
+      height: 50px;
+    }
+    
+    /* Additional mobile spacing optimizations */
+    .pb-12 {
+      padding-bottom: 2rem !important; /* 32px instead of 48px */
+    }
+    
+    .pb-16 {
+      padding-bottom: 3rem !important; /* 48px instead of 64px */
+    }
+    
+    .py-8 {
+      padding-top: 1.5rem !important; /* 24px instead of 32px */
+      padding-bottom: 1.5rem !important;
+    }
+    
+    .py-12 {
+      padding-top: 2rem !important; /* 32px instead of 48px */
+      padding-bottom: 2rem !important;
+    }
+  }
+
   .navbar-scrolled {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -595,6 +625,155 @@ All colors MUST be HSL.
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px 24px 20px;
+  }
+
+  /* Mobile-optimized page spacing */
+  @media (max-width: 768px) {
+    /* Reduce excessive spacing below navbar on mobile */
+    .pt-24 {
+      padding-top: 4rem !important; /* 64px instead of 96px */
+    }
+    
+    .pt-20 {
+      padding-top: 3.5rem !important; /* 56px instead of 80px */
+    }
+    
+    /* Optimize section spacing for mobile */
+    .section-padding {
+      padding-top: 3rem !important; /* 48px instead of default */
+      padding-bottom: 3rem !important;
+    }
+    
+    /* Hero section mobile optimization */
+    .pt-6.lg\:pt-24 {
+      padding-top: 1rem !important; /* 16px on mobile, 96px on large screens */
+    }
+    
+    /* Home page hero specific mobile optimization */
+    .min-h-screen.flex.items-center.overflow-hidden.bg-white {
+      padding-top: 0 !important; /* Remove top padding on mobile */
+    }
+    
+    /* Hero content container mobile optimization */
+    .pt-6.lg\:pt-24.pb-8.lg\:pb-20.xl\:pb-24 {
+      padding-top: 0.5rem !important; /* 8px on mobile instead of 24px */
+      padding-bottom: 1.5rem !important; /* 24px on mobile instead of 32px */
+    }
+    
+    /* Product details page mobile optimization */
+    .pt-24.pb-3 {
+      padding-top: 3rem !important; /* 48px instead of 96px */
+    }
+    
+    /* Category pages mobile optimization */
+    .pt-24.pb-12 {
+      padding-top: 3rem !important; /* 48px instead of 96px */
+      padding-bottom: 2rem !important; /* 32px instead of 48px */
+    }
+    
+    /* Home page specific mobile optimizations */
+    /* Reduce spacing in hero content */
+    .space-y-8.lg\:space-y-10 {
+      gap: 1.5rem !important; /* 24px instead of 32px on mobile */
+    }
+    
+    /* Optimize hero badge spacing */
+    .inline-flex.items-center.space-x-3.bg-white\/90.backdrop-blur-sm.rounded-full.px-6.py-3 {
+      margin-bottom: 1rem !important; /* 16px instead of default */
+    }
+    
+    /* Ensure hero badge text is visible on mobile */
+    .inline-flex.items-center.space-x-3.bg-white\/90.backdrop-blur-sm.rounded-full.px-6.py-3 span {
+      font-size: 0.875rem !important; /* 14px on mobile */
+      line-height: 1.25rem !important;
+      white-space: normal !important;
+      word-wrap: break-word !important;
+    }
+    
+    /* Ensure hero badge is properly sized and visible on mobile */
+    .inline-flex.items-center.space-x-3.bg-white\/90.backdrop-blur-sm.rounded-full.px-6.py-3 {
+      display: flex !important;
+      padding: 0.75rem 1.5rem !important; /* 12px 24px on mobile */
+      max-width: 100% !important;
+      overflow: visible !important;
+    }
+    
+    /* Reduce heading margins on mobile */
+    .text-3xl.sm\:text-4xl.lg\:text-5xl.xl\:text-6xl.font-bold {
+      margin-bottom: 1rem !important; /* 16px instead of default */
+    }
+    
+    /* Optimize subtitle spacing */
+    .text-lg.sm\:text-xl.text-gray-600.leading-relaxed.text-justify.max-w-lg {
+      margin-bottom: 1.5rem !important; /* 24px instead of default */
+    }
+    
+    /* Home page categories section optimization */
+    .section-padding.bg-gradient-to-br.from-gray-50.via-white.to-gray-50 {
+      padding-top: 1.5rem !important; /* 24px instead of default */
+    }
+    
+    /* Reduce grid gaps on mobile */
+    .grid.grid-cols-1.lg\:grid-cols-2.gap-12.lg\:gap-16.xl\:gap-20 {
+      gap: 1.5rem !important; /* 24px instead of 48px on mobile */
+    }
+    
+    /* Additional home page mobile optimizations */
+    /* Stats section mobile optimization */
+    .grid.grid-cols-2.lg\:grid-cols-4.gap-6.max-w-4xl.mx-auto {
+      margin-top: 1rem !important; /* 16px instead of default */
+      gap: 1rem !important; /* 16px instead of 24px */
+    }
+    
+    /* Individual stat cards mobile spacing */
+    .bg-white\/80.backdrop-blur-sm.rounded-2xl.p-6 {
+      padding: 1rem !important; /* 16px instead of 24px */
+    }
+    
+    /* Icon containers in stats */
+    .w-12.h-12.bg-primary\/10.rounded-xl {
+      width: 2.5rem !important; /* 40px instead of 48px */
+      height: 2.5rem !important;
+    }
+    
+    /* Stats text mobile sizing */
+    .text-2xl.lg\:text-3xl.font-bold {
+      font-size: 1.25rem !important; /* 20px instead of 24px/32px */
+    }
+    
+    .text-sm.text-muted-foreground {
+      font-size: 0.75rem !important; /* 12px instead of 14px */
+    }
+    
+    /* Testimonials section mobile optimization */
+    .testimonials-bg {
+      margin-top: 0.5rem !important; /* 8px instead of default */
+    }
+    
+    /* Section content mobile spacing */
+    .section-padding .max-w-7xl {
+      margin-top: 0.5rem !important; /* 8px instead of default */
+    }
+    
+    /* About page specific mobile optimization */
+    .warm-bg.section-padding {
+      padding-top: 2rem !important; /* 32px instead of default section padding */
+    }
+    
+    .min-h-screen.bg-background > section:first-child.warm-bg.section-padding {
+      padding-top: 1.5rem !important; /* 24px for the first section on About page */
+    }
+    
+    /* About page container mobile optimization */
+    .min-h-screen.bg-background {
+      padding-top: 1rem !important; /* 16px instead of default */
+    }
+    
+    /* About page section mobile optimization */
+    #about.section-padding.warm-bg {
+      padding-top: 1.5rem !important; /* 24px instead of default */
+      margin-top: 0 !important;
+    }
   }
 
   /* Large screen optimization */
