@@ -148,7 +148,7 @@ const Home = () => {
               
               {/* Details Layer - Hidden by default, shown on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm rounded-2xl">
-                <h3 className="text-xl font-bold mb-3 text-center">STONE CARE</h3>
+                <h3 className="text-3xl font-bold mb-3 text-center">STONE CARE</h3>
                 <p className="text-white/90 text-sm mb-4 leading-relaxed text-center">
                   Premium stone care solutions for maintaining beauty and longevity.
                 </p>
@@ -195,7 +195,7 @@ const Home = () => {
               
               {/* Details Layer - Hidden by default, shown on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm rounded-2xl">
-                <h3 className="text-xl font-bold mb-3 text-center">STONE ADHESIVE</h3>
+                <h3 className="text-3xl font-bold mb-3 text-center">STONE ADHESIVE</h3>
                 <p className="text-white/90 text-sm mb-4 leading-relaxed text-center">
                   High-performance adhesives for stone and tile installations.
                 </p>
@@ -242,7 +242,7 @@ const Home = () => {
               
                {/* Details Layer - Hidden by default, shown on hover */}
                <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm rounded-2xl">
-                <h3 className="text-xl font-bold mb-3 text-center">CONSTRUCTION CHEMICALS</h3>
+                <h3 className="text-3xl font-bold mb-3 text-center">CONSTRUCTION CHEMICALS</h3>
                 <p className="text-white/90 text-sm mb-4 leading-relaxed text-center">
                   Advanced waterproofing, sealants, and protective coatings.
                 </p>
@@ -287,7 +287,7 @@ const Home = () => {
               
               {/* Details Layer - Hidden by default, shown on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/90 p-6 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center backdrop-blur-sm rounded-2xl">
-                <h3 className="text-xl font-bold mb-3 text-center">DIAMOND PADS</h3>
+                <h3 className="text-3xl font-bold mb-3 text-center">DIAMOND PADS</h3>
                 <p className="text-white/90 text-sm mb-4 leading-relaxed text-center">
                   Professional diamond pads for grinding and polishing.
                 </p>

@@ -174,7 +174,7 @@ const Header: React.FC = () => {
   const navItems = [
     { name: 'ABOUT US', href: '/about' },
     { 
-      name: 'CATEGORIES', 
+      name: 'PRODUCTS', 
       href: '#',
       dropdown: [
         { name: 'Stone Care', href: '/categories/stone-care', category: 'stone-care' },

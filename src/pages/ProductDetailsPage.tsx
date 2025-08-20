@@ -27,6 +27,7 @@ const ProductDetailsPage = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedTab, setSelectedTab] = useState('description');
   const [isInquiryFormOpen, setIsInquiryFormOpen] = useState(false);
+  const [activeFAQ, setActiveFAQ] = useState<number | null>(1);
 
   // Sample product database - in real app, this would come from API
   const productsDatabase: { [key: number]: Product } = {
@@ -853,154 +854,390 @@ const ProductDetailsPage = () => {
         </div>
       </section>
 
-      {/* Mobile App Advertisement Section */}
-      <section className="py-12 bg-gradient-to-br from-gray-50 via-white to-gray-50 px-4 sm:px-6 lg:px-0">
+      {/* Mobile App Advertisement Section with FAQ Side by Side */}
+      <section className="py-8 bg-gradient-to-br from-gray-50 via-white to-gray-50 px-4 sm:px-6 lg:px-0">
         <div className="container-max">
-          <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 rounded-3xl p-6 lg:p-8 shadow-2xl border border-white/20 relative overflow-hidden max-w-5xl mx-auto">
-            {/* Background Decorative Elements */}
-            <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full -translate-y-12 translate-x-12 blur-xl"></div>
-            <div className="absolute bottom-0 left-0 w-20 h-20 bg-secondary/10 rounded-full translate-y-10 -translate-x-10 blur-xl"></div>
-            
-            <div className="relative z-10">
-              {/* Top Section - Tag and Main Content */}
-              <div className="text-center mb-8">
-                {/* Mobile App Tag */}
-                <div className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-5 py-2.5 mb-4 shadow-lg border border-white/20">
-                  <span className="text-primary text-lg">📱</span>
-                  <span className="text-sm font-bold text-primary">MOBILE APP</span>
-                </div>
-                
-                {/* Main Headline */}
-                <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-foreground leading-tight mb-4">
-                  Download the <span className="text-primary">Official MMC App</span>
-                </h3>
-                
-                {/* Description */}
-                <p className="text-base text-muted-foreground leading-relaxed mb-6 text-center max-w-3xl mx-auto">
-                  Earn reward points instantly on every product you buy. Download the app and start earning today with exclusive mobile-only offers.
-                </p>
-              </div>
-
-              {/* Middle Section - Features and Mobile Image Side by Side */}
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
-                {/* Left Side - Feature Boxes, Rating, and Download Button */}
-                <div className="space-y-4 ml-12 lg:ml-20">
-                  {/* Feature Boxes */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <span className="text-orange-500 text-lg">🎁</span>
-                        </div>
-                        <div>
-                          <div className="font-bold text-foreground text-sm mb-1">Reward Points</div>
-                          <div className="text-xs text-muted-foreground">Earn on every purchase</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <span className="text-yellow-500 text-lg">💳</span>
-                        </div>
-                        <div>
-                          <div className="font-bold text-foreground text-sm mb-1">Digital Wallet</div>
-                          <div className="text-xs text-muted-foreground">Redeem points as cash</div>
-                        </div>
-                      </div>
-                    </div>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 items-stretch">
+            {/* Left Side - Mobile App Advertisement */}
+            <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/10 rounded-3xl p-4 lg:p-6 shadow-2xl border border-white/20 relative overflow-hidden flex flex-col justify-between min-h-[600px]">
+              {/* Background Decorative Elements */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-primary/10 rounded-full -translate-y-8 translate-x-8 blur-xl"></div>
+              <div className="absolute bottom-0 left-0 w-16 h-16 bg-secondary/10 rounded-full translate-y-8 -translate-x-8 blur-xl"></div>
+              
+              <div className="relative z-10 flex-1 flex flex-col">
+                {/* Top Section - Tag and Main Content */}
+                <div className="text-center mb-6">
+                  {/* Mobile App Tag */}
+                  <div className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 mb-3 shadow-lg border border-white/20">
+                    <span className="text-primary text-base">📱</span>
+                    <span className="text-xs font-bold text-primary">MOBILE APP</span>
                   </div>
-
-                  {/* Additional Features */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <span className="text-blue-500 text-lg">📊</span>
-                        </div>
-                        <div>
-                          <div className="font-bold text-foreground text-sm mb-1">Project Tracking</div>
-                          <div className="text-xs text-muted-foreground">Real-time updates</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <span className="text-green-500 text-lg">💬</span>
-                        </div>
-                        <div>
-                          <div className="font-bold text-foreground text-sm mb-1">24/7 Support</div>
-                          <div className="text-xs text-muted-foreground">Always here to help</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Rating Section */}
-                  <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-white/20 text-center">
-                    <div className="flex items-center justify-center space-x-2 mb-2">
-                      <div className="flex space-x-1">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-yellow-400 text-lg">★</span>
-                        ))}
-                      </div>
-                      <div className="text-xl font-bold text-foreground">4.8/5</div>
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      from <span className="font-semibold text-foreground">10,000+</span> happy downloads
-                    </div>
-                  </div>
-
-                  {/* Download Button */}
-                  <a 
-                    href="https://play.google.com/store/apps/details?id=com.mmc.mmc_flutter_app&hl=en_IN"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-3 bg-gradient-to-r from-black to-gray-800 text-white px-6 py-3 rounded-xl hover:from-gray-800 hover:to-black hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group shadow-lg w-full justify-center text-base font-semibold"
-                  >
-                    <img 
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1745px-Android_robot.svg.png"
-                      alt="Android Logo"
-                      className="w-8 h-8 bg-white rounded-lg p-1 group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="text-left">
-                      <div className="text-xs text-gray-300">Download our</div>
-                      <div className="text-sm font-bold">Android App</div>
-                    </div>
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </a>
+                  
+                  {/* Main Headline */}
+                  <h3 className="text-xl lg:text-2xl xl:text-3xl font-bold text-foreground leading-tight mb-3">
+                    Download the <span className="text-primary">Official MMC App</span>
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 text-center max-w-2xl mx-auto">
+                    Earn reward points instantly on every product you buy. Download the app and start earning today with exclusive mobile-only offers.
+                  </p>
                 </div>
 
-                {/* Right Side - Mobile Phone with Horse */}
-                <div className="flex justify-center relative">
-                  <div className="relative">
-                    {/* Horse Image - Left Side of Mobile */}
-                    <div className="absolute -left-40 bottom-0 z-30">
-                      <img
-                        src="/mmc horse/4.png"
-                        alt="MMC Horse"
-                        className="w-72 h-72 object-contain opacity-100 drop-shadow-xl"
+                {/* Features and Mobile Image */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center flex-1">
+                  {/* Left Side - Feature Boxes, Rating, and Download Button */}
+                  <div className="space-y-3">
+                    {/* Feature Boxes */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div className="flex items-center justify-center">
+                          <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-orange-500 text-lg">🎁</span>
+                          </div>
+                          <div className="ml-3">
+                            <div className="font-bold text-foreground text-xs">Reward Points</div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div className="flex items-center justify-center">
+                          <div className="w-10 h-10 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-yellow-500 text-lg">💳</span>
+                          </div>
+                          <div className="ml-3">
+                            <div className="font-bold text-foreground text-xs">Digital Wallet</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Additional Features */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div className="flex items-center justify-center">
+                          <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-blue-500 text-lg">📊</span>
+                          </div>
+                          <div className="ml-3">
+                            <div className="font-bold text-foreground text-xs">Project Tracking</div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white/90 backdrop-blur-sm rounded-xl p-3 border border-white/30 hover:bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                        <div className="flex items-center justify-center">
+                          <div className="w-10 h-10 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span className="text-green-500 text-lg">💬</span>
+                          </div>
+                          <div className="ml-3">
+                            <div className="font-bold text-foreground text-xs">24/7 Support</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Rating Section */}
+                    <div className="bg-white/80 backdrop-blur-sm rounded-xl p-3 border border-white/20 text-center">
+                      <div className="flex items-center justify-center space-x-2 mb-1">
+                        <div className="flex space-x-1">
+                          {[...Array(5)].map((_, i) => (
+                            <span key={i} className="text-yellow-400 text-base">★</span>
+                          ))}
+                        </div>
+                        <div className="text-lg font-bold text-foreground">4.8/5</div>
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        from <span className="font-semibold text-foreground">10,000+</span> happy downloads
+                      </div>
+                    </div>
+
+                    {/* Download Button */}
+                    <a 
+                      href="https://play.google.com/store/apps/details?id=com.mmc.mmc_flutter_app&hl=en_IN"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-2 bg-gradient-to-r from-black to-gray-800 text-white px-4 py-2.5 rounded-xl hover:from-gray-800 hover:to-black hover:-translate-y-1 hover:shadow-xl transition-all duration-300 group shadow-lg w-full justify-center text-sm font-semibold"
+                    >
+                      <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1745px-Android_robot.svg.png"
+                        alt="Android Logo"
+                        className="w-6 h-6 bg-white rounded-lg p-1 group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="text-left">
+                        <div className="text-xs text-gray-300">Download our</div>
+                        <div className="text-xs font-bold">Android App</div>
+                      </div>
+                      <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </a>
+                  </div>
+
+                  {/* Right Side - Mobile Phone with Horse */}
+                  <div className="flex justify-center relative">
+                    <div className="relative">
+                      {/* Horse Image - Left Side of Mobile */}
+                      <div className="absolute -left-24 bottom-0 z-30">
+                        <img
+                          src="/mmc horse/4.png"
+                          alt="MMC Horse"
+                          className="w-48 h-48 object-contain opacity-100 drop-shadow-xl"
+                        />
+                      </div>
+                      
+                      {/* Mobile Phone */}
+                      <img 
+                        src="/mobile.png"
+                        alt="MMC Mobile App"
+                        className="w-36 h-72 object-contain relative z-20 drop-shadow-xl mix-blend-multiply"
                       />
                     </div>
-                    
-                    {/* Mobile Phone */}
-                    <img 
-                      src="/mobile.png"
-                      alt="MMC Mobile App"
-                      className="w-48 h-96 object-contain relative z-20 drop-shadow-xl mix-blend-multiply"
-                    />
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Right Side - FAQ Section */}
+            <div className="bg-white rounded-3xl p-4 lg:p-6 shadow-xl border border-gray-200 flex flex-col justify-between min-h-[600px]">
+              <div className="flex-1">
+                <div className="text-center mb-6">
+                  <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-3">
+                    Frequently Asked Questions
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    Find answers to common questions about {product.name} and our stone care solutions
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  {/* FAQ Item 1 */}
+                  <div className={`rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 ${
+                    activeFAQ === 1 
+                      ? 'bg-primary/10 border-primary/30 shadow-md' 
+                      : 'bg-gray-50 border-gray-200'
+                  }`}>
+                    <button
+                      className={`w-full px-3 py-2.5 text-left flex items-center justify-between transition-colors duration-200 ${
+                        activeFAQ === 1 
+                          ? 'hover:bg-primary/20' 
+                          : 'hover:bg-gray-100'
+                      }`}
+                      onClick={() => setActiveFAQ(activeFAQ === 1 ? null : 1)}
+                    >
+                      <span className={`font-semibold text-xs ${
+                        activeFAQ === 1 ? 'text-primary' : 'text-foreground'
+                      }`}>What surfaces can I use {product.name} on?</span>
+                      <ChevronRight 
+                        className={`h-3 w-3 text-primary transition-transform duration-200 ${
+                          activeFAQ === 1 ? 'rotate-90' : ''
+                        }`}
+                      />
+                    </button>
+                    {activeFAQ === 1 && (
+                      <div className="px-3 pb-2.5">
+                        <p className="text-muted-foreground text-xs leading-relaxed">
+                          {product.name} is specifically designed for {product.surfaces || 'natural stone surfaces'}. 
+                          It's safe to use on marble, granite, limestone, and other natural stone materials. 
+                          Always test on a small, inconspicuous area first to ensure compatibility.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* FAQ Item 2 */}
+                  <div className={`rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 ${
+                    activeFAQ === 2 
+                      ? 'bg-primary/10 border-primary/30 shadow-md' 
+                      : 'bg-gray-50 border-gray-200'
+                  }`}>
+                    <button
+                      className={`w-full px-3 py-2.5 text-left flex items-center justify-between transition-colors duration-200 ${
+                        activeFAQ === 2 
+                          ? 'hover:bg-primary/20' 
+                          : 'hover:bg-gray-100'
+                      }`}
+                      onClick={() => setActiveFAQ(activeFAQ === 2 ? null : 2)}
+                    >
+                      <span className={`font-semibold text-xs ${
+                        activeFAQ === 2 ? 'text-primary' : 'text-foreground'
+                      }`}>How long does it take to see results?</span>
+                      <ChevronRight 
+                        className={`h-3 w-3 text-primary transition-transform duration-200 ${
+                          activeFAQ === 2 ? 'rotate-90' : ''
+                        }`}
+                      />
+                    </button>
+                    {activeFAQ === 2 && (
+                      <div className="px-3 pb-2.5">
+                        <p className="text-muted-foreground text-xs leading-relaxed">
+                          Results are typically visible immediately after application and buffing. 
+                          For optimal results, we recommend following the complete application process 
+                          and allowing proper drying time as specified in the product instructions.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* FAQ Item 3 */}
+                  <div className={`rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 ${
+                    activeFAQ === 3 
+                      ? 'bg-primary/10 border-primary/30 shadow-md' 
+                      : 'bg-gray-50 border-gray-200'
+                  }`}>
+                    <button
+                      className={`w-full px-3 py-2.5 text-left flex items-center justify-between transition-colors duration-200 ${
+                        activeFAQ === 3 
+                          ? 'hover:bg-primary/20' 
+                          : 'hover:bg-gray-100'
+                      }`}
+                      onClick={() => setActiveFAQ(activeFAQ === 3 ? null : 3)}
+                    >
+                      <span className={`font-semibold text-xs ${
+                        activeFAQ === 3 ? 'text-primary' : 'text-foreground'
+                      }`}>What safety precautions should I take?</span>
+                      <ChevronRight 
+                        className={`h-3 w-3 text-primary transition-transform duration-200 ${
+                          activeFAQ === 3 ? 'rotate-90' : ''
+                        }`}
+                      />
+                    </button>
+                    {activeFAQ === 3 && (
+                      <div className="px-3 pb-2.5">
+                        <p className="text-muted-foreground text-xs leading-relaxed">
+                          Always wear protective gloves and safety glasses when handling stone care products. 
+                          Work in a well-ventilated area and avoid contact with eyes and skin. 
+                          Keep products out of reach of children and pets.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* FAQ Item 4 */}
+                  <div className={`rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 ${
+                    activeFAQ === 4 
+                      ? 'bg-primary/10 border-primary/30 shadow-md' 
+                      : 'bg-gray-50 border-gray-200'
+                  }`}>
+                    <button
+                      className={`w-full px-3 py-2.5 text-left flex items-center justify-between transition-colors duration-200 ${
+                        activeFAQ === 4 
+                          ? 'hover:bg-primary/20' 
+                          : 'hover:bg-gray-100'
+                      }`}
+                      onClick={() => setActiveFAQ(activeFAQ === 4 ? null : 4)}
+                    >
+                      <span className={`font-semibold text-xs ${
+                        activeFAQ === 4 ? 'text-primary' : 'text-foreground'
+                      }`}>How much product do I need for my project?</span>
+                      <ChevronRight 
+                        className={`h-3 w-3 text-primary transition-transform duration-200 ${
+                          activeFAQ === 4 ? 'rotate-90' : ''
+                        }`}
+                      />
+                    </button>
+                    {activeFAQ === 4 && (
+                      <div className="px-3 pb-2.5">
+                        <p className="text-muted-foreground text-xs leading-relaxed">
+                          Coverage depends on the surface type and condition. As a general guideline, 
+                          {product.specifications?.Coverage || '15-20 square feet per kg'} is typical. 
+                          For heavily damaged or porous surfaces, you may need more product. 
+                          Contact our technical support for specific project calculations.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* FAQ Item 5 */}
+                  <div className={`rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 ${
+                    activeFAQ === 5 
+                      ? 'bg-primary/10 border-primary/30 shadow-md' 
+                      : 'bg-gray-50 border-gray-200'
+                  }`}>
+                    <button
+                      className={`w-full px-3 py-2.5 text-left flex items-center justify-between transition-colors duration-200 ${
+                        activeFAQ === 5 
+                          ? 'hover:bg-primary/20' 
+                          : 'hover:bg-gray-100'
+                      }`}
+                      onClick={() => setActiveFAQ(activeFAQ === 5 ? null : 5)}
+                    >
+                      <span className={`font-semibold text-xs ${
+                        activeFAQ === 5 ? 'text-primary' : 'text-foreground'
+                      }`}>Can I use this product with other MMC products?</span>
+                      <ChevronRight 
+                        className={`h-3 w-3 text-primary transition-transform duration-200 ${
+                          activeFAQ === 5 ? 'rotate-90' : ''
+                        }`}
+                      />
+                    </button>
+                    {activeFAQ === 5 && (
+                      <div className="px-3 pb-2.5">
+                        <p className="text-muted-foreground text-xs leading-relaxed">
+                          Yes! {product.name} is designed to work seamlessly with our complete range of stone care products. 
+                          For best results, we recommend using our complete system including cleaners, 
+                          sealers, and maintenance products for comprehensive stone care.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* FAQ Item 6 */}
+                  <div className={`rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 ${
+                    activeFAQ === 6 
+                      ? 'bg-primary/10 border-primary/30 shadow-md' 
+                      : 'bg-gray-50 border-gray-200'
+                  }`}>
+                    <button
+                      className={`w-full px-3 py-2.5 text-left flex items-center justify-between transition-colors duration-200 ${
+                        activeFAQ === 6 
+                          ? 'hover:bg-primary/20' 
+                          : 'hover:bg-gray-100'
+                      }`}
+                      onClick={() => setActiveFAQ(activeFAQ === 6 ? null : 6)}
+                    >
+                      <span className={`font-semibold text-xs ${
+                        activeFAQ === 6 ? 'text-primary' : 'text-foreground'
+                      }`}>What if I'm not satisfied with the results?</span>
+                      <ChevronRight 
+                        className={`h-3 w-3 text-primary transition-transform duration-200 ${
+                          activeFAQ === 6 ? 'rotate-90' : ''
+                        }`}
+                      />
+                    </button>
+                    {activeFAQ === 6 && (
+                      <div className="px-3 pb-2.5">
+                        <p className="text-muted-foreground text-xs leading-relaxed">
+                          We stand behind our products with a satisfaction guarantee. If you're not completely 
+                          satisfied with your results, contact our customer service team. We'll work with you 
+                          to resolve any issues and ensure you achieve the desired outcome.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Support */}
+              <div className="text-center mt-6">
+                <p className="text-muted-foreground text-xs mb-2">
+                  Still have questions? Our technical experts are here to help!
+                </p>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-primary/90 text-white px-6 py-3 rounded-xl hover:from-primary/90 hover:to-primary hover:-translate-y-1 hover:shadow-xl transition-all duration-300 font-semibold text-sm"
+                >
+                  <span>Ask Our Experts</span>
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+
 
       {/* Inquiry Form Modal */}
       <InquiryForm
