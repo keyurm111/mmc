@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle, Building, Users, Award } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle, Building, Users, Award, ChevronDown } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,8 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isProjectTypeOpen, setIsProjectTypeOpen] = useState(false);
+  const projectTypeRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -18,6 +20,31 @@ const Contact = () => {
       [name]: value
     }));
   };
+
+  const handleProjectTypeSelect = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      subject: value
+    }));
+    setIsProjectTypeOpen(false);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (projectTypeRef.current && !projectTypeRef.current.contains(event.target as Node)) {
+        setIsProjectTypeOpen(false);
+      }
+    };
+
+    if (isProjectTypeOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isProjectTypeOpen]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,6 +92,17 @@ const Contact = () => {
     { number: '15+', label: 'Years Experience', icon: Award },
     { number: '1000+', label: 'Projects Completed', icon: Building },
     { number: '24/7', label: 'Support Available', icon: MessageCircle }
+  ];
+
+  const projectTypeOptions = [
+    { value: '', label: 'Select project type' },
+    { value: 'residential-flooring', label: 'Residential Flooring' },
+    { value: 'commercial-flooring', label: 'Commercial Flooring' },
+    { value: 'bathroom-tiling', label: 'Bathroom Tiling' },
+    { value: 'kitchen-renovation', label: 'Kitchen Renovation' },
+    { value: 'floor-refinishing', label: 'Floor Refinishing' },
+    { value: 'consultation', label: 'Free Consultation' },
+    { value: 'other', label: 'Other' }
   ];
 
   return (
@@ -197,22 +235,38 @@ const Contact = () => {
                         <label htmlFor="subject" className="block text-sm font-semibold text-foreground mb-2">
                           Project Type
                         </label>
-                        <select
-                          id="subject"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all duration-300 bg-gray-50/50"
-                        >
-                          <option value="">Select project type</option>
-                          <option value="residential-flooring">Residential Flooring</option>
-                          <option value="commercial-flooring">Commercial Flooring</option>
-                          <option value="bathroom-tiling">Bathroom Tiling</option>
-                          <option value="kitchen-renovation">Kitchen Renovation</option>
-                          <option value="floor-refinishing">Floor Refinishing</option>
-                          <option value="consultation">Free Consultation</option>
-                          <option value="other">Other</option>
-                        </select>
+                        <div className="relative" ref={projectTypeRef}>
+                          <button
+                            type="button"
+                            onClick={() => setIsProjectTypeOpen(!isProjectTypeOpen)}
+                            className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all duration-300 bg-gray-50/50 text-left flex items-center justify-between cursor-pointer hover:bg-gray-50"
+                          >
+                            <span className={formData.subject ? 'text-foreground' : 'text-gray-500'}>
+                              {formData.subject ? projectTypeOptions.find(opt => opt.value === formData.subject)?.label : 'Select project type'}
+                            </span>
+                            <ChevronDown className={`h-5 w-5 text-gray-400 transition-transform duration-200 ${isProjectTypeOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                          
+                          {/* Custom Dropdown Options */}
+                          {isProjectTypeOpen && (
+                            <div className="absolute z-50 w-full mt-1 bg-white border-2 border-gray-200 rounded-xl shadow-xl overflow-hidden">
+                              {projectTypeOptions.map((option, index) => (
+                                <button
+                                  key={index}
+                                  type="button"
+                                  onClick={() => handleProjectTypeSelect(option.value)}
+                                                                     className={`w-full px-4 py-2 text-left hover:bg-primary/5 transition-colors duration-200 ${
+                                    option.value === formData.subject 
+                                      ? 'bg-primary/10 text-primary font-medium' 
+                                      : 'text-foreground hover:text-primary'
+                                  } ${index === 0 ? 'border-b border-gray-100' : ''}`}
+                                >
+                                  {option.label}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
 
@@ -267,7 +321,7 @@ const Contact = () => {
                         <button className="text-primary font-semibold mt-2 hover:text-primary/80 hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center space-x-1 group-hover:translate-x-1 text-sm">
                           <span>{info.action}</span>
                           <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </button>
                       </div>
