@@ -167,10 +167,7 @@ const Team = () => {
         {/* Founders Section */}
         <div className="mb-16">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-6 py-2 mb-6">
-              <span className="text-primary">👑</span>
-              <span className="text-sm font-medium text-primary">OUR FOUNDERS</span>
-            </div>
+
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Meet Our Visionary Leaders
             </h3>
@@ -229,10 +226,7 @@ const Team = () => {
 
         {/* Team Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-6 py-2 mb-6">
-            <span className="text-primary">👥</span>
-            <span className="text-sm font-medium text-primary">MEET OUR EXPERT TEAM</span>
-          </div>
+
           
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             The People Behind
@@ -335,10 +329,7 @@ const Team = () => {
         {/* Our Locations Section */}
         <div className="mb-16">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-6 py-2 mb-6">
-              <span className="text-primary">📍</span>
-              <span className="text-sm font-medium text-primary">OUR LOCATIONS</span>
-            </div>
+
             <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
               Find Us Near You
             </h3>

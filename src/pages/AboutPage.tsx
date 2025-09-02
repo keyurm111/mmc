@@ -41,10 +41,7 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div className="animate-fade-in-left">
-              <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-6 py-2 mb-6">
-                <span className="text-primary">👋</span>
-                <span className="text-sm font-medium text-primary">WELCOME TO MMC</span>
-              </div>
+
               
               <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
                 Welcome to MMC - 

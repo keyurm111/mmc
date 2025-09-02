@@ -106,10 +106,7 @@ const Home = () => {
         <div className="container-max relative z-10">
           {/* Section Header */}
           <div className="text-center mb-20">
-            <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-8 py-3 mb-8 shadow-lg border border-gray-100">
-              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-gray-700 tracking-wide">PREMIUM SOLUTIONS</span>
-            </div>
+
             
             <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
               Transform Your Space with
@@ -330,10 +327,6 @@ const Home = () => {
             <div className="lg:hidden space-y-8 mb-8">
               {/* Section Header */}
               <div className="mb-8">
-                <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg border border-gray-100">
-                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                  <span className="text-sm font-semibold text-gray-700 tracking-wide">COMPANY ACHIEVEMENTS</span>
-                </div>
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                   Building Excellence
                 </h2>
@@ -378,10 +371,6 @@ const Home = () => {
             <div className="space-y-8 order-2 lg:order-2">
               {/* Section Header - Desktop Only */}
               <div className="hidden lg:block mb-8">
-                <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg border border-gray-100">
-                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                  <span className="text-sm font-semibold text-gray-700 tracking-wide">COMPANY ACHIEVEMENTS</span>
-                </div>
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                   Building Excellence
                 </h2>
@@ -475,10 +464,7 @@ const Home = () => {
           {/* Section Header */}
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 sm:gap-8 mb-12 sm:mb-16">
             <div className="lg:w-1/3">
-              <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6 shadow-lg border border-gray-100">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <span className="text-xs sm:text-sm font-semibold text-gray-700 tracking-wide">OUR STORIES</span>
-              </div>
+
               <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
                 Magik Stories
               </h2>
@@ -561,10 +547,7 @@ const Home = () => {
                 <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd"/>
               </svg>
             </div>
-            <div className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-8 py-4 mb-8 shadow-xl border border-gray-100">
-              <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
-              <span className="text-sm font-bold text-gray-700 tracking-wider">CLIENT SUCCESS STORIES</span>
-            </div>
+
             <h2 className="text-4xl lg:text-5xl font-bold mb-8 leading-tight">
               What Our <span className="text-primary">Client Say</span>
             </h2>

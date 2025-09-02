@@ -6,32 +6,62 @@ const Hero = () => {
   // Image carousel state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  // Array of hero images
+  // Word carousel state
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [isWordTransitioning, setIsWordTransitioning] = useState(false);
+  
+  // Array of hero images with corresponding words
   const heroImages = [
     {
       src: "https://marblemagik.in/wp-content/uploads/2023/07/MMC-Banners-updated-1.jpg",
-      alt: "MMC Banners updated - Premium stone care solutions"
+      alt: "MMC Banners updated - Premium stone care solutions",
+      word: "Beauty"
     },
     {
       src: "https://marblemagik.in/wp-content/uploads/2022/11/MMC-Banners_1.jpg",
-      alt: "MMC Banners - Professional stone care and construction solutions"
+      alt: "MMC Banners - Professional stone care and construction solutions",
+      word: "Elegance"
     },
     {
       src: "https://marblemagik.in/wp-content/uploads/2022/11/MMC-Banners_2.jpg",
-      alt: "MMC Banners - Expert stone care and construction chemicals"
+      alt: "MMC Banners - Expert stone care and construction chemicals",
+      word: "Durability"
     },
     {
       src: "https://marblemagik.in/wp-content/uploads/2023/07/MMC-Banners-updated-Map.jpg",
-      alt: "MMC Banners updated with map - Nationwide stone care services"
+      alt: "MMC Banners updated with map - Nationwide stone care services",
+      word: "Perfection"
+    },
+    {
+      src: "https://marblemagik.in/wp-content/uploads/2023/07/MMC-Banners-updated-1.jpg",
+      alt: "MMC Banners updated - Premium stone care solutions",
+      word: "Luxury"
+    },
+    {
+      src: "https://marblemagik.in/wp-content/uploads/2022/11/MMC-Banners_1.jpg",
+      alt: "MMC Banners - Professional stone care and construction solutions",
+      word: "Strength"
     }
   ];
 
   // Auto-advance carousel every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-      );
+      // Start fade out
+      setIsWordTransitioning(true);
+      
+      // After fade out, change word and image
+      setTimeout(() => {
+        setCurrentImageIndex((prevIndex) => 
+          prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+        );
+        setCurrentWordIndex((prevIndex) => 
+          prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+        );
+        
+        // Start fade in
+        setIsWordTransitioning(false);
+      }, 300);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -49,18 +79,14 @@ const Hero = () => {
             {/* Left Column - Content */}
             <div className="animate-fade-in-left space-y-8 lg:space-y-10">
               
-              {/* Pre-heading Badge */}
-              <div className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-gray-100/50">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-gray-700 tracking-wide">
-                  PRECISION STONE CARE & CONSTRUCTION SOLUTIONS
-                </span>
-              </div>
+
               
               {/* Main Heading */}
               <div className="space-y-4">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900">
-                  Elevate Your <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Stone's Glow</span> with Magik
+                  Elevate Your <span className={`text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent transition-all duration-700 ease-in-out ${
+                    isWordTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                  }`}>Stone's {heroImages[currentWordIndex].word}</span> with Magik
                 </h1>
                 
                 {/* Subtitle */}
@@ -91,10 +117,10 @@ const Hero = () => {
               {/* CTA Buttons - Hidden on mobile, shown on desktop */}
               <div className="hidden lg:flex flex-col sm:flex-row gap-4 sm:gap-6 pt-6">
                 <Link
-                  to="/about"
+                  to="/magik-stories"
                   className="group bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center space-x-3"
                 >
-                  <span>DISCOVER MORE</span>
+                  <span>DISCOVER MAGIK</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
                 
@@ -102,7 +128,7 @@ const Hero = () => {
                   to="/contact"
                   className="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-3 hover:shadow-xl hover:-translate-y-1"
                 >
-                  <span>GET A QUOTE</span>
+                  <span>GET IN TOUCH</span>
                 </Link>
               </div>
             </div>
@@ -162,10 +188,10 @@ const Hero = () => {
                               {/* CTA Buttons */}
                               <div className="flex flex-col gap-4 pt-6">
                                 <Link
-                                  to="/about"
-                                  className="group bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center space-x-3"
+                                  to="/magik-stories"
+                                  className="group bg-primary text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center justify-center space-x-3"
                                 >
-                                  <span>DISCOVER MORE</span>
+                                  <span>DISCOVER MAGIK</span>
                                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                                 </Link>
                                 
@@ -173,7 +199,7 @@ const Hero = () => {
                                   to="/contact"
                                   className="border-2 border-gray-300 text-gray-700 hover:border-primary hover:text-primary px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-3 hover:shadow-xl hover:-translate-y-1"
                                 >
-                                  <span>GET A QUOTE</span>
+                                  <span>GET IN TOUCH</span>
                                 </Link>
                               </div>
                             </div>
