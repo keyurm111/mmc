@@ -272,7 +272,6 @@ const Header: React.FC = () => {
 
 
   const navItems = [
-    { name: 'ABOUT US', href: '/about' },
     { 
       name: 'PRODUCTS', 
       href: '#',
@@ -283,6 +282,7 @@ const Header: React.FC = () => {
         { name: 'Diamond PADs', href: '/categories/diamond-pads', category: 'diamond-pads' }
       ]
     },
+    { name: 'ABOUT US', href: '/about' },
     { 
       name: 'MAGIK STORIES', 
       href: '#',
